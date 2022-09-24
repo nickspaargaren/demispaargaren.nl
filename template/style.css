@@ -1,0 +1,249 @@
+body {
+  margin: 0;
+  color: #000;
+  font-family: "proxima-nova", Helvetica Neue, Helvetica, arial;
+  font-size: 16px;
+  line-height: 1.5em;
+  background: #fff;
+}
+
+.overlay {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/bg.png) repeat; pointer-events: none; opacity: .15;}
+
+::selection			{color:#ffbe24; background: #fff;}
+::-moz-selection	{color:#ffbe24; background: #fff;}
+
+
+iframe {width: 100%;}
+
+.vak {position: relative; max-width: 1200px; margin: 0 auto; display: flex;}
+
+.navigatie {padding: 45px 40px;}
+.navigatie .nav {position: sticky; position: -webkit-sticky; top: 45px;}
+.navigatie .nav ul {margin: 0; padding: 0; list-style: none;}
+.navigatie .nav ul li {margin: 0 0 10px;}
+.navigatie .nav ul li a {font-size: 45px; line-height: 1; font-family: "bebas-neue", Helvetica Neue, Helvetica, arial; padding: 0px 4px; display: inline-block; transition: .3s all ease; color: #ffbe24;}
+.navigatie .nav ul li a:hover {background-color: #000; color: #fff;}
+.navigatie .nav ul li.active a {background-color: #000; color: #fff;}
+
+.navigatie a.logo {width: 100%; margin-bottom: 40px; display: block;}
+.navigatie a.logo img {width: 100%; height: auto;}
+
+.vak .inhoud {padding: 40px; flex: 100%;}
+
+.vak .inhoud img {max-width: 100%; height: auto !important;}
+.vak.header {
+  background: #fff;
+  margin: 97px auto 0;
+}
+
+.vak.header h1, .vak.header h2, .vak.header h3, .vak.header p {
+  color: #fff;
+}
+
+.vak.footer {
+  background: #fff;
+  border-top: 2px solid #f3f3f3;
+}
+
+.vak.footer .inhoud {
+  color: #666;
+  padding: 20px;
+  transition: .3s all ease;
+}
+
+.vak.footer .inhoud a {
+  color: #666;
+}
+
+.vak.footer .inhoud a:hover {
+  text-decoration: under;
+}
+
+.vak.footer .inhoud h2 {
+  color: #666;
+}
+
+.vak.footer ul {
+  padding: 0px;
+  list-style-type: none;
+}
+
+
+.vak.subfooter {
+  background: none repeat scroll 0 0 #333333;
+  border-top: 1px solid #666;
+  margin: 0px auto 30px;
+}
+
+.vak.subfooter .inhoud {
+  padding: 20px;
+  color: #666;
+  text-align: left;
+  transition: .3s all ease;
+}
+
+.vak.subfooter .inhoud p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 95px;
+  color: #ffbe25;
+  line-height: 1em;
+  margin: 0 0 20px;
+  font-family: "bebas-neue", Helvetica Neue, Helvetica, arial;
+  display: block;
+  border-bottom: 3px solid #000;
+  padding-bottom: 16px;
+}
+
+h2 {
+  font-size: 34px;
+  color: #000;
+  line-height: 1.25em;
+  margin: 0 0 10px;
+  font-family: "bebas-neue", Helvetica Neue, Helvetica, arial;}
+
+h3 {
+  font-size: 24px;
+  color: #000;
+  line-height: 1.10em;
+  margin: 0 0 10px;
+  font-family: "bebas-neue", Helvetica Neue, Helvetica, arial;
+}
+
+p {
+  margin: 0px 0px 10px;
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a.button {
+  text-decoration: none;
+  padding: 0px 15px;
+  line-height: 28px;
+  display: in-block;
+  font-size: 12px;
+  background: #000;
+  color: #fff;
+  border-radius: 3px;
+  font-family: "bebas-neue", Helvetica Neue, Helvetica, arial;
+}
+
+a.button:hover {}
+
+
+button.knop {font-size: 24px; background: #ffbe24; color: #000; border-radius: 0; border: none; padding: 6px; font-family: "bebas-neue",Helvetica Neue,Helvetica,arial; min-width: 85px;}
+
+hr {
+  background: #f3f3f3;
+  border: 0 none;
+  height: 2px;
+  margin: 20px 0;
+}
+
+
+
+.navbutton {
+  display: none;
+}
+
+.cleared {
+  clear: both;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile_cleared {
+  clear: both;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+.button:hover {
+  background: #91d0a2;
+  cursor: pointer;
+}
+
+.button.login {
+  background: #0EA5A0;
+  width: 100%;
+}
+
+
+.social {padding: 4px; font-size: 24px;}
+.social a {margin-right: 4px;}
+
+.kolom_3 {
+  width: 30%;
+  float: left;
+  text-align: left;
+}
+
+.kolom_3_tussen {
+  display: block;
+  float: left;
+  height: 1px;
+  width: 5%;
+}
+
+@media screen and (max-width: 510px) {
+
+  .vak {display: block;}
+  .navigatie a.logo {display: none;}
+
+  .vak.header {
+    margin: 0;
+  }
+
+  .sociallink {
+    display: block;
+    float: none;
+    margin: 30px 0;
+    width: 100% !important;
+  }
+
+  .navbutton {
+    display: block;
+    z-index: 10;
+    left: 17px;
+    color: #000;
+    font-size: 30px;
+    position: absolute;
+    top: 28px;
+  }
+
+  .navbutton:hover {
+    cursor: pointer;
+  }
+
+
+  .navbutton .naam {font-family: "bebas-neue", Helvetica Neue, Helvetica, arial; text-transform: uppercase;}
+
+  .navigatie { padding: 80px 10px 0;}
+  .navigatie .nav {
+    max-height: 0px;
+    overflow: hidden;
+    transition: .3s all ease;
+  }
+
+  .vak .inhoud {padding: 10px;}
+
+  
+
+  .nav.open {
+    max-height: 600px;
+  }
+
+}

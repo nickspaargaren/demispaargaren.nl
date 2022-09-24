@@ -1,0 +1,22 @@
+{
+  "require": {
+    "ckeditor/ckeditor": "^4.19",
+    "components/jquery": "^3.6",
+    "cweagans/composer-patches": "^1.7",
+    "components/jqueryui": "^1.12",
+    "vlucas/phpdotenv": "^5.4"
+  },
+  "config": {
+    "vendor-dir": "assets",
+    "allow-plugins": {
+      "cweagans/composer-patches": true
+    }
+  },
+  "extra": {
+    "patches": {
+        "ckeditor/ckeditor": {
+          "Enable CKEditor Plugins": "./patches/enableCkeditorPlugins.patch"
+        }
+    }
+  }
+}

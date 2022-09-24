@@ -1,0 +1,1521 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300);
+
+:root {
+  --cms-primary-color: #297;
+  --cms-secondary-color: #128967;
+  --cms-font: "Source Sans Pro", Helvetica Neue, Helvetica, arial;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: #606060;
+  font-family: var(--cms-font);
+  font-size: 13px;
+  line-height: 1.65em;
+  background: #f3f3f3;
+}
+
+a {
+  color: var(--cms-primary-color);
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 25px;
+  color: #404040;
+  line-height: 1.25em;
+  font-family: var(--cms-font);
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 20px;
+  color: #404040;
+  line-height: 1.25em;
+  font-family: var(--cms-font);
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 15px;
+  color: #404040;
+  line-height: 1.1em;
+  font-family: var(--cms-font);
+  font-weight: normal;
+}
+
+.cleared {
+  clear: both;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile_cleared {
+  clear: both;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.cms_container ul {
+  margin: 0;
+  padding: 0 0 0 13px;
+}
+
+.cms_container .titel-holder {
+  border-bottom: 1px solid #f3f3f3;
+  margin: 0 0 15px;
+  padding: 0 0 15px;
+  position: relative;
+}
+
+.cms_container .titel-holder h1 {
+  margin: 0 0 5px;
+  font-size: 23px;
+}
+
+.cms_container .titel-holder h2 {
+  color: #b2b2b2;
+  font-size: 14px;
+  margin: 0;
+}
+
+.progress {
+  width: 0%;
+  transition: 0.7s all ease;
+}
+
+.cms_extranavHolder {
+  background: var(--cms-primary-color);
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.cms_extranavHolder .cms_extranav {
+  position: relative;
+  color: #fff;
+  font-size: 16px;
+  background-size: cover;
+}
+
+.cms_extranavHolder .cms_extranav .cms_info {
+  float: left;
+  padding: 8px 10px;
+}
+
+.cms_extranavHolder .cms_extranav .account {
+  float: right;
+  position: relative;
+}
+
+.cms_extranavHolder .cms_extranav .account .formAantal {
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  background: red;
+  border: 2px solid #fff;
+  border-radius: 90px;
+  min-width: 10px;
+  text-align: center;
+  z-index: 100;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0px 5px;
+}
+
+.cms_extranavHolder .cms_extranav .account .naam {
+  padding: 19px;
+  display: inline-block;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  min-width: 110px;
+  text-align: right;
+}
+
+.cms_extranavHolder .cms_extranav .account:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cms_extranavHolder .cms_extranav .account .afb-twitter {
+  border: 2px solid #fff;
+  border-radius: 50px;
+  box-sizing: border-box;
+  float: left;
+  height: 43px;
+  margin: 0 0 0 17px;
+  overflow: hidden;
+  pointer-events: none;
+  position: relative;
+  top: 8px;
+  width: 43px;
+}
+
+.cms_extranavHolder .cms_extranav .account .afb-twitter img {
+  width: 100%;
+  height: auto;
+}
+
+.cms_extranavHolder .cms_extranav .account.open {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cms_extranavHolder .cms_extranav .account .naam .fa {
+  margin: 0 0 0 10px;
+}
+
+.cms_extranavHolder .cms_extranav .account .submenu {
+  opacity: 0;
+  pointer-events: none;
+  background: #fff;
+  width: 100%;
+  border: 1px solid #d7d7d7;
+  border-radius: 0px 0px 0px 3px;
+  border-top: 0;
+  transition: 0.3s all ease;
+}
+
+.cms_extranavHolder .cms_extranav .account.open .submenu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cms_extranavHolder .cms_extranav .account .submenu li a {
+  color: #606060;
+  padding: 10px;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.cms_extranavHolder .cms_extranav .account .submenu li:last-child a {
+  border-bottom: 0;
+}
+
+.cms_extranavHolder .cms_extranav .account .submenu li a::before {
+  font-family: "fontawesome";
+  content: "\f0da";
+  color: #b3b3b3;
+  margin: 0 8px 0 0;
+}
+
+.cms_extranavHolder .cms_extranav .account .submenu li a:hover::before {
+  color: var(--cms-primary-color);
+}
+
+.cms_extranavHolder .cms_extranav .account .submenu li a:hover {
+  background: #f3f3f3;
+}
+
+.cms_extranavHolder .cms_extranav .account .submenu .formAantal {
+  float: right;
+  position: relative;
+  top: -1px !important;
+  left: auto !important;
+  color: #fff;
+  border: none;
+  background: #999;
+  padding: 1px 5px;
+}
+
+.btn_submenu {
+  display: none !important;
+}
+
+.btn_submenu:hover {
+  cursor: pointer;
+}
+
+.cms_navHolder {
+  background: #1b1b1b;
+  height: 100%;
+  left: 0;
+  max-width: 55px;
+  min-height: 290px;
+  overflow: hidden;
+  padding: 60px 0 0;
+  position: fixed;
+  top: 0;
+  transition: all 0.3s ease 0s;
+  z-index: 12;
+}
+.cms_navHolder span.titel {
+  opacity: 0;
+  transition: 0.3s all ease;
+}
+
+.cms_navHolder:hover {
+  max-width: 165px;
+  box-shadow: 20px 0 41px 5px rgba(0, 0, 0, 0.2);
+}
+.cms_navHolder:hover span.titel {
+  opacity: 1;
+}
+
+.cms_nav {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 165px;
+}
+.cms_nav .item {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #262626;
+  position: relative;
+}
+.cms_nav .item a {
+  border-left: 4px solid #1b1b1b;
+  color: #afafaf;
+  display: block;
+  list-style-type: none;
+  padding: 10px 0;
+  text-align: center;
+}
+.cms_nav .item a .formAantal {
+  position: absolute;
+  left: 31px;
+  top: 2px;
+  background: red;
+  border-radius: 50px;
+  min-width: 6px;
+  line-height: 1em;
+  font-size: 10px;
+  padding: 2px 4px;
+  color: #fff;
+}
+.cms_nav .item:hover {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+}
+.cms_nav .item:hover a {
+  color: #fff !important;
+  border-left: 4px solid var(--cms-primary-color);
+}
+.cms_nav .item:hover .fa {
+  color: #fff !important;
+}
+.cms_nav .fa {
+  color: #afafaf;
+  display: block;
+  float: left;
+  font-size: 16px;
+  margin: 2px 10px;
+  width: 25px;
+}
+.cms_nav .titel {
+  display: block;
+  float: left;
+  line-height: 19px;
+  width: auto;
+}
+
+.item.active {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+}
+.item.active a {
+  color: #fff !important;
+  border-left: 4px solid var(--cms-primary-color);
+}
+.item.active .fa {
+  color: #fff !important;
+}
+
+.cms_inhoud {
+  float: none;
+  padding: 70px 10px 0 65px;
+  position: relative;
+  width: calc(100% - 75px);
+}
+
+.cms_container {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #d7d7d7;
+  float: left;
+  margin: 0 10px 10px 0px;
+  padding: 15px;
+  box-sizing: border-box;
+  position: relative;
+  width: calc(50% - 10px);
+}
+.cms_container h2 {
+  margin: 0 0 10px;
+}
+
+.cms_container.drie {
+  float: left;
+  width: calc(33.3333% - 10px);
+}
+
+.cms_container.drie:nth-of-type(3n+1) {
+  clear: both;
+}
+
+.cms_container.vier {
+  width: calc(25% - 10px);
+  margin: 0 10px 10px 0;
+  float: left;
+}
+
+.cms_container.vier:nth-of-type(4n+0) {
+  width: 25%;
+  margin: 0 0 10px;
+}
+
+.cms_container.vier:nth-of-type(4n+5) {
+  clear: both;
+}
+
+.cms_container.vb {
+  width: 100%;
+  margin: 0 0 10px 0px;
+  float: none;
+}
+
+.cms_container .aantalclicks {
+  float: right;
+  transition: all 0.6s ease 0s;
+}
+
+.cms_container .sicon {
+  border-right: 1px solid #f3f3f3;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 0 10px 0 0;
+}
+
+.cms_container.vier:hover .sicon .fa-refresh, .cms_container.vier:hover .aantalclicks {
+  color: var(--cms-primary-color);
+}
+
+.cms_container .sicon:hover {
+  cursor: pointer;
+}
+
+.cms_container .sicon .fa-refresh {
+  transition: all 0.6s ease 0s;
+}
+
+.cms_container .sicon:hover .fa-refresh {
+  cursor: pointer;
+  transform: rotate(360deg);
+}
+
+.cms_container .sicon.disabled .fa-refresh {
+  color: #D7D7D7 !important;
+}
+
+.cms_container .sicon.disabled:hover .fa-refresh {
+  cursor: not-allowed;
+  transform: rotate(0deg) !important;
+  color: #D7D7D7;
+}
+
+.cms_container.loginscherm {
+  margin: 30px auto 0px;
+  max-width: 260px;
+  float: none;
+}
+.cms_container.loginscherm h1 {
+  font-size: 20px;
+  margin: 5px 0px 20px;
+}
+.cms_container.loginscherm h1 span {
+  color: var(--cms-primary-color);
+}
+
+.cms_container.loginscherm input {
+  margin: 0 !important;
+  padding: 10px;
+  color: #374343;
+  font-family: var(--cms-font);
+  font-size: 13px;
+  width: 100%;
+}
+
+.cms_container.loginscherm button[type=submit] {
+  margin: 0 !important;
+}
+
+.cms_container.loginscherm.bestaandaccount {
+  border-radius: 3px 3px 0px 0px;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.cms_container.loginscherm.nieuwaccount {
+  position: relative;
+  background: #F3F3F3;
+  border-radius: 0px 0px 3px 3px;
+  margin: 0 auto;
+  border-top: 0px;
+}
+
+.cms_container.loginscherm.nieuwaccount a {
+  color: var(--cms-primary-color) !important;
+}
+
+.cms_container input {
+  box-sizing: border-box;
+}
+
+.cms_container input[type=text],
+.cms_container input[type=password],
+.cms_container input[type=number] {
+  border-radius: 3px;
+  border: 1px solid #d7d7d7;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px !important;
+  font-size: 13px;
+  margin: 0px 5px 0 0;
+}
+
+.cms_container input[type=text]:focus,
+.cms_container input[type=password]:focus,
+.cms_container input[type=number]:focus {
+  *border-color: var(--cms-primary-color);
+  color: var(--cms-primary-color) !important;
+  outline: none;
+}
+
+.cms_container textarea {
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cms_container.upload {
+  margin: 30px auto 0px;
+  max-width: 370px;
+  float: none;
+}
+
+.inlineinput {
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+.cms_container input[type=checkbox] {
+  margin: 0;
+}
+
+.inputgroep {
+  display: table;
+  width: 100%;
+  margin: 0px 0px 10px;
+  border-collapse: separate;
+}
+
+.inputgroep input {
+  display: table-cell;
+  border-radius: 0px 3px 3px 0px !important;
+  margin: 0;
+}
+
+.inputgroep .icoon {
+  display: table-cell;
+  border-radius: 3px 0px 0px 3px;
+  border: 1px solid #d7d7d7;
+  width: 35px;
+  text-align: center;
+  border-right: 0px;
+  background: #F3F3F3;
+  border-collapse: separate;
+  vertical-align: middle;
+  line-height: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  cursor: default;
+}
+
+.inputgroep .tekst {
+  display: table-cell;
+  border-radius: 3px 0px 0px 3px;
+  border: 1px solid #d7d7d7;
+  width: 110px;
+  text-align: right;
+  border-right: 0px;
+  background: #F3F3F3;
+  border-collapse: separate;
+  vertical-align: middle;
+  line-height: 1;
+  padding: 0px 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  cursor: default;
+}
+
+table.instellingen td {
+  padding: 0 0 15px;
+}
+
+table.instellingen.dashboard {
+  table-layout: fixed;
+}
+
+table.instellingen.dashboard td.checkbox {
+  width: 20px;
+}
+
+table.instellingen.dashboard td {
+  padding: 0 0 5px;
+}
+
+.titelvraag {
+  font-size: 14px;
+  margin: 10px 0 5px;
+}
+
+.melding {
+  background: #ff0000;
+  padding: 5px;
+  color: #fff;
+  display: inline-block;
+  margin: 20px 0px 0px;
+}
+
+.uploadenHolder {
+  background: #ffffff;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
+  left: -50%;
+  margin: 0 auto;
+  opacity: 0;
+  padding: 30px;
+  pointer-events: none;
+  position: fixed;
+  right: -50%;
+  top: 25vh;
+  transition: all 0.3s ease 0s;
+  width: 300px;
+  z-index: 101;
+  transform: scale(0);
+  border-radius: 3px;
+}
+
+.uploadenHolder.tonen {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+.uploadenHolder input {
+  background: #f3f3f3;
+  border: 0 none;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.uploadenHolder .cms_button {
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  margin: 0 !important;
+  width: calc(50% - 5px);
+}
+
+.uploadenHolder .cms_button.links {
+  margin: 0 5px 0 0 !important;
+}
+
+.uploadenHolder .cms_button.rechts {
+  margin: 0 0 0 5px !important;
+}
+
+.meldingBg {
+  background: rgba(0, 0, 0, 0.85);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s all ease;
+}
+
+.meldingBg.tonen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.cms_button {
+  background: var(--cms-primary-color);
+  border: 0 none !important;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--cms-secondary-color) inset;
+  color: #fff !important;
+  display: inline-block;
+  font-family: var(--cms-font);
+  font-size: 13px;
+  margin: 15px 0 0;
+  padding: 16px !important;
+  text-align: center;
+  position: relative;
+  line-height: 0px !important;
+}
+
+.cms_button:hover {
+  cursor: pointer;
+  background: var(--cms-secondary-color);
+}
+
+.cms_button:active, .cms_button.refresh:active {
+  box-shadow: 0 0 0 1px var(--cms-secondary-color) inset, 0 0px 16px 5px rgba(0, 0, 0, 0.2) inset;
+}
+
+.cms_button.delete {
+  background: #ed4e4e;
+  border: 1px solid #f32424 !important;
+  box-shadow: 0 0 0 1px #e15252 inset;
+}
+
+.cms_button.delete:hover {
+  background: #e15252;
+}
+
+.cms_button.refresh {
+  background: #50a7e7;
+  margin: 0 0 0 10px !important;
+  box-shadow: 0 0 0 1px #2f86c6 inset;
+  padding: 17px 17px !important;
+}
+
+.cms_button.refresh:hover {
+  background: #5bb2f2;
+}
+
+.cms_button.grijs {
+  background: #f3f3f3 !important;
+  border: 1px solid #dddddd !important;
+  box-shadow: none !important;
+  color: #606060 !important;
+}
+
+.cms_button.uit {
+  pointer-events: none;
+  user-select: none;
+  -moz-user-select: none;
+  background: #f8f8f8;
+  color: #e8e8e8 !important;
+  box-shadow: 0 0 0 1px #e8e8e8 inset;
+}
+
+.cms_button .fa {
+  line-height: 0 !important;
+  margin: 0 15px 0 0;
+}
+
+.cms_button.paginabekijken {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 9px;
+}
+
+.cms_footer {
+  box-sizing: border-box;
+  color: #d7d7d7;
+  padding: 10px 20px 20px 70px;
+  position: relative;
+  width: 100%;
+}
+
+.cms_footer .breadcrums {
+  text-align: center;
+}
+
+.cms_footer .breadcrums .fa {
+  margin: 0px 5px;
+}
+
+.cms_container textarea {
+  border: 1px solid #cecece;
+  box-sizing: border-box;
+  font-family: var(--cms-font);
+  font-size: 13px;
+  min-height: 100px;
+  padding: 15px;
+  width: 100%;
+}
+
+.cms_container textarea:focus {
+  border: 1px solid var(--cms-primary-color);
+}
+
+button[type=submit] {
+  border: 0 solid !important;
+  display: inline-block;
+  font-size: 13px !important;
+  line-height: 0 !important;
+  margin: 20px 0 0 !important;
+  position: relative;
+}
+
+#accounts .gebruiker {
+  margin: 0px 0px 5px 0px;
+}
+
+#accounts .gebruiker button[type=submit] {
+  margin: 0px !important;
+  background: transparent !important;
+  color: var(--cms-primary-color);
+}
+
+#accounts .gebruiker a:hover, #accounts .gebruiker button:hover {
+  cursor: pointer;
+}
+
+.versie {
+  opacity: 0.3;
+}
+
+ul.submenu {
+  position: absolute;
+  z-index: 2;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+ul.submenu li {
+  padding: 0;
+  margin: 0;
+}
+ul.submenu li a {
+  margin: 0px;
+  font-size: 13px;
+  display: block;
+  line-height: 16px;
+}
+ul.submenu li a:hover {
+  color: #374343 !important;
+}
+ul.submenu .fa {
+  text-align: center;
+  width: 20px;
+  font-size: 20px;
+  line-height: 0;
+}
+ul.submenu .fa:hover {
+  color: #374343;
+}
+
+.submenu.opengeklapt {
+  display: block;
+}
+
+.mobile_cleared {
+  display: none;
+}
+
+.formulier {
+  border-bottom: 1px solid #f3f3f3;
+  box-sizing: border-box;
+  display: block;
+  margin: 0px;
+  padding: 10px 25px 10px 35px;
+  position: relative;
+  width: 100%;
+  border-left: 3px solid var(--cms-primary-color);
+}
+
+.formulier.gelezen {
+  opacity: 0.3;
+  border-left: 3px solid #606060;
+  text-decoration: line-through;
+}
+
+.formulier.gelezen:hover {
+  opacity: 1;
+}
+
+.formulier .gelezen {
+  display: inline-block;
+  font-size: 15px;
+  height: 0;
+  left: 10px;
+  line-height: 0;
+  position: absolute;
+  top: 44%;
+  color: #d7d7d7;
+}
+
+.formulier a.gelezen:hover {
+  color: var(--cms-primary-color) !important;
+}
+
+.formulier .naam {
+  color: #000;
+}
+
+.formulier .ipadres {
+  bottom: 15px;
+  position: absolute;
+  color: #606060;
+  right: 20px;
+}
+
+.formulier .ipadres a {
+  color: #606060;
+}
+
+.formulier .verwijderen {
+  display: block;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  top: 40%;
+  color: #eee;
+}
+
+.formulier:hover .verwijderen {
+  color: #cf0000;
+}
+
+.formulier:hover a.gelezen {
+  color: #606060;
+}
+
+table.accountgegevens {
+  margin: 0;
+  padding: 0;
+}
+table.accountgegevens th {
+  color: #000;
+  font-size: 15px;
+  font-weight: normal;
+  padding: 10px;
+  text-align: left;
+}
+table.accountgegevens tr.activiteiten.titels, table.accountgegevens tr.activiteiten.titels:hover {
+  background: none;
+}
+table.accountgegevens td {
+  border-bottom: 1px dashed #eee;
+  padding: 10px;
+}
+table.accountgegevens td.gebruiker {
+  width: 160px;
+}
+table.accountgegevens tr.activiteiten:hover {
+  background: #f8f8f8;
+}
+table.accountgegevens tr.activiteiten.goed {
+  display: none !important;
+  background: #f8f8f8;
+}
+table.accountgegevens tr.activiteiten.goed:hover {
+  background: #f3f3f3;
+}
+table.accountgegevens tr.activiteiten.goed.show {
+  display: table-row !important;
+}
+table.accountgegevens tr.activiteiten .icoon a {
+  color: #eee;
+}
+table.accountgegevens tr.activiteiten:hover .icoon a {
+  color: #cf0000;
+}
+
+table td.icoon {
+  width: 10px;
+}
+
+.cms_container.vb table {
+  width: 100%;
+}
+
+.opties {
+  background: #f1f2f3;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  height: 45px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: auto;
+  z-index: 20;
+}
+
+.opties .optieknop {
+  border-left: 1px solid #e2e2e2;
+  float: right;
+  height: 45px;
+  line-height: 45px;
+  position: relative;
+  text-align: center;
+  width: 45px;
+  transition: all 0.3s ease 0s;
+}
+
+.opties a.optieknop:last-child {
+  border-left: none;
+}
+
+.opties .optieknop:hover {
+  background: #ececec;
+  box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.1) inset;
+  cursor: pointer;
+}
+
+.opties .optieknop:active {
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1) inset;
+}
+
+.opties .optieknop .fa {
+  color: #b5b5b5;
+  font-size: 20px;
+  transition: all 0.5s ease 0s;
+}
+
+.opties .optieknop:hover .fa {
+  color: var(--cms-primary-color);
+}
+
+.optieknop.optieknop_active {
+  background: #ececec;
+  box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.1) inset;
+}
+.optieknop.optieknop_active .fa {
+  color: var(--cms-primary-color) !important;
+}
+
+.ui-sortable {
+  overflow: hidden;
+  position: relative;
+}
+
+.projectHolder {
+  border-bottom: 1px dashed #eee;
+  display: block;
+  margin: 0;
+  padding: 10px;
+  position: relative;
+}
+
+.projectHolder:last-child {
+  border: 0 none;
+}
+
+.projectHolder:hover {
+  color: var(--cms-primary-color);
+  background: #f8f8f8;
+}
+
+.ui-state-highlight {
+  display: block;
+  margin: 0;
+  padding: 20px 5px;
+  position: relative;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
+  border-top: 1px solid #f3f3f3;
+}
+
+.projectHolder a.link {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: 10;
+}
+
+.projectHolder > div, .projectHolder > span {
+  display: inline-block;
+}
+
+.projectHolder > span {
+  z-index: 11;
+  position: relative;
+}
+
+.projectHolder .projectNaam .nieuw {
+  background: var(--cms-primary-color);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px #0d8e89 inset;
+  color: #fff;
+  margin: 0 0 0 10px;
+  padding: 2px 11px;
+}
+
+.projectHolder .projectId {
+  width: 15px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.projectHolder .volgorde_icoon {
+  margin: 0 10px 0 0;
+}
+
+.projectHolder .volgorde_icoon .fa {
+  color: #dfdfdf;
+}
+
+.projectHolder .projectStartDatum {
+  color: #b3b3b3;
+  float: right;
+  text-align: right;
+  margin: 0px 10px;
+}
+
+.projectHolder .projectStartDatum::after {
+  content: "\f073";
+  font-family: fontawesome;
+  margin: 0 0 0 7px;
+}
+
+.projectHolder .projectWijzigen {
+  color: #b3b3b3;
+  float: right;
+  text-align: right;
+  margin: 0px 10px;
+  z-index: 11;
+  position: relative;
+}
+
+.projectHolder .projectWijzigen:hover {
+  color: var(--cms-primary-color);
+}
+
+.projectHolder .projectWijzigen::after {
+  content: "\f040";
+  font-family: fontawesome;
+  margin: 0 0 0 7px;
+}
+
+.projectHolder .projectBekijken {
+  color: #b3b3b3;
+  float: right;
+  text-align: right;
+  margin: 0px 10px;
+  z-index: 11;
+  position: relative;
+}
+
+.projectHolder .projectBekijken:hover {
+  color: var(--cms-primary-color);
+}
+
+.projectHolder .projectBekijken::after {
+  content: "\f002";
+  font-family: fontawesome;
+  margin: 0 0 0 7px;
+}
+
+.melding {
+  background: #ff0000;
+  padding: 5px;
+  color: #fff;
+  display: inline-block;
+  margin: 20px 0px 0px;
+}
+
+.notificatie {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  padding: 20px;
+  position: fixed;
+  right: 20px;
+  top: 80px;
+}
+
+.afbeeldingen_op_site {
+  width: 100%;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site {
+  border: 1px solid #f3f3f3;
+  box-sizing: border-box;
+  float: left;
+  height: 150px;
+  margin: 10px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: calc(20% - 20px);
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site img {
+  width: 100%;
+  height: auto;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site.nieuw {
+  border: 2px dashed #a6a6a6;
+  text-align: center;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site.nieuw:hover {
+  cursor: pointer;
+  border-color: #666;
+  background: #eee;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site.nieuw:hover .fa {
+  color: var(--cms-primary-color);
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site.nieuw .fa {
+  font-size: 40px;
+  line-height: 150px;
+  color: #a6a6a6;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .link,
+.afbeeldingen_op_site .afbeeldingHolder_op_site .datum {
+  display: none;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .bestandsgrootte {
+  background: rgba(27, 27, 27, 0.9);
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #fff;
+  left: 4px;
+  line-height: 1;
+  padding: 5px;
+  position: absolute;
+  top: 4px;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .bestandsgrootte:empty {
+  display: none;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .afbHoldersite {
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .afbHoldersite .knoppen {
+  position: absolute;
+  text-align: center;
+  top: 25%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.3s all ease;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .afbHoldersite .knoppen a {
+  background: rgba(27, 27, 27, 0.9);
+  border-radius: 3px;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  font-size: 21px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 5px;
+  padding: 8px;
+  width: 30px;
+  color: #fff;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .afbHoldersite .knoppen a:hover {
+  background: rgb(27, 27, 27);
+  cursor: pointer;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .afbHoldersite .knoppen a.bewerken .fa {
+  color: var(--cms-primary-color);
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .afbHoldersite .knoppen a.verwijderen .fa {
+  color: #eb4c4c;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site .beschrijving {
+  background: rgba(27, 27, 27, 0.9);
+  bottom: 0;
+  box-sizing: border-box;
+  color: #fff;
+  overflow: hidden;
+  padding: 5px 10px;
+  height: 31px;
+  position: absolute;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 1px #000;
+  transform: translateY(35px);
+  transition: all 0.3s ease 0s;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site:hover .beschrijving {
+  transform: translateY(0);
+}
+
+.afbeeldingen_op_site .afbeeldingHolder_op_site:hover .afbHoldersite .knoppen {
+  opacity: 1;
+}
+
+#afbeeldingDetail:empty {
+  display: none;
+}
+
+#afbeeldingDetail {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
+  left: -50%;
+  margin: 0 auto;
+  padding: 30px;
+  position: fixed;
+  right: -50%;
+  top: 10px;
+  transition: all 0.3s ease 0s;
+  width: 500px;
+  z-index: 101;
+}
+
+#afbeeldingDetail .afbHoldersite img {
+  max-width: 100%;
+  height: auto;
+}
+
+#afbeeldingDetail .bestandsgrootte {
+  color: #b2b2b2;
+  font-size: 12px;
+}
+
+#afbeeldingDetail a.link {
+  float: right;
+}
+
+.balk {
+  background: #eee none repeat scroll 0 0;
+  border: 1px solid #d7d7d7;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 3px;
+  width: 100%;
+}
+
+.progress {
+  background: var(--cms-primary-color);
+  border-radius: 2px;
+  height: 8px;
+}
+
+@media screen and (max-width: 1100px) {
+  .afbeeldingen_op_site .afbeeldingHolder_op_site {
+    width: calc(33.333% - 20px);
+  }
+}
+@media screen and (max-width: 800px) {
+  .projectHolder .projectStartDatum {
+    display: none;
+  }
+  table.instellingen td {
+    display: block;
+    width: 100%;
+  }
+  .afbeeldingen_op_site .afbeeldingHolder_op_site {
+    width: calc(50% - 20px);
+    margin: 0px 10px 10px;
+  }
+  .formulier .bovenkant div {
+    display: block;
+  }
+  .formulier .bovenkant .fa {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .formulier .ipadres {
+    position: relative;
+    bottom: 0;
+    right: 0;
+  }
+  table.accountgegevens .wachtwoord {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .cms_navHolder {
+    max-width: 100%;
+    position: relative;
+    padding: 0;
+  }
+  .cms_navHolder:hover {
+    max-width: 100%;
+    position: relative;
+  }
+  .cms_navHolder span.titel {
+    opacity: 1;
+  }
+  .cms_navHolder, .inhoud {
+    float: none;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+  .cms_extranavHolder {
+    position: relative;
+  }
+  .cms_inhoud {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .cms_nav {
+    overflow: hidden;
+    max-height: 0px;
+    transition: 0.7s all ease;
+    width: 100%;
+  }
+  .cms_nav.opengeklapt {
+    max-height: 1000px;
+    overflow-y: scroll;
+  }
+  .btn_submenu {
+    color: #fff;
+    display: inline-block !important;
+    font-size: 20px;
+    padding: 19px;
+  }
+  .cms_info {
+    display: none;
+  }
+  .cms_footer {
+    padding: 10px 10px 20px;
+  }
+  .cms_container.drie, .cms_container.vier, .cms_container.vb, .cms_container {
+    float: none;
+    width: 100% !important;
+  }
+  .cms_nav .item {
+    float: none;
+    width: 100%;
+  }
+  .cms_nav .item a {
+    width: calc(100% - 4px);
+    padding: 15px 0;
+  }
+  .cms_nav .item .fa {
+    font-size: 18px;
+    margin: 0px 10px;
+  }
+  .mobile_cleared {
+    display: block;
+  }
+  .cms_button {
+    width: 100%;
+    padding: 19px 0px !important;
+    margin: 0px 0px 10px !important;
+  }
+  button[type=submit] {
+    margin: 20px 0 10px !important;
+  }
+  .cms_button.refresh {
+    margin: 10px 0 0 !important;
+    padding: 20px 0px !important;
+  }
+  .opties {
+    position: relative;
+    right: 0;
+    top: 0;
+    width: 100%;
+    margin: 0 0 20px;
+  }
+  .afbeeldingen_op_site .afbeeldingHolder_op_site {
+    width: 100%;
+    margin: 0px 0px 10px;
+  }
+  .cms_container input {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  form .titelvraag {
+    width: 100%;
+  }
+  form input {
+    width: 100%;
+  }
+  form input[type=checkbox] {
+    width: auto !important;
+  }
+  table.instellingen {
+    width: 100%;
+  }
+  table.instellingen td {
+    display: block;
+  }
+  table.accountgegevens {
+    width: 100%;
+  }
+  table.accountgegevens .activiteiten.titels {
+    display: none;
+  }
+  table.accountgegevens th {
+    font-size: 13px;
+    padding: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  table.accountgegevens tr {
+    border-bottom: 1px dashed #eee;
+    display: block;
+    margin: 0;
+    position: relative;
+  }
+  table.accountgegevens td {
+    display: block;
+    border: none;
+    padding: 2px;
+  }
+  table.accountgegevens td.wachtwoord {
+    display: block;
+  }
+  table.accountgegevens td.icoon {
+    display: none !important;
+  }
+  .projectHolder {
+    padding: 9px 0;
+  }
+  .projectHolder .projectWijzigen {
+    display: none;
+  }
+  .formulieren tr {
+    display: block;
+    margin: 0 0 10px;
+    padding: 10px;
+  }
+  .formulieren td {
+    display: inline-block;
+  }
+  .cms_button.paginabekijken {
+    margin: 10px 0 0 !important;
+    position: relative;
+    top: 0;
+  }
+}
+@media screen and (max-width: 360px) {
+  .cms_container.loginscherm {
+    max-width: calc(100% - 30px) !important;
+    margin: 15px 15px 0;
+  }
+}
+
+/*# sourceMappingURL=style_admin.css.map */

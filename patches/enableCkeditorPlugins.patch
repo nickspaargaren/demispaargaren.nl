@@ -1,0 +1,11 @@
+diff --git a/assets/ckeditor/ckeditor/config.js b/assets/ckeditor/ckeditor/config.js
+index 457b974..2299d8e 100644
+--- a/assets/ckeditor/ckeditor/config.js
++++ b/assets/ckeditor/ckeditor/config.js
+@@ -35,4 +35,6 @@
+ 
+ 	// Simplify the dialog windows.
+ 	config.removeDialogTabs = 'image:advanced;link:advanced';
++
++	config.extraPlugins = 'iframe';
+ };
