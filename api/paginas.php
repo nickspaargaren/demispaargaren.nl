@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
-require ("../template/connectdb.php");
+require ("../connectdb.php");
 include_once("../instellingen.php");
 
 $return_arr = [];
