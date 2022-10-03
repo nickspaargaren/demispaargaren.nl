@@ -7,7 +7,7 @@ body {
   background: #fff;
 }
 
-.overlay {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/bg.png) repeat; pointer-events: none; opacity: .15;}
+.overlay {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/bg.png) repeat; pointer-events: none; opacity: .1;}
 
 ::selection			{color:#ffbe24; background: #fff;}
 ::-moz-selection	{color:#ffbe24; background: #fff;}
