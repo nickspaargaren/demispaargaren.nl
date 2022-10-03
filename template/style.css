@@ -14,6 +14,9 @@ body {
 
 
 iframe {width: 100%;}
+iframe[src*="youtube.com"],
+iframe[src*="youtube-nocookie.com"] {aspect-ratio: 16/9; height: auto;}
+
 
 .vak {position: relative; max-width: 1200px; margin: 0 auto; display: flex;}
 
