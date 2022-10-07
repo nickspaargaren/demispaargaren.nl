@@ -102,7 +102,6 @@ echo '<div class="cleared"></div></div></div>';
 
 
 
-// include_once ('socialmedia.php');
 // include_once ('footer.php');
 include_once ('scripts.php');
 ?>

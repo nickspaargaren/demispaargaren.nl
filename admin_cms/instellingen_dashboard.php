@@ -23,31 +23,12 @@ require("cms_head.php");
 
 
 <?php
-// Social media CLICKS op Dashboard
-echo '<tr><td class="checkbox"><label><input type="checkbox" value="1" name="dashb_socialclicks" ';
-if($tab_gebruikergegevens['dashb_socialclicks'] == 1){
-  echo 'checked="checked"';
-}
-echo ' />  <h3 class="titelvraag" style="display: inline-block;">Social Media statistieken (cliks vanaf de site)</h3></label></td></tr>';
-
-
-// Facebook op Dashboard
-echo '<tr><td class="checkbox"><label><input type="checkbox" value="1" name="dashb_facebook" ';
-if($tab_gebruikergegevens['dashb_facebook'] == 1){
-	echo 'checked="checked"';
-}
-echo ' />  <h3 class="titelvraag" style="display: inline-block;">Facebook</h3></label></td></tr>';
-
-
 // Suggesties op Dashboard
 echo '<tr><td class="checkbox"><label><input type="checkbox" value="1" name="dashb_suggesties" ';
 if($tab_gebruikergegevens['dashb_suggesties'] == 1){
 	echo 'checked="checked"';
 }
 echo ' />  <h3 class="titelvraag" style="display: inline-block;">Suggesties</h3></label></td></tr>';
-
-
-
 ?>
       </table>
 			<div><button type="submit" class="cms_button" value="Opslaan"><i class="fa fa-save"></i>Opslaan</button></div>

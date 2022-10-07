@@ -23,10 +23,6 @@ $twitterlink = $array[1]['url'];
 $googlepluslink = $array[2]['url'];
 $instagramlink = $array[3]['url'];
 
-$facebookdoel = $array[0]['doel'];
-$twitterdoel = $array[1]['doel'];
-
-
 ?>
 <body>
 <?php require("cms_nav.php") ?>
@@ -40,14 +36,9 @@ $twitterdoel = $array[1]['doel'];
 		<form action="socialmedia_opslaan.php" method="post">
 			<h3 class="titelvraag">Facebook</h3>
 			<div class="inlineinput"><div class="inputgroep"><span class="tekst">facebook.com/</span><input type="text" name="facebook" value="<?php echo $facebooklink; ?>" placeholder="gebruikersnaam"/></div></div>
-			<div class="inlineinput"><div class="inputgroep"><span class="icoon"><i class="fa fa-line-chart"></i></span><input type="number" name="facebookdoel" value="<?php echo $facebookdoel; ?>" placeholder="Doel in aantal 'Likes'."/></div></div>
-
-
 
 			<h3 class="titelvraag">Twitter</h3>
 			<div class="inlineinput"><div class="inputgroep"><span class="tekst">twitter.com/</span><input type="text" name="twitter" value="<?php echo $twitterlink; ?>" placeholder="gebruikersnaam"/></div></div>
-			<div class="inlineinput"><div class="inputgroep"><span class="icoon"><i class="fa fa-line-chart"></i></span><input type="number" name="twitterdoel" value="<?php echo $twitterdoel; ?>" placeholder="Doel in aantal 'Volgers'."/></div></div>
-
 
 			<h3 class="titelvraag">Google Plus</h3>
 			<div class="inputgroep"><span class="tekst">plus.google.com/+</span><input type="text" name="googleplus" value="<?php echo $googlepluslink; ?>" placeholder="gebruikersnaam"/></div>

@@ -12,14 +12,10 @@ if (isset($_SESSION['id'])) {
 }
 
 // elementen ----------
-$dashb_socialclicks = isset($_POST['dashb_socialclicks']) ? 1 : 0;
-$dashb_facebook = isset($_POST['dashb_facebook']) ? 1 : 0;
 $dashb_suggesties = isset($_POST['dashb_suggesties']) ? 1 : 0;
 
 
 $sql = mysqli_query($mysqli,"UPDATE users SET
-		dashb_socialclicks = $dashb_socialclicks,
-		dashb_facebook = $dashb_facebook,
 		dashb_suggesties = $dashb_suggesties
 		WHERE id = $id");
 
