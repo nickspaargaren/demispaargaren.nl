@@ -3,18 +3,9 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Uploaden..';
 include_once("../instellingen.php");
 
-$target_dir = "../uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$target_file = "../uploads/" . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-
-$omschrijving_invoer = $_POST['omschrijving'];
-
-/*
-if($omschrijving_invoer == NULL){
-  $omschrijving_invoer = $_FILES["fileToUpload"]["name"];
-}
-*/
+$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 
 $timestamp = date("Y-m-d H:i:s");
 $bestandsgrootte = $_FILES["fileToUpload"]["size"];
@@ -44,8 +35,7 @@ if ($_FILES["fileToUpload"]["size"] > 1000000) { // nu max 1mb
     exit;
 }
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
     echo 'Sorry, je moet echt een JPG of PNG uploaden.';
     $uploadOk = 0;
     exit;
@@ -54,13 +44,15 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 if ($uploadOk == 0) {
     echo 'Het bestand is niet geupload.';
     exit;
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+} else { // if everything is ok, try to upload file
+
+    $file = new file();
+
+    if ($file->upload($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         header("Location: afbeeldingen.php?melding=" . basename( $_FILES["fileToUpload"]["name"]) . " is toegevoegd.");
 
         $sql = mysqli_query($mysqli,"INSERT INTO afbeeldingen SET
-      	        omschrijving =  '".$omschrijving_invoer."',
+      	        omschrijving =  '".$_POST['omschrijving']."',
                 link =  '".$_FILES["fileToUpload"]["name"]."',
                 uploaddatum = '".$timestamp."',
                 bestandsgrootte = '".$bestandsgrootte."',

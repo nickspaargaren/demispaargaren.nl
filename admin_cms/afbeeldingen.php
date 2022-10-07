@@ -32,14 +32,6 @@ require("cms_head.php");
 
 
 	<?php
-
-	$ftp_conn = ftp_connect($ftp_server) or die("Kan niet verbinden met: $ftp_server");
-	$login = ftp_login($ftp_conn, $ftp_username, $ftp_userpass);
-
-
-	$arr = ftp_nlist($ftp_conn, $ftp_uploadmap);
-
-
 	echo "<div class=\"afbeeldingen_op_site\">";
 
 	// nieuwe uploaden

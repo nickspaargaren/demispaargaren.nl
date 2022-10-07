@@ -87,8 +87,77 @@ function bestandsgrootteLeesbaar($bytes)  {
 }
 
 
+class ftp
+{
+
+	public function __construct($server, $username, $password)
+	{
+		$conn = ftp_connect($server);
+		$login_result = ftp_login($conn, $username, $password);
+		$this->connection = $conn;
+
+		ftp_chdir($this->getConnection(), 'public_html/uploads');
+	}
+
+	public function getConnection()
+	{
+		return $this->connection;
+	}
+
+	public function isConnected()
+	{
+		return (is_resource($this->getConnection())) ? true : false;
+	}
+
+	public function delete($file)
+	{
+		return ($this->isConnected() === true) ? ftp_delete($this->getConnection(), $file) : false;
+	}
+
+	public function rename($old, $new)
+	{
+		return ($this->isConnected() === true) ? ftp_rename($this->getConnection(), $old, $new) : false;
+	}
+
+	public function disconnect()
+	{
+		if ($this->isConnected()) {
+			ftp_close($this->connection);
+		}
+	}
+}
+
+class file {
+
+	public function isProduction (): bool {
+		return isset(
+			$_SERVER['FTP_SERVER'],
+			$_SERVER['FTP_USERNAME'],
+			$_SERVER['FTP_USERPASS'],
+			$_SERVER['FTP_UPLOAD_FOLDER']
+		);
+	}
+
+	public function upload ($tmp_file, $target_file): string {
+
+		move_uploaded_file($tmp_file, $target_file);
+
+		return $target_file . ' is toegevoegd.';
+	}
 
 
+	public function delete ($file): string {
 
+		if ($this->isProduction()) {
+			$ftp = new ftp($_SERVER['FTP_SERVER'], $_SERVER['FTP_USERNAME'], $_SERVER['FTP_USERPASS']);
+			$ftp->delete($file);
+			$ftp->disconnect();
+		} else {
+			unlink("../uploads/" . $file);
+		}
 
-?>
+		return $file . ' is verwijderd.';
+
+	}
+
+}

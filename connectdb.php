@@ -26,11 +26,4 @@ if (mysqli_connect_errno()) {
   exit();
 }
 
-
-// ftp gegevens
-$ftp_server =    $_SERVER['FTP_SERVER'];
-$ftp_username =  $_SERVER['FTP_USERNAME'];
-$ftp_userpass =  $_SERVER['FTP_USERPASS'];
-$ftp_uploadmap = $_SERVER['FTP_UPLOAD_FOLDER'];
-
 ?>
