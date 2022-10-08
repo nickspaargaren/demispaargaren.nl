@@ -56,7 +56,7 @@ if ($uploadOk == 0) {
                 link =  '".$_FILES["fileToUpload"]["name"]."',
                 uploaddatum = '".$timestamp."',
                 bestandsgrootte = '".$bestandsgrootte."',
-                gebruiker = '".$gebruiker_allegegevens[0]."'
+                gebruiker = '".$tab_gebruikergegevens['username']."'
       	        ");
 
     } else {

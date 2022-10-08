@@ -23,7 +23,7 @@
 			}
 			?>
 			<div class="naam">
-			<?php echo $gebruiker_allegegevens[2] . " " . $gebruiker_allegegevens[3]; ?><i class="fa fa-caret-down"></i></div>
+			<?php echo $tab_gebruikergegevens['firstname'] . " " . $tab_gebruikergegevens['lastname']; ?><i class="fa fa-caret-down"></i></div>
 			<ul class="submenu">
 				<li><a href="account.php">Mijn account</a></li>
 

@@ -42,18 +42,6 @@ $sql_gebruikergegevens = $mysqli->query("SELECT * FROM users WHERE id=$id") ;
 if($sql_gebruikergegevens->num_rows != 0) {
   $tab_gebruikergegevens = $sql_gebruikergegevens->fetch_assoc();
 }
-$gebruiker_allegegevens = array(
-	$tab_gebruikergegevens['username'],
-	$tab_gebruikergegevens['password'],
-	$tab_gebruikergegevens['firstname'],
-	$tab_gebruikergegevens['lastname'],
-	$tab_gebruikergegevens['email'],
-	$tab_gebruikergegevens['laatst_bewerkt'],
-	$tab_gebruikergegevens['admin'],
-	$tab_gebruikergegevens['dashb_facebook'],
-	$tab_gebruikergegevens['dashb_suggesties']
-);
-
 
 // datum en tijd
 setlocale(LC_ALL, 'nl_NL');
