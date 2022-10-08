@@ -3,26 +3,17 @@ header("Content-Type: application/json; charset=UTF-8");
 require ("../connectdb.php");
 include_once("../instellingen.php");
 
-$return_arr = [];
-
 if ($tab_instellingen['siteonline'] != 1) {
-  echo json_encode($return_arr, JSON_PRETTY_PRINT);
+  echo json_encode([]);
   exit;
 }
 
-$sql_paginas = $mysqli->query("SELECT * FROM paginas ORDER BY volgorde") ;
+$handle = $pdo->prepare("SELECT id, titel, link, content FROM paginas ORDER BY volgorde");
 
-if($sql_paginas->num_rows != 0) {
-  while($pagina = $sql_paginas->fetch_assoc()) {
-    array_push($return_arr, [
-      "id" => $pagina['id'],
-      "titel" => $pagina['titel'],
-      "link" => $pagina['link'],
-      "content" => $pagina['content']
-    ]);
-  }
-}
+$handle->execute();
 
-echo json_encode($return_arr, JSON_PRETTY_PRINT);
+$result = $handle->fetchAll(PDO::FETCH_OBJ);
+
+echo json_encode($result);
 
 ?>

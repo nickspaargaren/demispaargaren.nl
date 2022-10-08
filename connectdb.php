@@ -26,4 +26,13 @@ if (mysqli_connect_errno()) {
   exit();
 }
 
+$pdo = new PDO("mysql:host=" . $_SERVER['GLOBAL_HOSTNAME'] . ";dbname=" . $_SERVER['GLOBAL_DATABASE'] . ";charset=utf8mb4",
+	$_SERVER['GLOBAL_USERID'],
+	$_SERVER['GLOBAL_PASSWORD'],
+	array(
+		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+		PDO::ATTR_PERSISTENT => false
+	)
+);
+
 ?>
