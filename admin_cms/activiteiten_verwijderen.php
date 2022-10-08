@@ -10,7 +10,6 @@ $activiteitid = $_GET["activiteitid"];
 
 if ($activiteitid != 0) {
 	// niet echt verwijderen maar inactief plaasten
-	// $sql = mysqli_query($mysqli,"DELETE FROM inlogpogingen WHERE id = '$activiteitid'");
 	$sql = mysqli_query($mysqli,"UPDATE inlogpogingen SET
 				verwijderd =  '1' WHERE id = '$activiteitid'");
 }
