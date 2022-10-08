@@ -7,32 +7,9 @@ require_once("connectdb.php");
 $cms_versie = '1.9.2 Beta';
 
 // instellingen gegevens ophalen
-$query = "SELECT * FROM instellingen WHERE id=1";
-$sql_instellingen = $mysqli->query($query);
-$tab_instellingen = $sql_instellingen->num_rows;
-
-if($tab_instellingen != 0) {
-	if($tab_instellingen = $sql_instellingen->fetch_assoc()) {
-		$projectnaam = $tab_instellingen['projectnaam'];
-		$auteur = $tab_instellingen['auteur'];
-		$email = $tab_instellingen['email'];
-		$footer = $tab_instellingen['footer'];
-		$hotjar = $tab_instellingen['hotjar'];
-		$headertonen = $tab_instellingen['headertonen'];
-	}
-}
-
-if($tab_instellingen['zoomen']=="1"){
-	$zoomen = 'checked="checked"';
-	$zoomen2 = 'yes';
-} else {
-	$zoomen = '';
-	$zoomen2 = 'no';
-}
-
-$description = $tab_instellingen['description'];
-
-$analytics = $tab_instellingen['analytics'];
+$handle = $pdo->prepare("SELECT * FROM instellingen");
+$handle->execute();
+$settings = $handle->fetch(PDO::FETCH_OBJ);
 
 if (isset($_SESSION['id'])) {
 

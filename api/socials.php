@@ -3,7 +3,7 @@ header("Content-Type: application/json; charset=UTF-8");
 require ("../connectdb.php");
 include_once("../instellingen.php");
 
-if ($tab_instellingen['siteonline'] != 1) {
+if ($settings->siteonline != 1) {
   echo json_encode([]);
   exit;
 }

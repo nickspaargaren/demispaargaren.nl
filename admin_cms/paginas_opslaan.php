@@ -13,7 +13,7 @@ $paginalink_invoer = clean_urlVar(strtolower(str_replace(' ', '-', $_POST['pagin
 if ($paginalink_invoer == NULL) {
 	$paginalink_invoer = clean_urlVar(strtolower(str_replace(' ', '-', $_POST['paginatitel'])));
 }
-if ($headertonen == 1) {
+if ($settings->headertonen == 1) {
 	$header_invoer = $_POST['header'];
 } else {
 	$header_invoer = '';

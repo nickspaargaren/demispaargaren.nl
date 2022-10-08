@@ -82,7 +82,7 @@ if ($pagina == 'nieuw'){ // wanneer een nieuwe pagina word aangemaakt
 						<input type="checkbox" value="1" name="specialebutton" <?php echo $speciale_button; ?>  />
 					</td>
 				<?php
-				if($headertonen == 1){
+				if($settings->headertonen == 1){
 					echo '<tr><td colspan="3"><h3 class="titelvraag">Header</h3><textarea name="header">' . $pagina_header . '</textarea><script>CKEDITOR.replace( \'header\' );</script></td></tr>';
 				}
 				?>

@@ -1,7 +1,7 @@
 <div class="cms_extranavHolder">
 	<div class="cms_extranav">
 		<div class="cms_info">
-			<div class="bedrijfsnaam"><?php echo $projectnaam ?></div>
+			<div class="bedrijfsnaam"><?php echo $settings->projectnaam ?></div>
 			<div class="versie"><?php echo $cms_versie ?></div>
 		</div>
 		<a class="btn_submenu"><i class="fa fa-navicon"></i></a>

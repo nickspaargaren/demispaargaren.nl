@@ -131,3 +131,15 @@ class file {
 	}
 
 }
+
+
+function checked (bool $checked): string {
+	if ($checked) {
+		return 'checked="checked"';
+	}
+	else {
+		return '';
+	}
+}
+
+?>

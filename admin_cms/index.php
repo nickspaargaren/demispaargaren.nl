@@ -72,7 +72,7 @@ require("cms_head.php");
 </div>
 <?php
 
-echo '<div class="cms_container loginscherm nieuwaccount">Extra account? <a href="mailto:'.($tab_instellingen['email']).'" style="color: #d1d1d1">Vraag er een aan!</a></div>';
+echo '<div class="cms_container loginscherm nieuwaccount">Extra account? <a href="mailto:'.($settings->email).'" style="color: #d1d1d1">Vraag er een aan!</a></div>';
 ?>
 
 <p style="text-align: center; margin: 10px 0px; color: #d1d1d1;">CMS door <a href="http://www.nickspaargaren.nl" target="_blank" style="color: #d1d1d1">Nick Spaargaren</a></p>

@@ -2,7 +2,7 @@
 $actual_link = $_SERVER["REQUEST_URI"];
 
 // site is niet actief
-if($tab_instellingen['siteonline']==0){
+if($settings->siteonline==0){
 	include_once("niet_actief.php");
 	exit;
 }
@@ -35,7 +35,7 @@ require ('head.php');
 ?>
 <body>
 <?php
-if($tab_instellingen['headertonen'] == 1){
+if($settings->headertonen == 1){
 	echo '<div class="vak header">
 		<div class="inhoud">'.$header.'</div>
 	</div>';
@@ -66,14 +66,9 @@ if($tab_instellingen['headertonen'] == 1){
 </div>
 <?php
 
-
-
-if($tab_instellingen['afbeeldingentonen'] == 1){
-
-
+if($settings->afbeeldingentonen == 1){
 
 	echo ' <div class="vak portfolio"><div class="inhoud">';
-
 
 		// Afbeeldingen ophalen
 		$query = "SELECT link, omschrijving FROM afbeeldingen ORDER BY omschrijving ASC";
