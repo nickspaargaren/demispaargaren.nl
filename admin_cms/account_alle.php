@@ -42,7 +42,7 @@ echo '<a id="nieuwveld" class="cms_button">Nieuw account</a>';
 ?>
 <script>
 $('#nieuwveld').click(function(){
-  $('#accounts').append('<div class="gebruiker"><form action="accounts_opslaan.php?nieuw=1&accountid="<?php echo $nieuwaccount; ?>" method="post"><input type="text" name="gebruikersnaam_alle" value="" placeholder="Gebruikersnaam"/><input type="text" name="wachtwoord_alle" value="" placeholder="Wachtwoord" /><button type="submit"><i class="fa fa-save"></i></button></form></div>');
+  $('#accounts').append('<div class="gebruiker"><form action="accounts_opslaan.php?nieuw=1&accountid="0" method="post"><input type="text" name="gebruikersnaam_alle" value="" placeholder="Gebruikersnaam"/><input type="text" name="wachtwoord_alle" value="" placeholder="Wachtwoord" /><button type="submit"><i class="fa fa-save"></i></button></form></div>');
   $('#nieuwveld').addClass('uit');
 });
 </script>

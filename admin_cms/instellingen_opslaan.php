@@ -3,28 +3,28 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Opslaan..';
 include_once("../instellingen.php");
 
-
-// elementen ----------
-$projectnaam_invoer = clean_urlVar($_POST['projectnaam']);
-$auteur_invoer = clean_urlVar($_POST['auteur']);
-$email_invoer = clean_urlVar($_POST['email']);
-$footer = $_POST['footer'];
-$siteonline_invoer = isset($_POST['siteonline']) ? 1 : 0;
-$headertonen_invoer = isset($_POST['headertonen']) ? 1 : 0;
-$description_invoer = clean_urlVar($_POST['description']);
-
-
 // element updaten ----------
-$sql = mysqli_query($mysqli, "UPDATE instellingen SET
-		projectnaam = '$projectnaam_invoer',
-		auteur = '$auteur_invoer',
-		email = '$email_invoer',
-		footer = '$footer',
-		siteonline = '$siteonline_invoer',
-		headertonen = '$headertonen_invoer',
-		description = '$description_invoer'
-		WHERE id = 1");
+$query = $pdo->prepare("UPDATE instellingen SET
+	projectnaam = :projectnaam,
+	auteur = :auteur,
+	email = :email,
+	footer = :footer,
+	siteonline = :siteonline,
+	headertonen = :headertonen,
+	description = :description
+	WHERE id = 1"
+);
 
+$query->execute([
+	':projectnaam' => $_POST['projectnaam'],
+	':auteur' => $_POST['auteur'],
+	':email' => $_POST['email'],
+	':footer' => $_POST['footer'],
+	':siteonline' => isset($_POST['siteonline']) ? 1 : 0,
+	':headertonen' => isset($_POST['headertonen']) ? 1 : 0,
+	':description' => $_POST['description'],
+	
+]);
 
 // terug naar instellingen pagina
 header("Location: instellingen.php");
