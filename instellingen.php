@@ -34,12 +34,15 @@ $description = $tab_instellingen['description'];
 
 $analytics = $tab_instellingen['analytics'];
 
-$id = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
 
-// alle account gegevens ophalen
-$handle = $pdo->prepare("SELECT * FROM users WHERE id=$id");
-$handle->execute();
-$gebruikergegevens = $handle->fetch(PDO::FETCH_OBJ);
+	$id = $_SESSION['id'];
+
+	// alle account gegevens ophalen
+	$handle = $pdo->prepare("SELECT * FROM users WHERE id=$id");
+	$handle->execute();
+	$gebruikergegevens = $handle->fetch(PDO::FETCH_OBJ);
+}
 
 // datum en tijd
 setlocale(LC_ALL, 'nl_NL');
