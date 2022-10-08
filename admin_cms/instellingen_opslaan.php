@@ -10,7 +10,6 @@ $auteur_invoer = clean_urlVar($_POST['auteur']);
 $email_invoer = clean_urlVar($_POST['email']);
 $footer = $_POST['footer'];
 $siteonline_invoer = isset($_POST['siteonline']) ? 1 : 0;
-$afbeeldingentonen_invoer = isset($_POST['afbeeldingentonen']) ? 1 : 0;
 $headertonen_invoer = isset($_POST['headertonen']) ? 1 : 0;
 $description_invoer = clean_urlVar($_POST['description']);
 
@@ -22,7 +21,6 @@ $sql = mysqli_query($mysqli, "UPDATE instellingen SET
 		email = '$email_invoer',
 		footer = '$footer',
 		siteonline = '$siteonline_invoer',
-		afbeeldingentonen = '$afbeeldingentonen_invoer',
 		headertonen = '$headertonen_invoer',
 		description = '$description_invoer'
 		WHERE id = 1");

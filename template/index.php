@@ -58,37 +58,6 @@ if($settings->headertonen == 1){
 </div>
 <?php
 
-if($settings->afbeeldingentonen == 1){
-
-	echo ' <div class="vak portfolio"><div class="inhoud">';
-
-		// Afbeeldingen ophalen
-		$query = "SELECT link, omschrijving FROM afbeeldingen ORDER BY omschrijving ASC";
-		$sql_afbeeldingen = $mysqli->query($query) ;
-		$tab_afbeeldingen = $sql_afbeeldingen->num_rows;
-
-		if($tab_afbeeldingen != 0) {
-		  while($tab_afbeeldingen = $sql_afbeeldingen->fetch_assoc()) {
-
-				echo '<div class="item">
-					<div class="afbeelding">
-						<img src="../uploads/'.$tab_afbeeldingen['link'].'">
-					</div>';
-
-					if ($tab_afbeeldingen['omschrijving'] != NULL){
-							echo '<div class="beschrijving"><p>'.$tab_afbeeldingen['omschrijving'].'</p></div>';
-					}
-
-				echo '</div>';
-		  }
-		}
-
-echo '<div class="cleared"></div></div></div>';
-
-}
-
-
-
 // include_once ('footer.php');
 include_once ('scripts.php');
 ?>

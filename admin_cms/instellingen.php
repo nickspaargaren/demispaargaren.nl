@@ -57,10 +57,6 @@ require("cms_head.php");
   					<input type="checkbox" value="1" name="siteonline" <?php echo checked($settings->siteonline); ?>  />
           </td>
           <td>
-            <h3 class="titelvraag">Afbeeldingen</h3>
-            <label><input type="checkbox" value="1" name="afbeeldingentonen" <?php echo checked($settings->afbeeldingentonen); ?> /> Alle afbeeldingen tonen op de homepage<br>(Maatwerk)</label>
-          </td>
-          <td>
             <h3 class="titelvraag">Headers</h3>
             <label><input type="checkbox" value="1" name="headertonen" <?php echo checked($settings->headertonen); ?> /> Paginaheaders gebruiken</label>
           </td>
