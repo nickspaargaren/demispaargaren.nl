@@ -25,7 +25,7 @@ require("cms_head.php");
 <?php
 // Suggesties op Dashboard
 echo '<tr><td class="checkbox"><label><input type="checkbox" value="1" name="dashb_suggesties" ';
-if($tab_gebruikergegevens['dashb_suggesties'] == 1){
+if($gebruikergegevens->dashb_suggesties == 1){
 	echo 'checked="checked"';
 }
 echo ' />  <h3 class="titelvraag" style="display: inline-block;">Suggesties</h3></label></td></tr>';

@@ -37,11 +37,9 @@ $analytics = $tab_instellingen['analytics'];
 $id = $_SESSION['id'];
 
 // alle account gegevens ophalen
-$sql_gebruikergegevens = $mysqli->query("SELECT * FROM users WHERE id=$id") ;
-
-if($sql_gebruikergegevens->num_rows != 0) {
-  $tab_gebruikergegevens = $sql_gebruikergegevens->fetch_assoc();
-}
+$handle = $pdo->prepare("SELECT * FROM users WHERE id=$id");
+$handle->execute();
+$gebruikergegevens = $handle->fetch(PDO::FETCH_OBJ);
 
 // datum en tijd
 setlocale(LC_ALL, 'nl_NL');

@@ -23,7 +23,7 @@
 			}
 			?>
 			<div class="naam">
-			<?php echo $tab_gebruikergegevens['firstname'] . " " . $tab_gebruikergegevens['lastname']; ?><i class="fa fa-caret-down"></i></div>
+			<?php echo $gebruikergegevens->firstname . " " . $gebruikergegevens->lastname; ?><i class="fa fa-caret-down"></i></div>
 			<ul class="submenu">
 				<li><a href="account.php">Mijn account</a></li>
 
@@ -53,7 +53,7 @@
 
 
 // extra opties wanneer je als 'Admin' bent ingelogd.
-if ($tab_gebruikergegevens['admin'] == 1) {
+if ($gebruikergegevens->admin == 1) {
 	$activiteiten_active = $cms_pagina_titel === 'Activiteiten' ? 'active' : '';
 	echo '<li class="item ' . $activiteiten_active . '"><a style="color: orange !important;" href="activiteiten.php"><i style="color: orange !important;" class="fa fa-pie-chart"></i><span class="titel">Activiteiten</span><div class="cleared"></div></a></li>';
 }
