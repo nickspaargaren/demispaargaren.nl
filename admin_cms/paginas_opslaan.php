@@ -4,10 +4,6 @@ $cms_pagina_titel = 'Opslaan..';
 include_once("../instellingen.php");
 
 // elementen ----------
-$paginatitel_invoer = clean_urlVar($_POST['paginatitel']);
-// $paginatitel_invoer = preg_replace('/\s+/', '', $paginatitel_invoer); // o.a. spaties weghalen
-
-
 $paginalink_invoer = clean_urlVar(strtolower(str_replace(' ', '-', $_POST['paginalink'])));
 
 if ($paginalink_invoer == NULL) {
@@ -19,8 +15,6 @@ if ($settings->headertonen == 1) {
 	$header_invoer = '';
 }
 
-$content_invoer = $_POST['content'];
-
 $specialebutton_invoer = isset($_POST['specialebutton']) ? 1 : 0;
 
 $pagina_aanmaakdatum = $day;
@@ -28,32 +22,63 @@ $pagina_aanmaakdatum .= ' ' . $date;
 $pagina_aanmaakdatum .= ' ' . $year;
 $pagina_aanmaakdatum .= ' ' . $time;
 
-$timestamp = date("Y-m-d H:i:s");
-
 // element updaten ----------
 $paginacheck = $_GET["paginacheck"];
 
 if ($paginacheck == 'nieuw'){ // wanneer een nieuwe pagina word aangemaakt
 
-	$sql = mysqli_query($mysqli,"INSERT INTO paginas SET
-		titel = '$paginatitel_invoer',
-		link = '$paginalink_invoer',
-		header = '$header_invoer',
-		content = '$content_invoer',
-		speciale_button = '$specialebutton_invoer',
-		aanmaakdatum = '$pagina_aanmaakdatum',
-		timestamp = '$timestamp'
-		");
+	$query = $pdo->prepare("INSERT INTO paginas SET
+		titel = :titel,
+		link = :link,
+		header = :header,
+		content = :content,
+		speciale_button = :speciale_button,
+		aanmaakdatum = :aanmaakdatum,
+		timestamp = :timestamp",
+	);
+
+	$query->execute([
+		':titel' => $_POST['paginatitel'],
+		':link' => $paginalink_invoer,
+		':header' => $header_invoer,
+		':content' => $_POST['content'],
+		':speciale_button' => $specialebutton_invoer,
+		':aanmaakdatum' => $pagina_aanmaakdatum,
+		':timestamp' => date("Y-m-d H:i:s"),
+	]);
+
+	$handle = $pdo->prepare("SELECT id FROM paginas WHERE timestamp = :timestamp");
+	$handle->execute([
+		':timestamp' => date("Y-m-d H:i:s")
+	]);
+	$returnPage = $handle->fetch(PDO::FETCH_OBJ);
+
+	// Reload page with correct data
+	header('Location: paginas_detail.php?pagina=' . $returnPage->id);
+
 } else { // als er een bestaande pagina word bewerkt
-	$sql = mysqli_query($mysqli,"UPDATE paginas SET titel = '$paginatitel_invoer',
-			link = '$paginalink_invoer',
-			header = '$header_invoer',
-			content = '$content_invoer',
-			speciale_button = '$specialebutton_invoer'
-		WHERE id = '$paginacheck'
-	");
+
+	$query = $pdo->prepare("UPDATE paginas SET
+		titel = :titel,
+		link = :link,
+		header = :header,
+		content = :content,
+		speciale_button = :speciale_button
+		WHERE id = :id"
+	);
+
+	$query->execute([
+	':titel' => $_POST['paginatitel'],
+	':link' => $paginalink_invoer,
+	':header' => $header_invoer,
+	':content' => $_POST['content'],
+	':speciale_button' => $specialebutton_invoer,
+	':id' => $paginacheck,
+	]);
+
+
+	// terug naar instellingen pagina
+	header("Location: paginas_detail.php?pagina=$paginacheck");
 }
 
-// terug naar instellingen pagina
-header("Location: paginas_detail.php?pagina=$paginacheck");
 ?>
