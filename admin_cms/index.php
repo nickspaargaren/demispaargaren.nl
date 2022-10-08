@@ -10,8 +10,8 @@ if (isset($_POST['username'])) {
   $username = clean_urlVar($_POST['username']);
   $password = clean_urlVar($_POST['password']);
 
-  $handle = $pdo->prepare("SELECT username, password, id FROM users WHERE username = '".$username."' AND activated = '1' LIMIT 1");
-  $handle->execute();
+  $handle = $pdo->prepare("SELECT username, password, id FROM users WHERE username = :username AND activated = '1' LIMIT 1");
+  $handle->execute([':username' => $username]);
   $login = $handle->fetch(PDO::FETCH_OBJ);
 
   if (password_verify($password, $login->password)) {
@@ -58,7 +58,14 @@ require("cms_head.php");
     $ac_tijd = date('Y-m-d H:i:s');
 
     // inlogpogingen vullen
-    $statement = $pdo->prepare("INSERT INTO inlogpogingen (`gebruikersnaam`, `wachtwoord`, `tijd`, `ip`) VALUES ('$username_invoer', '$password_invoer', '$ac_tijd', '$ip')");
+    $statement = $pdo->prepare("INSERT INTO inlogpogingen (`gebruikersnaam`, `wachtwoord`, `tijd`, `ip`) VALUES (:username_invoer, :password_invoer, :ac_tijd, :ip)");
+    $statement->execute([
+      ':username_invoer' => $username_invoer,
+      ':password_invoer' => $password_invoer,
+      ':ac_tijd' => $ac_tijd,
+      ':ip' => $ip
+    ]);
+
     $statement->execute();
 
   }

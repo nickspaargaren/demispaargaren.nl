@@ -14,18 +14,6 @@ function wachtwoordincorrect()	{
 
 // clean urlVar beveiliging
 function clean_urlVar($variabele) {
-	$variabele = trim($variabele);
-	$variabele = str_replace("'",'',$variabele);
-	$variabele = str_replace('"','',$variabele);
-	$variabele = strip_tags($variabele);
-	//$variabele = utf8_encode($variabele);
-	$variabele = stripslashes($variabele);
-	// clean SPECIFICALLY FOR MYSQL QUERY
-	// let op geen mysql_real_escape_string gebruiken, deze vereist een DB verbinding en die is in veel gevallen
-	// nog niet beschikbaar bij aanroep van clean_urlVar!
-	// 26-07-2013
-	// Nieuwe functie mres() toegevoegd die vrijwel hetzelfde werkt.
-	$variabele =  mres($variabele);
 	return $variabele;
 }
 
