@@ -51,13 +51,17 @@ if ($uploadOk == 0) {
     if ($file->upload($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         header("Location: afbeeldingen.php?melding=" . basename( $_FILES["fileToUpload"]["name"]) . " is toegevoegd.");
 
-        $sql = mysqli_query($mysqli,"INSERT INTO afbeeldingen SET
-      	        omschrijving =  '".$_POST['omschrijving']."',
-                link =  '".$_FILES["fileToUpload"]["name"]."',
-                uploaddatum = '".$timestamp."',
-                bestandsgrootte = '".$bestandsgrootte."',
-                gebruiker = '".$gebruikergegevens->username."'
-      	        ");
+        $statement = $pdo->prepare("INSERT INTO afbeeldingen SET
+            omschrijving = :omschrijving,
+            link =  '".$_FILES["fileToUpload"]["name"]."',
+            uploaddatum = '".$timestamp."',
+            bestandsgrootte = '".$bestandsgrootte."',
+            gebruiker = '".$gebruikergegevens->username."'
+        ");
+
+        $statement->execute([
+            ':omschrijving' => $_POST['omschrijving'],
+        ]);
 
     } else {
         echo 'Sorry, er is iets fout gegaan.';
