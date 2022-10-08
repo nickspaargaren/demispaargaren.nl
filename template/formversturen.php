@@ -4,20 +4,22 @@ session_start();
 include_once("../instellingen.php");
 require ('head.php');
 
-// elementen ----------
-$form_naam = clean_urlVar($_POST['naam']);
-$form_email = clean_urlVar($_POST['email']);
-$form_bericht = clean_urlVar($_POST['bericht']);
-$formdatum = date('Y-m-d H:i:s');
+$statement = $pdo->prepare("INSERT INTO formulier SET
+	naam = :naam,
+	email = :email,
+	bericht = :bericht,
+	tijd = :tijd,
+	ip = :ip,
+	gelezen = :gelezen");
 
-	$sql = mysqli_query($mysqli,"INSERT INTO formulier SET
-		naam = '$form_naam',
-		email ='$form_email',
-		bericht = '$form_bericht',
-		tijd = '$formdatum',
-		ip = '$ip',
-		gelezen = '0'");
-
+$statement->execute([
+	':naam' => $_POST['naam'],
+	':email' => $_POST['email'],
+	':bericht' => $_POST['bericht'],
+	':tijd' => date('Y-m-d H:i:s'),
+	':ip' => $ip,
+	':gelezen' => '0'
+]);
 
 // eventueel email sturen naar de accounts?
 
