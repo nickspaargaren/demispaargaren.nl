@@ -17,18 +17,10 @@ if ($actual_link == "index.php"){
 	$actual_link = 'home';
 }
 
-
-$query = "SELECT * FROM paginas WHERE link='$actual_link'";
-$sql_paginas = $mysqli->query($query);
-$tab_paginas = $sql_paginas->num_rows;
-
-if($tab_paginas != 0) {
-	if($tab_paginas = $sql_paginas->fetch_assoc()) {
-		$pagina_titel = $tab_paginas['titel'];
-		$header = $tab_paginas['header'];
-		$inhoud = $tab_paginas['content'];
-	}
-}
+// Fetch current page
+$handle = $pdo->prepare("SELECT * FROM paginas WHERE link='$actual_link'");
+$handle->execute();
+$page = $handle->fetch(PDO::FETCH_OBJ);
 
 require ('head.php');
 
@@ -37,7 +29,7 @@ require ('head.php');
 <?php
 if($settings->headertonen == 1){
 	echo '<div class="vak header">
-		<div class="inhoud">'.$header.'</div>
+		<div class="inhoud">'.$page->header.'</div>
 	</div>';
 }
 
@@ -61,7 +53,7 @@ if($settings->headertonen == 1){
 
 	</div>
 	<div class="inhoud">
-		<?php echo $inhoud;?>
+		<?php echo $page->content;?>
 	</div>
 </div>
 <?php

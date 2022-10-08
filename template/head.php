@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--	<?php echo $cms_versie; ?> 	-->
-	<title><?php echo $pagina_titel ?> | <?php echo $settings->projectnaam ?></title>
+	<title><?php echo $page->titel ?> | <?php echo $settings->projectnaam ?></title>
 	<meta name="author" content="<?php echo $settings->auteur; ?>">
 	<meta name="description" content="<?php echo $settings->description ?>">
 	<link href="template/style.css?nieuw" rel="stylesheet" type="text/css"/>
