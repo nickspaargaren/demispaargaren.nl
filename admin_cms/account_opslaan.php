@@ -1,14 +1,7 @@
 <?php
-session_start();
+require_once("sessie.php");
 $cms_pagina_titel = 'Account Opslaan..';
 include_once("../instellingen.php");
-
-if (isset($_SESSION['id'])) {
-	$id = $_SESSION['id'];
-} else {
-	header('Location: index.php');
-	exit;
-}
 
 // element updaten ----------
 if ($_POST['gebruikersnaam'] == NULL || $_POST['wachtwoord'] == NULL) { // als de gebruikersnaam of het wachtwoord leeg is
