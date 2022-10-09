@@ -47,7 +47,7 @@ foreach ($pages as $page) {
 	echo '<div class="projectHolder" id="' . $page->id.'"><a href="paginas_detail.php?pagina=' . $page->id . '" class="link"></a><div class="volgorde_icoon"><i class="fa fa-bars"></i></div><div class="projectNaam">' . $page->titel;
 
 	// De datum is minder dan een dag / week aangemaakt, daarna gaat het label automatisch weg
-	if (strtotime($row['timestamp']) > strtotime("-1 day")) {
+	if (strtotime($page->timestamp) > strtotime("-1 day")) {
 		echo '<span class="nieuw">Nieuw</span>';
 	}
 
