@@ -2,7 +2,7 @@
 $actual_link = $_SERVER["REQUEST_URI"];
 
 // site is niet actief
-if($tab_instellingen['siteonline']==0){
+if($settings->siteonline==0){
 	include_once("niet_actief.php");
 	exit;
 }
@@ -17,27 +17,21 @@ if ($actual_link == "index.php"){
 	$actual_link = 'home';
 }
 
-
-$query = "SELECT * FROM paginas WHERE link='$actual_link'";
-$sql_paginas = $mysqli->query($query);
-$tab_paginas = $sql_paginas->num_rows;
-
-if($tab_paginas != 0) {
-	if($tab_paginas = $sql_paginas->fetch_assoc()) {
-		$pagina_titel = $tab_paginas['titel'];
-		$header = $tab_paginas['header'];
-		$inhoud = $tab_paginas['content'];
-	}
-}
+// Fetch current page
+$handle = $pdo->prepare("SELECT * FROM paginas WHERE link= :actual_link");
+$handle->execute([
+	':actual_link' => $actual_link
+]);
+$currentPage = $handle->fetch(PDO::FETCH_OBJ);
 
 require ('head.php');
 
 ?>
 <body>
 <?php
-if($tab_instellingen['headertonen'] == 1){
+if($settings->headertonen == 1){
 	echo '<div class="vak header">
-		<div class="inhoud">'.$header.'</div>
+		<div class="inhoud">'.$currentPage->header.'</div>
 	</div>';
 }
 
@@ -61,46 +55,10 @@ if($tab_instellingen['headertonen'] == 1){
 
 	</div>
 	<div class="inhoud">
-		<?php echo $inhoud;?>
+		<?php echo $currentPage->content; ?>
 	</div>
 </div>
 <?php
-
-
-
-if($tab_instellingen['afbeeldingentonen'] == 1){
-
-
-
-	echo ' <div class="vak portfolio"><div class="inhoud">';
-
-
-		// Afbeeldingen ophalen
-		$query = "SELECT link, omschrijving FROM afbeeldingen ORDER BY omschrijving ASC";
-		$sql_afbeeldingen = $mysqli->query($query) ;
-		$tab_afbeeldingen = $sql_afbeeldingen->num_rows;
-
-		if($tab_afbeeldingen != 0) {
-		  while($tab_afbeeldingen = $sql_afbeeldingen->fetch_assoc()) {
-
-				echo '<div class="item">
-					<div class="afbeelding">
-						<img src="../uploads/'.$tab_afbeeldingen['link'].'">
-					</div>';
-
-					if ($tab_afbeeldingen['omschrijving'] != NULL){
-							echo '<div class="beschrijving"><p>'.$tab_afbeeldingen['omschrijving'].'</p></div>';
-					}
-
-				echo '</div>';
-		  }
-		}
-
-echo '<div class="cleared"></div></div></div>';
-
-}
-
-
 
 // include_once ('footer.php');
 include_once ('scripts.php');

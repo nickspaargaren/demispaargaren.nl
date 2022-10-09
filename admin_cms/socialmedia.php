@@ -4,24 +4,15 @@ $cms_pagina_titel = 'Social Media';
 include_once("../instellingen.php");
 require("cms_head.php");
 
-
 // social media gegevens ophalen
-$query = "SELECT * FROM links";
-$sql_links = $mysqli->query($query) ;
-$tab_links = $sql_links->num_rows;
+$handle = $pdo->prepare("SELECT url FROM links");
+$handle->execute();
+$links = $handle->fetchAll(PDO::FETCH_OBJ);
 
-$array = array();
-
-if($tab_links != 0) {
-  while($tab_links = $sql_links->fetch_assoc()) {
-	 $array[] = $tab_links;
-  }
-}
-
-$facebooklink = $array[0]['url'];
-$twitterlink = $array[1]['url'];
-$googlepluslink = $array[2]['url'];
-$instagramlink = $array[3]['url'];
+$facebooklink = $links[0]->url;
+$twitterlink = $links[1]->url;
+$googlepluslink = $links[2]->url;
+$instagramlink = $links[3]->url;
 
 ?>
 <body>

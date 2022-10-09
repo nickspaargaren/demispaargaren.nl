@@ -3,64 +3,6 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Instellingen';
 include_once("../instellingen.php");
 require("cms_head.php");
-
-// instellingen gegevens ophalen
-$query = "SELECT * FROM instellingen WHERE id=1";
-$sql_instellingen = $mysqli->query($query) ;
-$tab_instellingen = $sql_instellingen->num_rows;
-
-if($tab_instellingen != 0) {
-  if($tab_instellingen = $sql_instellingen->fetch_assoc()) {
-
-  }
-}
-
-$projectnaam = $tab_instellingen['projectnaam'];
-$auteur = $tab_instellingen['auteur'];
-$email = $tab_instellingen['email'];
-
-
-
-if($tab_instellingen['zoomen']==1){
-	$zoomen = 'checked="checked"';
-	$zoomen2 = 'yes';
-} else {
-	$zoomen = '';
-	$zoomen2 = 'no';
-}
-
-
-
-$description = $tab_instellingen['description'];
-
-$analytics = $tab_instellingen['analytics'];
-$footer = $tab_instellingen['footer'];
-
-
-// Site online
-if($tab_instellingen['siteonline']==1){
-	$siteonline = 'checked="checked"';
-	$siteonline2 = 'yes';
-} else {
-	$siteonline = '';
-	$siteonline2 = 'no';
-}
-
-// Afbeeldingen maatwerk tonen
-if($tab_instellingen['afbeeldingentonen']==1){
-	$afbeeldingentonen = 'checked="checked"';
-} else {
-	$afbeeldingentonen = '';
-}
-
-// Paginaheaders tonen
-if($tab_instellingen['headertonen']==1){
-	$headertonen = 'checked="checked"';
-} else {
-	$headertonen = '';
-}
-
-
 ?>
 
 <body>
@@ -81,35 +23,30 @@ if($tab_instellingen['headertonen']==1){
 				<tr>
 					<td>
 						<h3 class="titelvraag">Projectnaam:</h3>
-						<input type="text" name="projectnaam" value="<?php echo $projectnaam; ?>" placeholder=""/>
+						<input type="text" name="projectnaam" value="<?php echo $settings->projectnaam; ?>" placeholder=""/>
 					</td>
 
 					<td>
 					<h3 class="titelvraag">Auteur:</h3>
-					<input type="text" name="auteur" value="<?php echo $auteur; ?>" placeholder=""/></td>
+					<input type="text" name="auteur" value="<?php echo $settings->auteur; ?>" placeholder=""/></td>
 
 					<td>
 					<h3 class="titelvraag">Email:</h3>
-					<input type="text" name="email" value="<?php echo $email; ?>" placeholder=""/></td>
+					<input type="text" name="email" value="<?php echo $settings->email; ?>" placeholder=""/></td>
 				</tr>
         <tr>
           <td colspan="3">
           <h3 class="titelvraag">Website omschrijving (Description):</h3>
           <textarea name="description">
-          <?php echo $description; ?>
+          <?php echo $settings->description; ?>
           </textarea>
           </td>
         </tr>
 				<tr>
-					<td>
-					<h3 class="titelvraag">Zoomen op mobiel?</h3>
-					<input type="checkbox" value="1" name="zoomen" <?php echo $zoomen; ?>  /></td>
-				</tr>
-				<tr>
 					<td colspan="3">
 						<h3 class="titelvraag">Footer:</h3>
 						<textarea name="footer">
-						<?php echo $footer; ?>
+						<?php echo $settings->footer; ?>
 						</textarea>
 						<script>CKEDITOR.replace( 'footer' );</script>
 					</td>
@@ -117,15 +54,11 @@ if($tab_instellingen['headertonen']==1){
 				<tr>
 					<td>
   					<h3 class="titelvraag">Site online?</h3>
-  					<input type="checkbox" value="1" name="siteonline" <?php echo $siteonline; ?>  />
-          </td>
-          <td>
-            <h3 class="titelvraag">Afbeeldingen</h3>
-            <label><input type="checkbox" value="1" name="afbeeldingentonen" <?php echo $afbeeldingentonen; ?> /> Alle afbeeldingen tonen op de homepage<br>(Maatwerk)</label>
+  					<input type="checkbox" value="1" name="siteonline" <?php echo checked($settings->siteonline); ?>  />
           </td>
           <td>
             <h3 class="titelvraag">Headers</h3>
-            <label><input type="checkbox" value="1" name="headertonen" <?php echo $headertonen; ?> /> Paginaheaders gebruiken</label>
+            <label><input type="checkbox" value="1" name="headertonen" <?php echo checked($settings->headertonen); ?> /> Paginaheaders gebruiken</label>
           </td>
 				</tr>
 			</table>

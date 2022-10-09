@@ -11,4 +11,4 @@ $('.navbutton').click(function(){
 });
 
 </script>
-<?php echo $analytics."\n"; ?>
+<?php echo $settings->analytics."\n"; ?>

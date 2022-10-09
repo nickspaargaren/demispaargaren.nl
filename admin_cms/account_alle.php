@@ -5,21 +5,20 @@
 <?php
 
 
-// accounts ophalen
-$query = "SELECT * FROM users";
-$sql_accounts = $mysqli->query($query) ;
-$tab_accounts = $sql_accounts->num_rows;
+// Accounts ophalen
+$handle = $pdo->prepare("SELECT id, username FROM users");
+$handle->execute();
+$all_accounts = $handle->fetchAll(PDO::FETCH_OBJ);
 
 echo '<div id="accounts">';
 
-if($tab_accounts != 0) {
-  while($tab_accounts = $sql_accounts->fetch_assoc()) {
-	if ($tab_accounts['id'] != 1){
+foreach($all_accounts as $account){
+	if ($account->id != 1){
 
-		$gebruiker = '<div class="gebruiker"><form action="accounts_opslaan.php?accountid=' . $tab_accounts['id'] . '" method="post">';
+		$gebruiker = '<div class="gebruiker"><form action="accounts_opslaan.php?accountid=' . $account->id . '" method="post">';
 
 		// gebruikers
-		$gebruiker .= '<input type="text" name="gebruikersnaam_alle" value="' . $tab_accounts['username'] . '" placeholder="Gebruikersnaam"/>';
+		$gebruiker .= '<input type="text" name="gebruikersnaam_alle" value="' . $account->username . '" placeholder="Gebruikersnaam"/>';
 
 		// wachtwoorden
 		$gebruiker .= '<input type="text" name="wachtwoord_alle" placeholder="Maak een nieuw wachtwoord"/>';
@@ -28,12 +27,11 @@ if($tab_accounts != 0) {
 		$gebruiker .= '<button type="submit" title="Opslaan"><i class="fa fa-save"></i></button>';
 
 		// verwijderen
-		$gebruiker .= '<a href="accounts_verwijderen.php?accountid=' . $tab_accounts['id'] . '" onclick="return confirm(\'Echt verwijderen?\')" title="Verwijderen"><i class="fa fa fa-times-circle"></i></a>';
+		$gebruiker .= '<a href="accounts_verwijderen.php?accountid=' . $account->id . '" onclick="return confirm(\'Echt verwijderen?\')" title="Verwijderen"><i class="fa fa fa-times-circle"></i></a>';
 
 		$gebruiker .= '</form></div>';
 		echo "\n";
 		echo $gebruiker;
-	  }
 	}
 }
 
@@ -44,7 +42,7 @@ echo '<a id="nieuwveld" class="cms_button">Nieuw account</a>';
 ?>
 <script>
 $('#nieuwveld').click(function(){
-  $('#accounts').append('<div class="gebruiker"><form action="accounts_opslaan.php?nieuw=1&accountid="<?php echo $nieuwaccount; ?>" method="post"><input type="text" name="gebruikersnaam_alle" value="" placeholder="Gebruikersnaam"/><input type="text" name="wachtwoord_alle" value="" placeholder="Wachtwoord" /><button type="submit"><i class="fa fa-save"></i></button></form></div>');
+  $('#accounts').append('<div class="gebruiker"><form action="accounts_opslaan.php?nieuw=1&accountid="0" method="post"><input type="text" name="gebruikersnaam_alle" value="" placeholder="Gebruikersnaam"/><input type="text" name="wachtwoord_alle" value="" placeholder="Wachtwoord" /><button type="submit"><i class="fa fa-save"></i></button></form></div>');
   $('#nieuwveld').addClass('uit');
 });
 </script>

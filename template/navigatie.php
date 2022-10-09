@@ -1,31 +1,30 @@
 <?php
 
-// paginas ophalen
-$query = "SELECT * FROM paginas ORDER BY volgorde";
-$sql_paginas = $mysqli->query($query) ;
-$tab_paginas = $sql_paginas->num_rows;
+// Fetch pages
+$handle = $pdo->prepare("SELECT titel, link, speciale_button FROM paginas ORDER BY volgorde");
+$handle->execute();
+$pages = $handle->fetchAll(PDO::FETCH_OBJ);
 
 $actual_link = "$_SERVER[REQUEST_URI]";
 $actual_link = ltrim ($actual_link, '/');
 
 echo "<ul>\n";
 
-if($tab_paginas != 0) {
-  while($tab_paginas = $sql_paginas->fetch_assoc()) {
+foreach ($pages as $page) {
 
 	echo "<li class=\"";
 
 	// kijken of het een speciale button is
-	if ($tab_paginas['speciale_button'] == "1") {
+	if ($page->speciale_button == "1") {
 		echo "menuknop ";
 	}
 	// kijken of de pagina actief is
-	if ($tab_paginas['link'] == $actual_link){
+	if ($page->link == $actual_link){
 		echo "active";
 	}
 
-	echo "\"><a href=\"".(strtolower($tab_paginas['link']))."\">".($tab_paginas['titel'])."</a></li>\n";
-  }
+	echo "\"><a href=\"".(strtolower($page->link))."\">".($page->titel)."</a></li>\n";
+
 }
 
 

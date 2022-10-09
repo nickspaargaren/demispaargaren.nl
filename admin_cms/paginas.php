@@ -18,38 +18,47 @@ require("cms_head.php");
 <!-- Alle paginas -->
 <?php
 
-
 if(isset($_POST["submit"])) {
-	$id_ary = explode(",",$_POST["row_order"]);
-	for($i=0;$i<count($id_ary);$i++) {
-		$mysqli->query("UPDATE paginas SET volgorde='" . $i . "' WHERE id=". $id_ary[$i]);
+
+	$list = explode(',' , $_POST['row_order']);
+
+	for($i=0; $i<count($list);$i++) {
+
+		$query = $pdo->prepare("UPDATE paginas SET volgorde = :volgorde WHERE id = :id");
+		$query->execute([
+			':volgorde' => $i,
+			':id' => $list[$i]
+		]);
+
 	}
 }
-$result = $mysqli->query("SELECT * FROM paginas ORDER BY volgorde");
+
+$query = $pdo->prepare("SELECT * FROM paginas ORDER BY volgorde");
+$query->execute();
+$pages = $query->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 <form name="frmQA" method="POST" />
-<input type = "hidden" name="row_order" id="row_order" />
+<input type="hidden" name="row_order" id="row_order" />
 <div id="sortable-row">
 <?php
-while($row = $result->fetch_assoc()) {
+foreach ($pages as $page) {
 
-echo '<div class="projectHolder" id="' . $row['id'].'"><a href="paginas_detail.php?pagina=' . $row['id'] . '" class="link"></a><div class="volgorde_icoon"><i class="fa fa-bars"></i></div><div class="projectNaam">' . $row['titel'];
+	echo '<div class="projectHolder" id="' . $page->id.'"><a href="paginas_detail.php?pagina=' . $page->id . '" class="link"></a><div class="volgorde_icoon"><i class="fa fa-bars"></i></div><div class="projectNaam">' . $page->titel;
 
+	// De datum is minder dan een dag / week aangemaakt, daarna gaat het label automatisch weg
+	if (strtotime($row['timestamp']) > strtotime("-1 day")) {
+		echo '<span class="nieuw">Nieuw</span>';
+	}
 
-// De datum is minder dan een dag / week aangemaakt, daarna gaat het label automatisch weg
-if (strtotime($row['timestamp']) > strtotime("-1 day")) {
-	echo '<span class="nieuw">Nieuw</span>';
+	echo '</div><a href="paginas_detail.php?pagina=' . $page->id . '" class="projectWijzigen">Wijzigen</a><a href="http://' . $_SERVER['HTTP_HOST']. '/' . ($page->link) . '" class="projectBekijken" target="_blank" >Bekijken</a><div class="projectStartDatum">' . $page->aanmaakdatum . '</div><div class="cleared"></div></div>';
+	echo "\n";
 }
 
-echo '</div><a href="paginas_detail.php?pagina=' . $row['id'] . '" class="projectWijzigen">Wijzigen</a><a href="http://' . $_SERVER['HTTP_HOST']. '/' . ($row['link']) . '" class="projectBekijken" target="_blank" >Bekijken</a><div class="projectStartDatum">' . $row['aanmaakdatum'] . '</div><div class="cleared"></div></div>';
-echo "\n";
-}
-$result->free();
-$mysqli->close();
 ?>
 </div>
-<a href="paginas_detail.php?pagina=nieuw" class="cms_button">Nieuwe pagina</a> <button type="submit" onclick="saveOrder();"  name="submit" class="cms_button grijs" style="border: none !important;"><i class="fa fa-bars"></i>Volgorde opslaan</button>
+<a href="paginas_detail.php?pagina=nieuw" class="cms_button">Nieuwe pagina</a>
+<button type="submit" onclick="saveOrder();" name="submit" class="cms_button grijs" style="border: none !important;"><i class="fa fa-bars"></i>Volgorde opslaan</button>
 </form>
 
 <script>

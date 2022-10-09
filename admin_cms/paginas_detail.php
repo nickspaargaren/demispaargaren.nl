@@ -12,7 +12,7 @@ require("cms_head.php");
 $pagina = $_GET["pagina"];
 
 
-if ($pagina == 'nieuw'){ // wanneer een nieuwe pagina word aangemaakt
+if ($pagina == 'nieuw'){ // wanneer een nieuwe pagina wordt aangemaakt
 	$cms_pagina_titel = 'Nieuwe pagina';
 	$cms_pagina_titel_2 = 'Waar gaat je nieuwe pagina over?';
 
@@ -27,27 +27,22 @@ if ($pagina == 'nieuw'){ // wanneer een nieuwe pagina word aangemaakt
 
 } else { // bestaande gegevens ophalen
 
-	$query = "SELECT * FROM paginas WHERE id = $pagina";
-	$sql_paginas = $mysqli->query($query) ;
+	$handle = $pdo->prepare("SELECT * FROM paginas WHERE id = :id");
+	$handle->execute([
+		':id' => $pagina
+	]);
+	$page = $handle->fetch(PDO::FETCH_OBJ);
 
-	if($sql_paginas->num_rows != 0) {
-	  $tab_paginas = $sql_paginas->fetch_assoc();
-	}
+	$cms_pagina_titel = 'Huidige pagina: '. $page->titel;
+	$cms_pagina_titel_2 = '<div class="aanmaakdatum">Aanmaakdatum: ' . $page->aanmaakdatum . '</div>';
 
-	$cms_pagina_titel = 'Huidige pagina: '. $tab_paginas['titel'];
-	$cms_pagina_titel_2 = '<div class="aanmaakdatum">Aanmaakdatum: ' . $tab_paginas['aanmaakdatum'] . '</div>';
+	$pagina_id = $page->id;
+	$pagina_titel = $page->titel;
+	$pagina_link = $page->link;
+	$pagina_header = $page->header;
+	$pagina_content = $page->content;
 
-	$pagina_id = $tab_paginas['id'];
-	$pagina_titel = $tab_paginas['titel'];
-	$pagina_link = $tab_paginas['link'];
-	$pagina_header = $tab_paginas['header'];
-	$pagina_content = $tab_paginas['content'];
-
-	if ($tab_paginas['speciale_button'] =="1"){
-		$speciale_button = 'checked="checked"';
-	} else {
-		$speciale_button = '';
-	}
+	$speciale_button = checked($page->speciale_button);
 
 	$paginacheck = '?paginacheck=' . $pagina;
 
@@ -70,11 +65,11 @@ if ($pagina == 'nieuw'){ // wanneer een nieuwe pagina word aangemaakt
 				<tr>
 					<td>
 						<h3 class="titelvraag">Paginatitel</h3>
-						<input type="text" name="paginatitel" value="<?php echo $pagina_titel; ?>" placeholder=""/>
+						<input type="text" name="paginatitel" value="<?php echo $pagina_titel; ?>" placeholder="Voorbeeld: Over ons"/>
 					</td>
 					<td>
 						<h3 class="titelvraag">Paginalink</h3>
-						<input type="text" name="paginalink" value="<?php echo $pagina_link; ?>" placeholder="Voorbeeld: home"/>
+						<input type="text" name="paginalink" value="<?php echo $pagina_link; ?>" placeholder="Voorbeeld: over-ons"/>
 					</td>
 
 					<td>
@@ -82,7 +77,7 @@ if ($pagina == 'nieuw'){ // wanneer een nieuwe pagina word aangemaakt
 						<input type="checkbox" value="1" name="specialebutton" <?php echo $speciale_button; ?>  />
 					</td>
 				<?php
-				if($headertonen == 1){
+				if($page->headertonen == 1){
 					echo '<tr><td colspan="3"><h3 class="titelvraag">Header</h3><textarea name="header">' . $pagina_header . '</textarea><script>CKEDITOR.replace( \'header\' );</script></td></tr>';
 				}
 				?>
@@ -97,7 +92,9 @@ if ($pagina == 'nieuw'){ // wanneer een nieuwe pagina word aangemaakt
 				</tr>
 
 			</table>
-			<button type="submit" class="cms_button" value="Opslaan"><i class="fa fa-save"></i>Opslaan</button><a href="paginas_verwijderen.php?paginacheck=verwijderen&pagina=<?php echo $pagina_id ?>" onclick="return confirm('Echt verwijderen?')" class="cms_button delete" style="margin: 0 0 0 15px"><i class="fa fa-times"></i>Pagina verwijderen?</a>
+			<button type="submit" class="cms_button" value="Opslaan"><i class="fa fa-save"></i>Opslaan</button>
+			<a href="paginas.php" class="cms_button grijs" style="margin: 0 0 0 15px">Terug zonder opslaan</a>
+			<a href="paginas_verwijderen.php?paginacheck=verwijderen&pagina=<?php echo $pagina_id ?>" onclick="return confirm('Echt verwijderen?')" class="cms_button delete" style="margin: 0 0 0 15px;"><i class="fa fa-times"></i>Pagina verwijderen?</a>
 		</form>
 	</div>
 </div>

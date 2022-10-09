@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><? echo $projectnaam ?></title>
-	<meta name="author" content="<?php echo $auteur; ?>">
+	<title><? echo $settings->projectnaam ?></title>
+	<meta name="author" content="<?php echo $settings->auteur; ?>">
 	<meta content="width=device-width"  name="viewport">
-  <?php echo $hotjar; ?>
+  <?php echo $settings->hotjar; ?>
 </head>
 <body>
 <p style="text-align: center;">Site nog niet actief</p>
-<?php echo $analytics."\n"; ?>
+<?php echo $settings->analytics."\n"; ?>
 </body>
 </html>

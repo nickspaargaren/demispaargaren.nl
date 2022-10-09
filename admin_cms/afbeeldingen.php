@@ -37,29 +37,25 @@ require("cms_head.php");
 	// nieuwe uploaden
 	echo '<a class="afbeeldingHolder_op_site nieuw uploadToggle"><i class="fa fa-plus-circle"></i></a>';
 
-
 	// Afbeeldingen ophalen
-	$query = "SELECT * FROM afbeeldingen ORDER BY uploaddatum DESC";
-	$sql_afbeeldingen = $mysqli->query($query);
-	$tab_afbeeldingen = $sql_afbeeldingen->num_rows;
+	$handle = $pdo->prepare("SELECT * FROM afbeeldingen ORDER BY uploaddatum DESC");
+	$handle->execute();
+	$images = $handle->fetchAll(PDO::FETCH_OBJ);
 
-	if($tab_afbeeldingen != 0) {
-	  while($tab_afbeeldingen = $sql_afbeeldingen->fetch_assoc()) {
-
+	foreach ($images as $image) {
 			echo '
-			<div class="afbeeldingHolder_op_site" id="'.$tab_afbeeldingen['id'].'">
+			<div class="afbeeldingHolder_op_site" id="'.$image->id.'">
 				<div class="afbHoldersite">
 					<div class="knoppen">
-						<a class="bewerken" onclick="afbeeldingDetail(\''.$tab_afbeeldingen['id'].'\');"><i class="fa fa-pencil"></i></a>
-						<a class="downloaden" href="../uploads/'.$tab_afbeeldingen['link'].'" download><i class="fa fa-cloud-download"></i></a>
-						<a class="verwijderen" href="uploadfilebewerken.php?verwijderen=1&bestand='.$tab_afbeeldingen['link'].'&id='.$tab_afbeeldingen['id'].'" onclick="return confirm(\''.$tab_afbeeldingen['link'].' echt verwijderen?\')"><i class="fa fa-trash"></i></a>
+						<a class="bewerken" onclick="afbeeldingDetail(\''.$image->id.'\');"><i class="fa fa-pencil"></i></a>
+						<a class="downloaden" href="../uploads/'.$image->link.'" download><i class="fa fa-cloud-download"></i></a>
+						<a class="verwijderen" href="uploadfilebewerken.php?verwijderen=1&bestand='.$image->link.'&id='.$image->id.'" onclick="return confirm(\''.$image->link.' echt verwijderen?\')"><i class="fa fa-trash"></i></a>
 					</div>
-					<img src="../uploads/'.$tab_afbeeldingen['link'].'">
+					<img src="../uploads/'.$image->link.'">
 				</div>
-				<div class="beschrijving">'.$tab_afbeeldingen['omschrijving'].'</div>
-				<div class="bestandsgrootte">'.bestandsgrootteLeesbaar($tab_afbeeldingen['bestandsgrootte']).'</div>
+				<div class="beschrijving">'.$image->omschrijving.'</div>
+				<div class="bestandsgrootte">'.bestandsgrootteLeesbaar($image->bestandsgrootte).'</div>
 			</div>';
-	  }
 	}
 
 
@@ -85,23 +81,14 @@ $(".uploadToggle").click(function(){
 		$(".meldingBg").toggleClass("tonen");
 });
 
-
-
 function afbeeldingDetail(afbeelding) {
-
-	// var item = document.getElementById(afbeelding);
-	// console.log(item);
-
 	$('.meldingBg').addClass('tonen');
-
-
 
 	$.ajax({
 		url: "afbeeldingDetail.php?id="+afbeelding
 	}).done(function(data) {
 		$('#afbeeldingDetail').html(data);
 	});
-
 };
 
 </script>
