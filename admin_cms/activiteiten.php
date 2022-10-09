@@ -12,7 +12,8 @@ $handle = $pdo->prepare("SELECT inlogpogingen.*, users.firstname,
 		END AS isuser
     FROM inlogpogingen
     LEFT JOIN users
-    on inlogpogingen.gebruikersnaam = users.firstname");
+    on inlogpogingen.gebruikersnaam = users.firstname
+		ORDER BY tijd DESC");
 $handle->execute();
 $activities = $handle->fetchAll(PDO::FETCH_OBJ);
 
