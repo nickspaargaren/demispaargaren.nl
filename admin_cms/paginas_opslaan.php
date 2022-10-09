@@ -22,10 +22,9 @@ $pagina_aanmaakdatum .= ' ' . $date;
 $pagina_aanmaakdatum .= ' ' . $year;
 $pagina_aanmaakdatum .= ' ' . $time;
 
-// element updaten ----------
 $paginacheck = $_GET["paginacheck"];
 
-if ($paginacheck == 'nieuw'){ // wanneer een nieuwe pagina word aangemaakt
+if ($paginacheck == 'nieuw'){ // wanneer een nieuwe pagina wordt aangemaakt
 
 	$query = $pdo->prepare("INSERT INTO paginas SET
 		titel = :titel,
