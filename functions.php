@@ -1,28 +1,9 @@
 <?php
 
-// Welkomsgroet
-function welkomsgroet($var)	{
-	echo "Welkom " . ucfirst(strtolower($var)) . ".";
-}
-
-
 // wachtwoordincorrect melding
 function wachtwoordincorrect()	{
 	// echo "<span class=\"melding\">Gebruikersnaam en wachtwoord komen niet overeen, doei.</span>";
 	echo "<style>.cms_container.loginscherm input {*border-bottom: 1px solid #F04042 !important; color: #F04042;} .cms_container.loginscherm input:focus {color: #666;}</style>";
-}
-
-// clean urlVar beveiliging
-function clean_urlVar($variabele) {
-	return $variabele;
-}
-
-
-function mres($value) {
-    $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
-    $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
-
-    return str_replace($search, $replace, $value);
 }
 
 // bestandsgrootte leesbaar

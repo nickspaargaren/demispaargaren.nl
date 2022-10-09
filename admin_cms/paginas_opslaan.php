@@ -4,10 +4,10 @@ $cms_pagina_titel = 'Opslaan..';
 include_once("../instellingen.php");
 
 // elementen ----------
-$paginalink_invoer = clean_urlVar(strtolower(str_replace(' ', '-', $_POST['paginalink'])));
+$paginalink_invoer = strtolower(str_replace(' ', '-', $_POST['paginalink']));
 
 if ($paginalink_invoer == NULL) {
-	$paginalink_invoer = clean_urlVar(strtolower(str_replace(' ', '-', $_POST['paginatitel'])));
+	$paginalink_invoer = strtolower(str_replace(' ', '-', $_POST['paginatitel']));
 }
 if ($settings->headertonen == 1) {
 	$header_invoer = $_POST['header'];

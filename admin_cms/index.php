@@ -7,8 +7,8 @@ $cms_pagina_titel = 'Inloggen';
 
 if (isset($_POST['username'])) {
   // ophalen van ingevoerde gegevens
-  $username = clean_urlVar($_POST['username']);
-  $password = clean_urlVar($_POST['password']);
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
   $handle = $pdo->prepare("SELECT username, password, id FROM users WHERE username = :username AND activated = '1' LIMIT 1");
   $handle->execute([':username' => $username]);
