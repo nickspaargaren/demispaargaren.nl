@@ -18,8 +18,10 @@ if ($actual_link == "index.php"){
 }
 
 // Fetch current page
-$handle = $pdo->prepare("SELECT * FROM paginas WHERE link='$actual_link'");
-$handle->execute();
+$handle = $pdo->prepare("SELECT * FROM paginas WHERE link= :actual_link");
+$handle->execute([
+	':actual_link' => $actual_link
+]);
 $currentPage = $handle->fetch(PDO::FETCH_OBJ);
 
 require ('head.php');

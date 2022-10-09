@@ -13,11 +13,11 @@ $settings = $handle->fetch(PDO::FETCH_OBJ);
 
 if (isset($_SESSION['id'])) {
 
-	$id = $_SESSION['id'];
-
 	// alle account gegevens ophalen
-	$handle = $pdo->prepare("SELECT * FROM users WHERE id=$id");
-	$handle->execute();
+	$handle = $pdo->prepare("SELECT * FROM users WHERE id= :id");
+	$handle->execute([
+		':id' => $_SESSION['id']
+	]);
 	$gebruikergegevens = $handle->fetch(PDO::FETCH_OBJ);
 }
 
