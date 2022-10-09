@@ -5,9 +5,16 @@ include_once("../instellingen.php");
 require("cms_head.php");
 
 
-$query = "SELECT * FROM inlogpogingen ORDER BY tijd DESC";
-$sql_activiteiten = $mysqli->query($query);
-$tab_activiteiten = $sql_activiteiten->num_rows;
+$handle = $pdo->prepare("SELECT inlogpogingen.*, users.firstname, 
+		CASE WHEN users.firstname IS NULL
+		THEN false
+    ELSE true
+		END AS isuser
+    FROM inlogpogingen
+    LEFT JOIN users
+    on inlogpogingen.gebruikersnaam = users.firstname");
+$handle->execute();
+$activities = $handle->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
@@ -25,57 +32,42 @@ $tab_activiteiten = $sql_activiteiten->num_rows;
 			<h2>Onderstaande hebben ingelogd of hebben een poging gedaan.</h2>
 		</div>
 
-<?php
+		<table class="accountgegevens" cellspacing="0">
+			<tr class="activiteiten titels">
+				<th class="gebruiker">Gebruikersnaam</th>
+				<th class="wachtwoord">Wachtwoord</th>
+				<th class="tijd">Tijd</th>
+				<th class="ip">Ip adres</th>
+				<th></th>
+			</tr>
+			<?php
 
-echo '<table class="accountgegevens" cellspacing="0">
-	<tr class="activiteiten titels">
-		<th class="gebruiker">Gebruikersnaam</th>
-		<th class="wachtwoord">Wachtwoord</th>
-		<th class="tijd">Tijd</th>
-		<th class="ip">Ip adres</th>
-		<th></th>
-	</tr>';
+			foreach ($activities as $activity) {
 
-if($tab_activiteiten != 0) {
-  while($tab_activiteiten = $sql_activiteiten->fetch_assoc()) {
+				if($activity->verwijderd != '1'){
+					echo "\n";
+					echo '<tr class="activiteiten';
 
-		$query = "SELECT * FROM users";
-		$sql_accounts = $mysqli->query($query);
-		$tab_accounts = $sql_accounts->num_rows;
-
-
-		if($tab_activiteiten['verwijderd'] != '1'){
-			echo "\n";
-			echo '<tr class="activiteiten';
-
-			if($tab_accounts != 0) {
-			  while($tab_accounts = $sql_accounts->fetch_assoc()) {
-					if($tab_activiteiten['gebruikersnaam'] != $tab_accounts['username']){
-						// gebruikersnaam komt niet overeen
-					} else {
+					if($activity->isuser){
+						// gebruikersnaam komt overeen
 						echo ' goed';
 					}
+
+					echo '"><td class="gebruiker">' . $activity->gebruikersnaam . '</td><td class="wachtwoord">' . $activity->wachtwoord . '</td><td class="tijd">' . $activity->tijd . '</td><td class="ip">';
+
+					if($activity->ip != "Onbekend"){
+						echo '<a target="_blank" title="ip adres" href="http://www.ip-tracker.org/locator/ip-lookup.php?ip=' . $activity->ip . '">' . $activity->ip . '</a>';
+					} else {
+						echo $activity->ip;
+					}
+
+					echo '</td><td class="icoon"><a href="activiteiten_verwijderen.php?activiteitid=' . $activity->id . '" onclick="return confirm(\'Echt verwijderen?\')" title="Verwijderen"><i class="fa fa-times-circle"></i></a></td></tr>';
 				}
 			}
 
-	echo '"><td class="gebruiker">' . $tab_activiteiten['gebruikersnaam'] . '</td><td class="wachtwoord">' . $tab_activiteiten['wachtwoord'] . '</td><td class="tijd">' . $tab_activiteiten['tijd'] . '</td><td class="ip">';
-
-	if($tab_activiteiten['ip'] != "Onbekend"){
-		echo '<a target="_blank" title="ip adres" href="http://www.ip-tracker.org/locator/ip-lookup.php?ip=' . $tab_activiteiten['ip'] . '">' . $tab_activiteiten['ip'] . '</a>';
-	} else {
-		echo $tab_activiteiten['ip'];
-	}
-
-	echo '</td><td class="icoon"><a href="activiteiten_verwijderen.php?activiteitid=' . $tab_activiteiten['id'] . '" onclick="return confirm(\'Echt verwijderen?\')" title="Verwijderen"><i class="fa fa-times-circle"></i></a></td></tr>';
-		}
-  }
-}
-
-
-echo '</table>';
-
-?>
-</div>
+			?>
+		</table>
+	</div>
 </div>
 <div class="cleared"></div>
 <?php include ("cms_footer.php"); ?>
