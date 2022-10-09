@@ -66,8 +66,6 @@ require("cms_head.php");
       ':ip' => $ip
     ]);
 
-    $statement->execute();
-
   }
 
   // foutmelding inloggen controleren en weergeven
