@@ -14,7 +14,7 @@ include_once("../instellingen.php");
 	</div>
 	<?php
 
-if($tab_gebruikergegevens['dashb_suggesties'] == 1){
+if($gebruikergegevens->dashb_suggesties == 1){
 // Suggesties
 echo '<!-- Suggesties -->
 <div class="cms_container drie">

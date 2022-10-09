@@ -7,53 +7,19 @@ require_once("connectdb.php");
 $cms_versie = '1.9.2 Beta';
 
 // instellingen gegevens ophalen
-$query = "SELECT * FROM instellingen WHERE id=1";
-$sql_instellingen = $mysqli->query($query);
-$tab_instellingen = $sql_instellingen->num_rows;
+$handle = $pdo->prepare("SELECT * FROM instellingen");
+$handle->execute();
+$settings = $handle->fetch(PDO::FETCH_OBJ);
 
-if($tab_instellingen != 0) {
-	if($tab_instellingen = $sql_instellingen->fetch_assoc()) {
-		$projectnaam = $tab_instellingen['projectnaam'];
-		$auteur = $tab_instellingen['auteur'];
-		$email = $tab_instellingen['email'];
-		$footer = $tab_instellingen['footer'];
-		$hotjar = $tab_instellingen['hotjar'];
-		$headertonen = $tab_instellingen['headertonen'];
-	}
+if (isset($_SESSION['id'])) {
+
+	// alle account gegevens ophalen
+	$handle = $pdo->prepare("SELECT * FROM users WHERE id= :id");
+	$handle->execute([
+		':id' => $_SESSION['id']
+	]);
+	$gebruikergegevens = $handle->fetch(PDO::FETCH_OBJ);
 }
-
-if($tab_instellingen['zoomen']=="1"){
-	$zoomen = 'checked="checked"';
-	$zoomen2 = 'yes';
-} else {
-	$zoomen = '';
-	$zoomen2 = 'no';
-}
-
-$description = $tab_instellingen['description'];
-
-$analytics = $tab_instellingen['analytics'];
-
-$id = $_SESSION['id'];
-
-// alle account gegevens ophalen
-$sql_gebruikergegevens = $mysqli->query("SELECT * FROM users WHERE id=$id") ;
-
-if($sql_gebruikergegevens->num_rows != 0) {
-  $tab_gebruikergegevens = $sql_gebruikergegevens->fetch_assoc();
-}
-$gebruiker_allegegevens = array(
-	$tab_gebruikergegevens['username'],
-	$tab_gebruikergegevens['password'],
-	$tab_gebruikergegevens['firstname'],
-	$tab_gebruikergegevens['lastname'],
-	$tab_gebruikergegevens['email'],
-	$tab_gebruikergegevens['laatst_bewerkt'],
-	$tab_gebruikergegevens['admin'],
-	$tab_gebruikergegevens['dashb_facebook'],
-	$tab_gebruikergegevens['dashb_suggesties']
-);
-
 
 // datum en tijd
 setlocale(LC_ALL, 'nl_NL');

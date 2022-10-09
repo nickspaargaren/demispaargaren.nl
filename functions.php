@@ -1,40 +1,9 @@
 <?php
 
-// Welkomsgroet
-function welkomsgroet($var)	{
-	echo "Welkom " . ucfirst(strtolower($var)) . ".";
-}
-
-
 // wachtwoordincorrect melding
 function wachtwoordincorrect()	{
 	// echo "<span class=\"melding\">Gebruikersnaam en wachtwoord komen niet overeen, doei.</span>";
 	echo "<style>.cms_container.loginscherm input {*border-bottom: 1px solid #F04042 !important; color: #F04042;} .cms_container.loginscherm input:focus {color: #666;}</style>";
-}
-
-// clean urlVar beveiliging
-function clean_urlVar($variabele) {
-	$variabele = trim($variabele);
-	$variabele = str_replace("'",'',$variabele);
-	$variabele = str_replace('"','',$variabele);
-	$variabele = strip_tags($variabele);
-	//$variabele = utf8_encode($variabele);
-	$variabele = stripslashes($variabele);
-	// clean SPECIFICALLY FOR MYSQL QUERY
-	// let op geen mysql_real_escape_string gebruiken, deze vereist een DB verbinding en die is in veel gevallen
-	// nog niet beschikbaar bij aanroep van clean_urlVar!
-	// 26-07-2013
-	// Nieuwe functie mres() toegevoegd die vrijwel hetzelfde werkt.
-	$variabele =  mres($variabele);
-	return $variabele;
-}
-
-
-function mres($value) {
-    $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
-    $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
-
-    return str_replace($search, $replace, $value);
 }
 
 // bestandsgrootte leesbaar
@@ -131,3 +100,15 @@ class file {
 	}
 
 }
+
+
+function checked (bool $checked): string {
+	if ($checked) {
+		return 'checked="checked"';
+	}
+	else {
+		return '';
+	}
+}
+
+?>
