@@ -12,8 +12,6 @@ RewriteRule ^(.*)$ https://www.demispaargaren.nl/$1 [L,R=301]
 RewriteCond %{HTTP_HOST} !www.demispaargaren.nl$ [NC]
 RewriteRule ^(.*)$ https://www.demispaargaren.nl/$1 [L,R=301]
 
-Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
