@@ -33,8 +33,8 @@ if (isset($_SESSION['id'])) {
 setlocale(LC_ALL, 'nl_NL');
 date_default_timezone_set("Europe/Amsterdam");
 
-$day = ucfirst(strftime('%A'));
-$date = date('d') . " " . ucfirst(strftime('%B'));
+$day = date('l');
+$date = date('j') . " " . date('F');
 $time = date('H:i');
 $year = date('Y');
 
