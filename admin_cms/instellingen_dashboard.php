@@ -6,32 +6,33 @@ require("cms_head.php");
 ?>
 
 <body>
-<?php require("cms_nav.php") ?>
+	<?php require("cms_nav.php") ?>
 
-<div class="cms_inhoud">
-	<div class="cms_container vb">
+	<div class="cms_inhoud">
+		<div class="cms_container vb">
 
-		<div class="titel-holder">
-			<h1><?php echo $cms_pagina_titel ?></h1>
-			<h2>De blokken die getoond worden in het dashboard. <a href="instellingen.php">Terug naar de algemene instellingen.</a></h2>
+			<div class="titel-holder">
+				<h1><?php echo $cms_pagina_titel ?></h1>
+				<h2>De blokken die getoond worden in het dashboard. <a href="instellingen.php">Terug naar de algemene instellingen.</a></h2>
+			</div>
+
+			<!--   form    -->
+			<form action="instellingen_dashboard_opslaan.php" method="post">
+				<table class="instellingen dashboard">
+
+
+
+					<?php
+					// Suggesties op Dashboard
+					echo '<tr><td class="checkbox"><label><input type="checkbox" value="1" name="dashb_suggesties" ' . checked($gebruikergegevens->dashb_suggesties) . '/> <h3 class="titelvraag" style="display: inline-block;">Suggesties</h3></label></td></tr>';
+					?>
+				</table>
+				<div><button type="submit" class="cms_button" value="Opslaan"><i class="fa fa-save"></i>Opslaan</button></div>
+			</form>
 		</div>
-
-		<!--   form    -->
-		<form action="instellingen_dashboard_opslaan.php" method="post">
-      <table class="instellingen dashboard">
-
-
-
-<?php
-// Suggesties op Dashboard
-echo '<tr><td class="checkbox"><label><input type="checkbox" value="1" name="dashb_suggesties" ' . checked($gebruikergegevens->dashb_suggesties) . '/> <h3 class="titelvraag" style="display: inline-block;">Suggesties</h3></label></td></tr>';
-?>
-      </table>
-			<div><button type="submit" class="cms_button" value="Opslaan"><i class="fa fa-save"></i>Opslaan</button></div>
-		</form>
 	</div>
-</div>
-<div class="cleared"></div>
-<?php include ("cms_footer.php"); ?>
+	<div class="cleared"></div>
+	<?php include("cms_footer.php"); ?>
 </body>
+
 </html>

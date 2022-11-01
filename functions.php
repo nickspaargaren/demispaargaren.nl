@@ -1,25 +1,27 @@
 <?php
 
 // wachtwoordincorrect melding
-function wachtwoordincorrect()	{
+function wachtwoordincorrect()
+{
 	// echo "<span class=\"melding\">Gebruikersnaam en wachtwoord komen niet overeen, doei.</span>";
 	echo "<style>.cms_container.loginscherm input {*border-bottom: 1px solid #F04042 !important; color: #F04042;} .cms_container.loginscherm input:focus {color: #666;}</style>";
 }
 
 // bestandsgrootte leesbaar
-function bestandsgrootteLeesbaar($bytes)  {
+function bestandsgrootteLeesbaar($bytes)
+{
 	if ($bytes >= 1073741824) {
-	    $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+		$bytes = number_format($bytes / 1073741824, 2) . ' GB';
 	} elseif ($bytes >= 1048576) {
 		$bytes = number_format($bytes / 1048576, 2) . ' MB';
 	} elseif ($bytes >= 1024) {
 		$bytes = number_format($bytes / 1024, 2) . ' KB';
 	} elseif ($bytes > 1) {
-	    $bytes = $bytes . ' bytes';
+		$bytes = $bytes . ' bytes';
 	} elseif ($bytes == 1) {
 		$bytes = $bytes . ' byte';
 	} else {
-	    $bytes = '';
+		$bytes = '';
 	}
 
 	return $bytes;
@@ -66,9 +68,11 @@ class ftp
 	}
 }
 
-class file {
+class file
+{
 
-	public function isProduction (): bool {
+	public function isProduction(): bool
+	{
 		return isset(
 			$_SERVER['FTP_SERVER'],
 			$_SERVER['FTP_USERNAME'],
@@ -77,7 +81,8 @@ class file {
 		);
 	}
 
-	public function upload ($tmp_file, $target_file): string {
+	public function upload($tmp_file, $target_file): string
+	{
 
 		move_uploaded_file($tmp_file, $target_file);
 
@@ -85,7 +90,8 @@ class file {
 	}
 
 
-	public function delete ($file): string {
+	public function delete($file): string
+	{
 
 		if ($this->isProduction()) {
 			$ftp = new ftp($_SERVER['FTP_SERVER'], $_SERVER['FTP_USERNAME'], $_SERVER['FTP_USERPASS']);
@@ -96,19 +102,15 @@ class file {
 		}
 
 		return $file . ' is verwijderd.';
-
 	}
-
 }
 
 
-function checked (bool $checked): string {
+function checked(bool $checked): string
+{
 	if ($checked) {
 		return 'checked="checked"';
-	}
-	else {
+	} else {
 		return '';
 	}
 }
-
-?>

@@ -1,14 +1,12 @@
-
 <script>
-window.onload = function() {
-    if(/iP(hone|ad)/.test(window.navigator.userAgent)) {
-    document.body.addEventListener('touchstart', function() {}, false);
-    }
-};
+    window.onload = function() {
+        if (/iP(hone|ad)/.test(window.navigator.userAgent)) {
+            document.body.addEventListener('touchstart', function() {}, false);
+        }
+    };
 
-$('.navbutton').click(function(){
-    $('.nav').toggleClass('open');
-});
-
+    $('.navbutton').click(function() {
+        $('.nav').toggleClass('open');
+    });
 </script>
-<?php echo $settings->analytics."\n"; ?>
+<?php echo $settings->analytics . "\n"; ?>

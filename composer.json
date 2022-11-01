@@ -14,9 +14,9 @@
   },
   "extra": {
     "patches": {
-        "ckeditor/ckeditor": {
-          "Enable CKEditor Plugins": "./patches/enableCkeditorPlugins.patch"
-        }
+      "ckeditor/ckeditor": {
+        "Enable CKEditor Plugins": "./patches/enableCkeditorPlugins.patch"
+      }
     }
   }
 }

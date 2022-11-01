@@ -3,7 +3,7 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Verwijderen..';
 include_once("../instellingen.php");
 
-if($_GET["verwijderen"] == 1){
+if ($_GET["verwijderen"] == 1) {
 
 	$file = new file();
 
@@ -15,7 +15,6 @@ if($_GET["verwijderen"] == 1){
 	]);
 
 	header('Location: afbeeldingen.php?melding=' . $melding);
-
 } else {
 	header('Location: afbeeldingen.php');
 }

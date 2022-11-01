@@ -42,9 +42,9 @@ $year = date('Y');
 // copyright
 $startYear	=	2014;
 $thisYear	=	date('Y');
-if ($thisYear > $startYear)	{
+if ($thisYear > $startYear) {
 	$copyright	=	"$startYear &ndash; $thisYear";
-} else	{
+} else {
 	$copyright	=	$startYear;
 }
 
@@ -57,7 +57,4 @@ if ($ip == "::1" || $ip == "127.0.0.1") {
 }
 
 // functies invoegen
-require ("functions.php");
-
-
-?>
+require("functions.php");

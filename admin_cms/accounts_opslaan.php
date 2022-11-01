@@ -36,5 +36,3 @@ if ($_GET["nieuw"] != 1) { // als er een bestaand account word geupdate
 }
 
 header('Location: account.php');
-
-?>

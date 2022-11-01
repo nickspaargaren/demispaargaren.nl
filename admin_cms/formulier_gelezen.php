@@ -11,4 +11,3 @@ $query->execute([
 
 // terug naar de formulier pagina
 header("Location: formulier.php");
-?>

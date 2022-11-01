@@ -13,5 +13,3 @@ if ($accountid != 0) {
 }
 
 header('Location: account.php');
-
-?>

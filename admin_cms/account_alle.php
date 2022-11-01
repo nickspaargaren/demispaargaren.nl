@@ -1,7 +1,7 @@
 <div class="titel-holder">
-			<h1>Alle accounts</h1>
-			<h2>Een overzicht van alle accounts. Maak gerust een extra account aan!</h2>
-		</div>
+	<h1>Alle accounts</h1>
+	<h2>Een overzicht van alle accounts. Maak gerust een extra account aan!</h2>
+</div>
 <?php
 
 
@@ -12,8 +12,8 @@ $all_accounts = $handle->fetchAll(PDO::FETCH_OBJ);
 
 echo '<div id="accounts">';
 
-foreach($all_accounts as $account){
-	if ($account->id != 1){
+foreach ($all_accounts as $account) {
+	if ($account->id != 1) {
 
 		$gebruiker = '<div class="gebruiker"><form action="accounts_opslaan.php?accountid=' . $account->id . '" method="post">';
 
@@ -41,8 +41,8 @@ echo '<a id="nieuwveld" class="cms_button">Nieuw account</a>';
 
 ?>
 <script>
-$('#nieuwveld').click(function(){
-  $('#accounts').append('<div class="gebruiker"><form action="accounts_opslaan.php?nieuw=1&accountid="0" method="post"><input type="text" name="gebruikersnaam_alle" value="" placeholder="Gebruikersnaam"/><input type="text" name="wachtwoord_alle" value="" placeholder="Wachtwoord" /><button type="submit"><i class="fa fa-save"></i></button></form></div>');
-  $('#nieuwveld').addClass('uit');
-});
+	$('#nieuwveld').click(function() {
+		$('#accounts').append('<div class="gebruiker"><form action="accounts_opslaan.php?nieuw=1&accountid="0" method="post"><input type="text" name="gebruikersnaam_alle" value="" placeholder="Gebruikersnaam"/><input type="text" name="wachtwoord_alle" value="" placeholder="Wachtwoord" /><button type="submit"><i class="fa fa-save"></i></button></form></div>');
+		$('#nieuwveld').addClass('uit');
+	});
 </script>
