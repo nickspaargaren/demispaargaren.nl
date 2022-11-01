@@ -24,6 +24,14 @@ $handle->execute([
 ]);
 $currentPage = $handle->fetch(PDO::FETCH_OBJ);
 
+
+if (!$currentPage) {
+	// pagina niet gevonden
+	header("HTTP/1.0 404 Not Found");
+	include_once("404.php");
+	exit;
+}
+
 require('head.php');
 
 ?>
