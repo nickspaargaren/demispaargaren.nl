@@ -23,5 +23,3 @@ $statement->execute([
 
 
 echo "Bedankt voor je bericht!";
-
-?>

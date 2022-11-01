@@ -68,4 +68,3 @@ if ($uploadOk == 0) {
         exit;
     }
 }
-?>

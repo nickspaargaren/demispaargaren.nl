@@ -16,12 +16,13 @@ require("cms_head.php");
 
 <body>
 
-<div class="cms_container loginscherm">
-  <h1>Uitloggen</h1>
-	<?php echo $msg; ?><br><br>
-	<a href="index.php">Klik hier</a> om terug te gaan.
+	<div class="cms_container loginscherm">
+		<h1>Uitloggen</h1>
+		<?php echo $msg; ?><br><br>
+		<a href="index.php">Klik hier</a> om terug te gaan.
 
-</div>
-<p style="text-align: center; margin: 10px 0px; color: #d1d1d1;">Tot ziens!</p>
+	</div>
+	<p style="text-align: center; margin: 10px 0px; color: #d1d1d1;">Tot ziens!</p>
 </body>
+
 </html>

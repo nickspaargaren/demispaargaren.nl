@@ -17,5 +17,3 @@ $statement->execute([
 
 // terug naar het overzicht
 header("Location: afbeeldingen.php");
-
-?>

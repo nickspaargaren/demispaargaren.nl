@@ -12,4 +12,3 @@ if ($_GET["paginacheck"] == 'verwijderen'){ // wanneer een pagina word verwijder
 
 // terug naar instellingen pagina
 header("Location: paginas.php");
-?>

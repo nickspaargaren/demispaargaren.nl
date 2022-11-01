@@ -9,7 +9,8 @@ if ($_POST['gebruikersnaam'] == NULL || $_POST['wachtwoord'] == NULL) { // als d
 	exit;
 } else { // als de velden gevuld zijn updaten
 
-	$statement = $pdo->prepare("UPDATE users SET
+	$statement = $pdo->prepare(
+		"UPDATE users SET
 		username = :username,
 		password = :password,
 		firstname = :firstname,
@@ -27,9 +28,6 @@ if ($_POST['gebruikersnaam'] == NULL || $_POST['wachtwoord'] == NULL) { // als d
 		':email' => $_POST['email'],
 		':id' => $id,
 	]);
-
 }
 
 header('Location: account.php');
-
-?>

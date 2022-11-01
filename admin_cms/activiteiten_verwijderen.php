@@ -14,5 +14,3 @@ if ($activiteitid != 0) {
 }
 
 header('Location: activiteiten.php');
-
-?>
