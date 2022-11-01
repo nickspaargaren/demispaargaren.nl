@@ -1,4 +1,4 @@
-<html>
+<html lang="nl">
 
 <head>
     <title>404 | <? echo $settings->projectnaam ?></title>
