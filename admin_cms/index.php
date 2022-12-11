@@ -5,31 +5,33 @@ session_start();
 
 $cms_pagina_titel = 'Inloggen';
 
-if (isset($_POST['username'])) {
-  // ophalen van ingevoerde gegevens
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+$username = isset($_POST['username']) ? $_POST['username'] : 'wer';
+$password = isset($_POST['password']) ? $_POST['password'] : 'wer';
 
+if ($username !== '' && $password !== '') {
+
+  // ophalen van ingevoerde gegevens
   $handle = $pdo->prepare("SELECT username, password, id FROM users WHERE username = :username AND activated = '1' LIMIT 1");
   $handle->execute([':username' => $username]);
   $login = $handle->fetch(PDO::FETCH_OBJ);
 
-  if (password_verify($password, $login->password)) {
-    // sessies aanmaken
-    $_SESSION['username'] = $login->username;
-    $_SESSION['id'] = $login->id;
-    $geenpassopslaan = 1;
+  if ($login) {
+    if (password_verify($password, $login->password)) {
+      // sessies aanmaken
+      $_SESSION['username'] = $login->username;
+      $_SESSION['id'] = $login->id;
+      logLoginAtempts($pdo, $username, '******');
 
-    // door naar cms
-    header("Location: dashboard.php");
-  } else {
-    // terugsturen met melding
-    header("Location: index.php?wachtwoordincorrect=true");
+      // door naar cms
+      header("Location: dashboard.php");
+    } else {
+      logLoginAtempts($pdo, $username, $password);
+      header("Location: index.php");
+    }
   }
 }
 
 require("cms_head.php");
-
 
 ?>
 
@@ -42,36 +44,6 @@ require("cms_head.php");
       <div class="inputgroep"><span class="icoon"><i class="fa fa-lock"></i></span><input type="password" placeholder="Wachtwoord" name="password"></div>
       <button type="submit" value="Log in" name="Submit" class="cms_button login"><span class="tekst">Verder</span></button>
     </form>
-
-    <?php
-
-    // inlog pogingen log
-    $username_invoer = strtolower($_POST['username']);
-    $password_invoer = $_POST['password'];
-
-    if ($geenpassopslaan == 1) {
-      $password_invoer = '******';
-    }
-
-    if ($_POST['username'] != NULL || $_POST['password'] != NULL) { // als één of beide velden gevuld zijn..
-      $ac_tijd = date('Y-m-d H:i:s');
-
-      // inlogpogingen vullen
-      $statement = $pdo->prepare("INSERT INTO inlogpogingen (`gebruikersnaam`, `wachtwoord`, `tijd`, `ip`) VALUES (:username_invoer, :password_invoer, :ac_tijd, :ip)");
-      $statement->execute([
-        ':username_invoer' => $username_invoer,
-        ':password_invoer' => $password_invoer,
-        ':ac_tijd' => $ac_tijd,
-        ':ip' => $ip
-      ]);
-    }
-
-    // foutmelding inloggen controleren en weergeven
-    if (isset($_GET['wachtwoordincorrect'])) {
-      wachtwoordincorrect();
-    }
-    ?>
-
   </div>
   <?php
 

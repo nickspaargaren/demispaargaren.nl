@@ -48,13 +48,5 @@ if ($thisYear > $startYear) {
 	$copyright	=	$startYear;
 }
 
-
-// ip adress
-$ip = $_SERVER["REMOTE_ADDR"];
-
-if ($ip == "::1" || $ip == "127.0.0.1") {
-	$ip = 'Onbekend';
-}
-
 // functies invoegen
 require("functions.php");

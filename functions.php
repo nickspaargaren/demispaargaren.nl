@@ -1,10 +1,19 @@
 <?php
 
-// wachtwoordincorrect melding
-function wachtwoordincorrect()
+function logLoginAtempts(PDO $pdo, string $username, string $password)
 {
-	// echo "<span class=\"melding\">Gebruikersnaam en wachtwoord komen niet overeen, doei.</span>";
-	echo "<style>.cms_container.loginscherm input {*border-bottom: 1px solid #F04042 !important; color: #F04042;} .cms_container.loginscherm input:focus {color: #666;}</style>";
+	if ($username != '' || $password != '') {
+		$ac_tijd = date('Y-m-d H:i:s');
+
+		// inlogpogingen vullen
+		$statement = $pdo->prepare("INSERT INTO inlogpogingen (`gebruikersnaam`, `wachtwoord`, `tijd`, `ip`) VALUES (:username_invoer, :password_invoer, :ac_tijd, :ip)");
+		$statement->execute([
+			':username_invoer' => $username,
+			':password_invoer' => $password,
+			':ac_tijd' => $ac_tijd,
+			':ip' => $_SERVER["REMOTE_ADDR"]
+		]);
+	}
 }
 
 // bestandsgrootte leesbaar
