@@ -1,6 +1,6 @@
 <?php
 include_once("../instellingen.php");
-require ('head.php');
+require('head.php');
 
 $statement = $pdo->prepare("INSERT INTO formulier SET
 	naam = :naam,
@@ -15,7 +15,7 @@ $statement->execute([
 	':email' => $_POST['email'],
 	':bericht' => $_POST['bericht'],
 	':tijd' => date('Y-m-d H:i:s'),
-	':ip' => $ip,
+	':ip' => $_SERVER["REMOTE_ADDR"],
 	':gelezen' => '0'
 ]);
 

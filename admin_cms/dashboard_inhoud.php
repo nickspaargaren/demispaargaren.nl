@@ -9,7 +9,7 @@ include_once("../instellingen.php");
 	<h2><?php echo $cms_pagina_titel; ?></h2>
 	<p>Ingelogd als: <strong><?php echo $usname; ?></strong></p>
 	<p>Id: <strong><?php echo $id; ?></strong></p>
-	<p>Mijn ip adress: <strong><?php echo $ip; ?></strong></p>
+	<p>Mijn ip adress: <strong><?php echo $_SERVER["REMOTE_ADDR"]; ?></strong></p>
 	<a href="<?php echo $base; ?>" class="cms_button" target="_blank">Naar de hompage</a>
 </div>
 <?php
