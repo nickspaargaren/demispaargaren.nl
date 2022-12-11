@@ -63,10 +63,8 @@ require("cms_head.php");
 			$end = microtime(true);
 			printf("Afbeeldingen geladen in %f seconden", $end - $start);
 
-			$meldingtonen = $_GET["melding"];
-
-			if ($meldingtonen != NULL) {
-				echo '<div class="notificatie">' . $meldingtonen . '<a href="afbeeldingen.php" style="margin: 0px 0px 0px 15px;"><i class="fa fa-times"></i></a></div';
+			if (isset($_GET["melding"])) {
+				echo '<div class="notificatie">' . $_GET["melding"] . '<a href="afbeeldingen.php" style="margin: 0px 0px 0px 15px;"><i class="fa fa-times"></i></a></div>';
 			}
 			?>
 		</div>
