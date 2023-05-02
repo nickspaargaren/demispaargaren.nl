@@ -5,7 +5,7 @@
 
 if ($_SERVER['HTTP_HOST'] !== 'localhost:8000') {
 	header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
-	header("Content-Security-Policy: default-src 'self' 'unsafe-inline' demispaargaren.nl www.demispaargaren.nl www.google-analytics.com stats.g.doubleclick.net plausible.io *.hotjar.com wss://*.hotjar.com use.typekit.net p.typekit.net maxcdn.bootstrapcdn.com www.youtube-nocookie.com www.youtube.com; script-src demispaargaren.nl www.demispaargaren.nl  www.google-analytics.com plausible.io *.hotjar.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' demispaargaren.nl www.demispaargaren.nl use.typekit.net p.typekit.net maxcdn.bootstrapcdn.com fonts.googleapis.com; font-src 'self' use.typekit.net fonts.gstatic.com maxcdn.bootstrapcdn.com; img-src 'self' demispaargaren.nl www.demispaargaren.nl; form-action 'self'; frame-ancestors 'self'");
+	header("Content-Security-Policy: default-src 'self' 'unsafe-inline' demispaargaren.nl www.demispaargaren.nl plausible.io *.hotjar.com wss://*.hotjar.com use.typekit.net p.typekit.net maxcdn.bootstrapcdn.com www.youtube-nocookie.com www.youtube.com; script-src demispaargaren.nl www.demispaargaren.nl plausible.io *.hotjar.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' demispaargaren.nl www.demispaargaren.nl use.typekit.net p.typekit.net maxcdn.bootstrapcdn.com fonts.googleapis.com; font-src 'self' use.typekit.net fonts.gstatic.com maxcdn.bootstrapcdn.com; img-src 'self' demispaargaren.nl www.demispaargaren.nl; form-action 'self'; frame-ancestors 'self'");
 	header("X-Content-Type-Options: nosniff");
 	header("X-Frame-Options: SAMEORIGIN");
 }
