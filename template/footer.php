@@ -13,18 +13,3 @@
                     } ?></p>
     </div>
 </div>
-
-<style>
-    @font-face {
-        font-family: 'geomanist_regularregular';
-        src: url('../template/fonts/geomanist-regular-webfont.eot');
-    }
-
-    @font-face {
-        font-family: 'geomanist_regularregular';
-        src: url('../template/fonts/geomanist-regular-webfont.ttf') format('truetype'),
-            url('../template/fonts/geomanist-regular-webfont.svg#geomanist_regularregular') format('svg');
-        font-weight: normal;
-        font-style: normal;
-    }
-</style>
