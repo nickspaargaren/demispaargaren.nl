@@ -16,3 +16,6 @@ install:
 
 run:
 	docker-compose up
+
+scan:
+	trivy image --severity HIGH,CRITICAL demispaargarennl-app
