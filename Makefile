@@ -15,3 +15,6 @@ start: ## Start local development
 
 shell:
 	docker compose exec -it app sh
+
+scan:
+	trivy image --severity HIGH,CRITICAL demispaargarennl-app
