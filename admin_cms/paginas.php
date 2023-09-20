@@ -43,6 +43,8 @@ require("cms_head.php");
 				<?php
 				foreach ($pages as $page) {
 
+					$hasGoodSeo = $page->titel !== "" && $page->meta_description !== "";
+
 					echo '
 					<div class="projectHolder" id="' . $page->id . '">
 						<a href="paginas_detail.php?pagina=' . $page->id . '" class="link"></a>
@@ -62,7 +64,18 @@ require("cms_head.php");
 						</div>
 						<div>
 							<div class="projectStartDatum">' . $page->aanmaakdatum . '</div>
-							<a href="http://' . $_SERVER['HTTP_HOST'] . '/' . ($page->link) . '" class="projectBekijken" target="_blank">Bekijken</a>
+							<a href="http://' . $_SERVER['HTTP_HOST'] . '/' . ($page->link) . '" class="projectBekijken" target="_blank">Bekijken</a>';
+
+							echo '<div
+									class="tag"
+									style="color:' . ($hasGoodSeo ? 'var(--cms-primary-color)' : 'indianred') . ';">
+									<i class="fa fa-check-circle"></i>
+									SEO
+								</div>';
+
+
+							echo '
+							
 							<a href="paginas_detail.php?pagina=' . $page->id . '" class="projectWijzigen">Wijzigen</a>
 						</div>
 					</div>';

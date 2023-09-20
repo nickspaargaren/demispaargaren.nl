@@ -1038,8 +1038,17 @@ table td.icoon {
   z-index: 10;
 }
 
+.projectHolder a {color: inherit;}
+
 .projectHolder > div {
   display: flex;
+  gap: 20px;
+}
+
+.projectHolder .tag {
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 0px 6px;
 }
 
 .projectHolder .projectNaam .nieuw {
@@ -1054,20 +1063,10 @@ table td.icoon {
 .projectHolder .projectId {
   width: 15px;
   text-align: center;
-  margin-right: 10px;
-}
-
-.projectHolder .volgorde_icoon {
-  margin: 0 10px 0 0;
 }
 
 .projectHolder .volgorde_icoon .fa {
   color: #dfdfdf;
-}
-
-.projectHolder .projectStartDatum {
-  color: #b3b3b3;
-  margin: 0px 10px;
 }
 
 .projectHolder .projectStartDatum::after {
@@ -1077,10 +1076,6 @@ table td.icoon {
 }
 
 .projectHolder .projectWijzigen {
-  color: #b3b3b3;
-  float: right;
-  text-align: right;
-  margin: 0px 10px;
   z-index: 11;
   position: relative;
 }
@@ -1096,10 +1091,6 @@ table td.icoon {
 }
 
 .projectHolder .projectBekijken {
-  color: #b3b3b3;
-  float: right;
-  text-align: right;
-  margin: 0px 10px;
   z-index: 11;
   position: relative;
 }
