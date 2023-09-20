@@ -74,11 +74,12 @@ require("cms_head.php");
 							<h3 class="titelvraag">Speciale button?</h3>
 							<input type="checkbox" value="1" name="specialebutton" <?php echo $speciale_button; ?> />
 						</td>
-						<?php
+					</tr>
+					<?php
 						if ($settings->headertonen == 1) {
 							echo '<tr><td colspan="3"><h3 class="titelvraag">Header</h3><textarea name="header">' . $pagina_header . '</textarea><script>CKEDITOR.replace( \'header\' );</script></td></tr>';
 						}
-						?>
+					?>
 					<tr>
 						<td colspan="3">
 							<h3 class="titelvraag">De inhoud van de pagina</h3>
