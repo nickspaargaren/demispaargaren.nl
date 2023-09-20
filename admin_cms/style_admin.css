@@ -1003,7 +1003,8 @@ table td.icoon {
 
 .projectHolder {
   border-bottom: 1px dashed #eee;
-  display: block;
+  display: flex;
+  justify-content: space-between;
   margin: 0;
   padding: 10px;
   position: relative;
@@ -1037,13 +1038,8 @@ table td.icoon {
   z-index: 10;
 }
 
-.projectHolder > div, .projectHolder > span {
-  display: inline-block;
-}
-
-.projectHolder > span {
-  z-index: 11;
-  position: relative;
+.projectHolder > div {
+  display: flex;
 }
 
 .projectHolder .projectNaam .nieuw {
@@ -1071,8 +1067,6 @@ table td.icoon {
 
 .projectHolder .projectStartDatum {
   color: #b3b3b3;
-  float: right;
-  text-align: right;
   margin: 0px 10px;
 }
 
@@ -1493,9 +1487,6 @@ table td.icoon {
   }
   .projectHolder {
     padding: 9px 0;
-  }
-  .projectHolder .projectWijzigen {
-    display: none;
   }
   .formulieren tr {
     display: block;
