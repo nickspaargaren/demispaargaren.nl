@@ -24,6 +24,8 @@ require("cms_head.php");
 		$pagina_header = '';
 		$pagina_content = '';
 		$speciale_button = '';
+		$pagina_description = '';
+
 	} else { // bestaande gegevens ophalen
 
 		$handle = $pdo->prepare("SELECT * FROM paginas WHERE id = :id");
@@ -40,6 +42,7 @@ require("cms_head.php");
 		$pagina_link = $page->link;
 		$pagina_header = $page->header;
 		$pagina_content = $page->content;
+		$pagina_description = $page->meta_description;
 
 		$speciale_button = checked($page->speciale_button);
 
@@ -69,16 +72,24 @@ require("cms_head.php");
 							<h3 class="titelvraag">Paginalink</h3>
 							<input type="text" name="paginalink" value="<?php echo $pagina_link; ?>" placeholder="Voorbeeld: over-ons" />
 						</td>
-
 						<td>
 							<h3 class="titelvraag">Speciale button?</h3>
 							<input type="checkbox" value="1" name="specialebutton" <?php echo $speciale_button; ?> />
 						</td>
-						<?php
+					</tr>
+
+					<tr>
+						<td colspan="3">
+							<h3 class="titelvraag">Pagina beschrijving (Meta description)</h3>
+							<textarea name="meta_description"><?php echo $pagina_description; ?></textarea>
+						</td>
+					</tr>
+
+					<?php
 						if ($settings->headertonen == 1) {
 							echo '<tr><td colspan="3"><h3 class="titelvraag">Header</h3><textarea name="header">' . $pagina_header . '</textarea><script>CKEDITOR.replace( \'header\' );</script></td></tr>';
 						}
-						?>
+					?>
 					<tr>
 						<td colspan="3">
 							<h3 class="titelvraag">De inhoud van de pagina</h3>
