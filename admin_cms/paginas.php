@@ -43,14 +43,29 @@ require("cms_head.php");
 				<?php
 				foreach ($pages as $page) {
 
-					echo '<div class="projectHolder" id="' . $page->id . '"><a href="paginas_detail.php?pagina=' . $page->id . '" class="link"></a><div class="volgorde_icoon"><i class="fa fa-bars"></i></div><div class="projectNaam">' . $page->titel;
+					echo '
+					<div class="projectHolder" id="' . $page->id . '">
+						<a href="paginas_detail.php?pagina=' . $page->id . '" class="link"></a>
+						<div>
+							<div class="volgorde_icoon">
+								<i class="fa fa-bars"></i>
+							</div>
+							<div class="projectNaam">' . $page->titel;
 
-					// De datum is minder dan een dag / week aangemaakt, daarna gaat het label automatisch weg
-					if (strtotime($page->timestamp) > strtotime("-1 day")) {
-						echo '<span class="nieuw">Nieuw</span>';
-					}
+							// De datum is minder dan een dag / week aangemaakt, daarna gaat het label automatisch weg
+							if (strtotime($page->timestamp) > strtotime("-1 day")) {
+								echo '<span class="nieuw">Nieuw</span>';
+							}
 
-					echo '</div><a href="paginas_detail.php?pagina=' . $page->id . '" class="projectWijzigen">Wijzigen</a><a href="http://' . $_SERVER['HTTP_HOST'] . '/' . ($page->link) . '" class="projectBekijken" target="_blank" >Bekijken</a><div class="projectStartDatum">' . $page->aanmaakdatum . '</div><div class="cleared"></div></div>';
+					echo '
+							</div>
+						</div>
+						<div>
+							<div class="projectStartDatum">' . $page->aanmaakdatum . '</div>
+							<a href="http://' . $_SERVER['HTTP_HOST'] . '/' . ($page->link) . '" class="projectBekijken" target="_blank">Bekijken</a>
+							<a href="paginas_detail.php?pagina=' . $page->id . '" class="projectWijzigen">Wijzigen</a>
+						</div>
+					</div>';
 					echo "\n";
 				}
 
