@@ -14,7 +14,7 @@ if ($currentPage->link == 'home') {
 	<!--	<?php echo $cms_versie; ?> 	-->
 	<title><?php echo $currentPage->titel ?> | <?php echo $settings->projectnaam ?></title>
 	<meta name="author" content="<?php echo $settings->auteur; ?>">
-	<meta name="description" content="<?php echo $settings->description ?>">
+	<meta name="description" content="<?php echo $currentPage->meta_description ?>">
 	<link rel="canonical" href="<?php echo $canonicalUrl; ?>">
 	<link href="<?php echo $base ?>template/style.css?nieuw" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo $base ?>template/favicon.ico" />
