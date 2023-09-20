@@ -28,6 +28,7 @@ if ($paginacheck == 'nieuw'){ // wanneer een nieuwe pagina wordt aangemaakt
 
 	$query = $pdo->prepare("INSERT INTO paginas SET
 		titel = :titel,
+		meta_description = :meta_description,
 		link = :link,
 		header = :header,
 		content = :content,
@@ -38,6 +39,7 @@ if ($paginacheck == 'nieuw'){ // wanneer een nieuwe pagina wordt aangemaakt
 
 	$query->execute([
 		':titel' => $_POST['paginatitel'],
+		':meta_description' => $_POST['meta_description'],
 		':link' => $paginalink_invoer,
 		':header' => $header_invoer,
 		':content' => $_POST['content'],
@@ -59,6 +61,7 @@ if ($paginacheck == 'nieuw'){ // wanneer een nieuwe pagina wordt aangemaakt
 
 	$query = $pdo->prepare("UPDATE paginas SET
 		titel = :titel,
+		meta_description = :meta_description,
 		link = :link,
 		header = :header,
 		content = :content,
@@ -67,12 +70,13 @@ if ($paginacheck == 'nieuw'){ // wanneer een nieuwe pagina wordt aangemaakt
 	);
 
 	$query->execute([
-	':titel' => $_POST['paginatitel'],
-	':link' => $paginalink_invoer,
-	':header' => $header_invoer,
-	':content' => $_POST['content'],
-	':speciale_button' => $specialebutton_invoer,
-	':id' => $paginacheck,
+		':titel' => $_POST['paginatitel'],
+		':meta_description' => $_POST['meta_description'],
+		':link' => $paginalink_invoer,
+		':header' => $header_invoer,
+		':content' => $_POST['content'],
+		':speciale_button' => $specialebutton_invoer,
+		':id' => $paginacheck,
 	]);
 
 
