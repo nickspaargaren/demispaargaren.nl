@@ -5,26 +5,16 @@
 
 ## Local Development
 
-1. Open .htaccess & disable the following rules:
+1. Run `make install`
 
-```
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://www.demispaargaren.nl/$1 [L,R=301]
+2. Run `make start`
 
-# RewriteCond %{HTTP_HOST} !www.demispaargaren.nl$ [NC]
-# RewriteRule ^(.*)$ https://www.demispaargaren.nl/$1 [L,R=301]
-```
-
-2. Run `make install`
-
-3. Run `make start`
-
-4. Go to phpMyAdmin http://localhost:8080 & import the database
+3. Go to phpMyAdmin http://localhost:8080 & import the database
 
 - User: root
 - Pass: root
 
-5. Open the frontend: http://localhost:8000 or cms http://localhost:8000/admin_cms
+4. Open the frontend: http://localhost:8000 or cms http://localhost:8000/admin_cms
 
 ## History
 
