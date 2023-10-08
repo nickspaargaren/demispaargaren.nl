@@ -23,7 +23,7 @@ foreach ($pages as $page) {
 		echo "active";
 	}
 
-	echo "\"><a href=\"" . (strtolower($page->link)) . "\">" . ($page->titel) . "</a></li>\n";
+	echo "\"><a href=\"" . $base . strtolower($page->link) . "\">" . ($page->titel) . "</a></li>\n";
 }
 
 
