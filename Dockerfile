@@ -7,7 +7,7 @@ COPY ./patches ./patches
 
 RUN composer install
 
-FROM php:7.4-apache AS base
+FROM php:8.2-apache AS base
 
 WORKDIR /var/www/html
 COPY ./ /var/www/html
@@ -25,5 +25,5 @@ RUN apt-get update && apt-get upgrade -y
 FROM base AS dev
 
 # Install xdebug
-RUN pecl install xdebug-3.1.0 && docker-php-ext-enable xdebug
+RUN pecl install xdebug-3.2.2 && docker-php-ext-enable xdebug
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
