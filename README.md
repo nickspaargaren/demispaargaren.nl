@@ -9,7 +9,7 @@
 
 2. Run `make start`
 
-3. Go to phpMyAdmin http://localhost:8080 & import the database
+3. Go to phpMyAdmin http://localhost:8080 & import the [database](development/database.sql)
 
 - User: root
 - Pass: root
