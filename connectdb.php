@@ -4,8 +4,10 @@ require('assets/autoload.php');
 
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+if (file_exists(__DIR__ . '/.env')) {
+	$dotenv = Dotenv::createImmutable(__DIR__);
+	$dotenv->load();
+}
 
 if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
 	$base = "http://" . $_SERVER['HTTP_HOST'] . "/";
