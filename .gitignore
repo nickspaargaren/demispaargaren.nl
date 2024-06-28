@@ -6,3 +6,7 @@ vendor
 assets/*
 !assets/.gitkeep
 .env
+
+# Terraform
+**/.terraform/*
+.terraform.lock.hcl
