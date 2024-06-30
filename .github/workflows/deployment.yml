@@ -1,0 +1,17 @@
+name: Deployment
+on: push
+
+jobs:
+  Terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+      - name: Initialize Terraform
+        run: terraform init
+      - name: Validate Terraform Configuration
+        run: terraform validate
+      - name: Apply Terraform Changes (only on main branch)
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply
