@@ -8,6 +8,8 @@ if ($_SERVER['HTTP_HOST'] !== 'localhost:8000') {
 	header("Reporting-Endpoints: default=\"https://myreports.uriports.com/reports\"");
 	header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
 	header("Content-Security-Policy: default-src 'self' 'unsafe-inline' demispaargaren.nl www.demispaargaren.nl plausible.io *.hotjar.com wss://*.hotjar.com use.typekit.net p.typekit.net maxcdn.bootstrapcdn.com www.youtube-nocookie.com www.youtube.com; script-src demispaargaren.nl www.demispaargaren.nl plausible.io *.hotjar.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' demispaargaren.nl www.demispaargaren.nl use.typekit.net p.typekit.net maxcdn.bootstrapcdn.com fonts.googleapis.com; font-src 'self' use.typekit.net fonts.gstatic.com maxcdn.bootstrapcdn.com; img-src 'self' demispaargaren.nl www.demispaargaren.nl; form-action 'self'; frame-ancestors 'self'; report-uri https://myreports.uriports.com/reports/report; report-to default");
+	header("Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()");
+	header("Referrer-Policy: no-referrer-when-downgrade");
 	header("X-Content-Type-Options: nosniff");
 	header("X-Frame-Options: SAMEORIGIN");
 }
