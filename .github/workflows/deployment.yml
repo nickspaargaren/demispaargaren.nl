@@ -6,12 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Terraform
+      - name: Setup Google Cloud
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-      - name: 'Use gcloud CLI'
-        run: 'gcloud info'
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
       - name: Initialize Terraform
@@ -21,3 +19,21 @@ jobs:
       - name: Apply Terraform Changes (only on main branch)
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve
+  build:
+    name: Build and push to registry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Google Cloud
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+      - name: Build Docker image
+        run: |
+          docker build -t demispaargaren-app . -f Dockerfile.prod
+      - name: Tag Docker image
+        run: |
+          docker tag demispaargaren-app:latest demispaargaren-app:${{ github.sha }}
+      - name: Push Docker image to Google Artifact Registry
+        run: |
+          docker push demispaargaren-app:${{ github.sha }}
