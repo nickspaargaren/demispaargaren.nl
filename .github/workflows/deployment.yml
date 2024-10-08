@@ -2,20 +2,20 @@ name: Deployment
 on: push
 
 jobs:
-  Terraform:
+  terraform:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Setup Terraform
+      - uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
       - name: Initialize Terraform
         run: terraform init
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       - name: Validate Terraform Configuration
         run: terraform validate
       - name: Apply Terraform Changes (only on main branch)
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
