@@ -10,8 +10,12 @@ jobs:
         uses: hashicorp/setup-terraform@v3
       - name: Initialize Terraform
         run: terraform init
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       - name: Validate Terraform Configuration
         run: terraform validate
       - name: Apply Terraform Changes (only on main branch)
         if: github.ref == 'refs/heads/main'
-        run: terraform apply
+        run: terraform apply -auto-approve
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
