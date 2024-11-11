@@ -18,5 +18,8 @@
         "Enable CKEditor Plugins": "./patches/enableCkeditorPlugins.patch"
       }
     }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.0"
   }
 }
