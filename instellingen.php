@@ -3,7 +3,7 @@
  - - - Algemene instellingen - - -
 */
 
-if ($_SERVER['HTTP_HOST'] !== 'localhost:8000') {
+if ($_SERVER['HTTP_HOST'] !== 'demispaargaren.nl.ddev.site') {
 	header("Report-To: {\"group\":\"default\",\"max_age\":10886400,\"endpoints\":[{\"url\":\"https://urireports.uriports.com/reports\"}],\"include_subdomains\":true}");
 	header("Reporting-Endpoints: default=\"https://urireports.uriports.com/reports\"");
 	header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
