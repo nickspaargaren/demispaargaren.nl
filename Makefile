@@ -8,10 +8,19 @@ copy-env:
 
 install: ## Install local development
 	make copy-env
-	docker compose build
+	ddev start
+	ddev composer install
+	ddev import-db --database=nickspaarg_demi --file=development/database.sql
 
 start: ## Start local development
-	docker compose up
+	ddev start
+	ddev describe
 
-shell:
-	docker compose exec -it app sh
+stop: ## Stop local development
+	ddev poweroff
+
+delete: ## Delete local development
+	ddev delete
+
+shell: ## Open a shell in the container
+	ddev ssh

@@ -6,6 +6,11 @@
 
 ## Local Development
 
+### Prerequisites
+
+- Docker (https://docs.docker.com)
+- DDEV (https://ddev.readthedocs.io/)
+
 1. Open .htaccess & disable the following rules:
 
 ```
@@ -20,12 +25,7 @@
 
 3. Run `make start`
 
-4. Go to phpMyAdmin http://localhost:8080 & import the [database](development/database.sql)
-
-- User: root
-- Pass: root
-
-5. Open the frontend: http://localhost:8000 or cms http://localhost:8000/admin_cms
+4. Open the frontend: https://demispaargaren.nl.ddev.site or cms https://demispaargaren.nl.ddev.site/admin_cms
 
 ## History
 
