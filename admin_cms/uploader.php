@@ -54,14 +54,18 @@ if ($uploadOk == 0) {
 
         $statement = $pdo->prepare("INSERT INTO afbeeldingen SET
             omschrijving = :omschrijving,
-            link =  '".$_FILES["fileToUpload"]["name"]."',
-            uploaddatum = '".$timestamp."',
-            bestandsgrootte = '".$bestandsgrootte."',
-            gebruiker = '".$gebruikergegevens->username."'
+            link = :link,
+            uploaddatum = :uploaddatum,
+            bestandsgrootte = :bestandsgrootte,
+            gebruiker = :gebruiker
         ");
 
         $statement->execute([
             ':omschrijving' => $_POST['omschrijving'],
+            ':link' => $_FILES["fileToUpload"]["name"],
+            ':uploaddatum' => $timestamp,
+            ':bestandsgrootte' => $bestandsgrootte,
+            ':gebruiker' => $gebruikergegevens->username
         ]);
 
     } else {
