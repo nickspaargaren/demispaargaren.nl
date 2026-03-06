@@ -49,9 +49,6 @@ if ($uploadOk == 0) {
     $file = new file();
 
     if ($file->upload($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        header("Location: afbeeldingen.php?melding=" . basename( $_FILES["fileToUpload"]["name"]) . " is toegevoegd.");
-        exit;
-
         $statement = $pdo->prepare("INSERT INTO afbeeldingen SET
             omschrijving = :omschrijving,
             link = :link,
@@ -67,6 +64,9 @@ if ($uploadOk == 0) {
             ':bestandsgrootte' => $bestandsgrootte,
             ':gebruiker' => $gebruikergegevens->username
         ]);
+
+        header("Location: afbeeldingen.php?melding=" . basename( $_FILES["fileToUpload"]["name"]) . " is toegevoegd.");
+        exit;
 
     } else {
         echo 'Sorry, er is iets fout gegaan.';
