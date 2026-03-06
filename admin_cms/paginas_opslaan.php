@@ -82,4 +82,5 @@ if ($paginacheck == 'nieuw'){ // wanneer een nieuwe pagina wordt aangemaakt
 
 	// terug naar instellingen pagina
 	header("Location: paginas_detail.php?pagina=$paginacheck");
+	exit;
 }

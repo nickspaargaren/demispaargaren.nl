@@ -14,3 +14,4 @@ $query->execute([
 
 // terug naar instellingen pagina
 header("Location: instellingen_dashboard.php");
+exit;
