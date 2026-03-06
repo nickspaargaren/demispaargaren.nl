@@ -28,3 +28,4 @@ $query->execute([
 
 // terug naar instellingen pagina
 header("Location: instellingen.php");
+exit;

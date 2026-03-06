@@ -22,3 +22,4 @@ $statement->execute([
 
 // terug naar instellingen pagina
 header("Location: socialmedia.php");
+exit;

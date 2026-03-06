@@ -5,8 +5,8 @@ session_start();
 
 $cms_pagina_titel = 'Inloggen';
 
-$username = isset($_POST['username']) ? $_POST['username'] : 'wer';
-$password = isset($_POST['password']) ? $_POST['password'] : 'wer';
+$username = isset($_POST['username']) ? $_POST['username'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if ($username !== '' && $password !== '') {
 
@@ -24,9 +24,11 @@ if ($username !== '' && $password !== '') {
 
       // door naar cms
       header("Location: dashboard.php");
+      exit;
     } else {
       logLoginAtempts($pdo, $username, $password);
       header("Location: index.php");
+      exit;
     }
   }
 }

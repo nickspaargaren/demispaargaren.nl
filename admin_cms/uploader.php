@@ -50,6 +50,7 @@ if ($uploadOk == 0) {
 
     if ($file->upload($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         header("Location: afbeeldingen.php?melding=" . basename( $_FILES["fileToUpload"]["name"]) . " is toegevoegd.");
+        exit;
 
         $statement = $pdo->prepare("INSERT INTO afbeeldingen SET
             omschrijving = :omschrijving,
