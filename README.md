@@ -17,6 +17,17 @@
 
 5. Open the frontend: http://localhost:8000 or cms http://localhost:8000/admin_cms
 
+## Code Style
+
+This project uses PHP CS Fixer to maintain consistent code style. To check and fix code style issues, run:
+
+```bash
+./assets/bin/php-cs-fixer check
+./assets/bin/php-cs-fixer fix
+```
+
+Configuration is defined in `.php-cs-fixer.dist.php`.
+
 ## History
 
 This project started in late 2014 with tools like:
