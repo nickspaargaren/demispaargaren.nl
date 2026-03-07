@@ -5,6 +5,7 @@ RewriteBase /
 #such as an image or css document, if this isn't true it sends the
 #request to index.php
 
+RewriteCond %{HTTP_HOST} !^localhost(:[0-9]+)?$ [NC]
 RewriteCond %{HTTP_HOST} !www.demispaargaren.nl$ [NC]
 RewriteRule ^(.*)$ https://www.demispaargaren.nl/$1 [L,R=301]
 
