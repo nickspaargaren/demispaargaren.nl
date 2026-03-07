@@ -1,4 +1,4 @@
-FROM composer:2.6.3 AS builder
+FROM composer:2.9.5 AS builder
 
 WORKDIR /composer
 
