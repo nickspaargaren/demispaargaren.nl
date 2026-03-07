@@ -1,15 +1,20 @@
 {
   "require": {
-    "ckeditor/ckeditor": "^4.19",
     "components/jquery": "^3.7",
     "cweagans/composer-patches": "^1.7",
     "components/jqueryui": "^1.12",
-    "vlucas/phpdotenv": "^5.4"
+    "vlucas/phpdotenv": "^5.4",
+    "ckeditor/ckeditor": "4.19"
   },
   "config": {
-    "vendor-dir": "assets",
     "allow-plugins": {
       "cweagans/composer-patches": true
+    },
+    "audit": {
+      "ignore": [
+        "PKSA-sd3x-9jwt-jn4s",
+        "PKSA-4d16-gn5t-2wt7"
+      ]
     }
   },
   "extra": {
@@ -18,6 +23,22 @@
         "Enable CKEditor Plugins": "./patches/enableCkeditorPlugins.patch"
       }
     }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@copy-assets"
+    ],
+    "post-update-cmd": [
+      "@copy-assets"
+    ],
+    "copy-assets": [
+      "rm -rf assets/ckeditor assets/jquery assets/jqueryui",
+      "mkdir -p assets",
+      "cp -r vendor/ckeditor/ckeditor assets/ckeditor",
+      "cp -r vendor/components/jquery assets/jquery",
+      "cp -r vendor/components/jqueryui assets/jqueryui",
+      "echo 'Frontend assets copied to assets/'"
+    ]
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.94"

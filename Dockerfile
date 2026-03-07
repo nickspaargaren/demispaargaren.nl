@@ -12,6 +12,7 @@ FROM php:8.2-apache AS base
 WORKDIR /var/www/html
 COPY ./ /var/www/html
 
+COPY --from=builder /composer/vendor ./vendor
 COPY --from=builder /composer/assets ./assets
 
 # Enable htaccess

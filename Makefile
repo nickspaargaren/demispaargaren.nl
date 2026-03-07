@@ -21,3 +21,9 @@ cs-check: ## Check code style
 
 cs-fix: ## Fix code style
 	docker compose exec app ./vendor/bin/php-cs-fixer fix
+
+cs-check: ## Check code style
+	docker compose exec app ./vendor/bin/php-cs-fixer check
+
+cs-fix: ## Fix code style
+	docker compose exec app ./vendor/bin/php-cs-fixer fix

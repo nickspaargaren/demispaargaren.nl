@@ -11,8 +11,8 @@
 	<link href="../admin_cms/style_admin.css" rel="stylesheet" type="text/css" />
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-	<script src="<?php echo $base ?>assets/components/jquery/jquery.min.js"></script>
-	<script src="<?php echo $base ?>assets/components/jqueryui/jquery-ui.min.js"></script>
-	<script src="<?php echo $base ?>assets/ckeditor/ckeditor/ckeditor.js"></script>
+	<script src="<?php echo $base ?>assets/jquery/jquery.min.js"></script>
+	<script src="<?php echo $base ?>assets/jqueryui/jquery-ui.min.js"></script>
+	<script src="<?php echo $base ?>assets/ckeditor/ckeditor.js"></script>
 	<meta name="theme-color" content="#297">
 </head>
