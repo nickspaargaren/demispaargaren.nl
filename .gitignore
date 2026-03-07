@@ -6,3 +6,5 @@ vendor
 assets/*
 !assets/.gitkeep
 .env
+
+.php-cs-fixer.cache
