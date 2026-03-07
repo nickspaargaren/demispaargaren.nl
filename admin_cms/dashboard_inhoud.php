@@ -15,8 +15,8 @@ include_once("../instellingen.php");
 <?php
 
 if ($gebruikergegevens->dashb_suggesties == 1) {
-	// Suggesties
-	echo '<!-- Suggesties -->
+    // Suggesties
+    echo '<!-- Suggesties -->
 <div class="cms_container drie">
 	<h2>Suggesties?</h2>
 	<p>Suggesties of idee&euml;n om in een van deze blokken te tonen? Ik hoor het graag :-)</p>

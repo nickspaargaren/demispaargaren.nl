@@ -6,9 +6,9 @@ include_once("../instellingen.php");
 
 session_destroy();
 if (isset($_SESSION['username'])) {
-	$msg = "U bent nu uitgelogd.";
+    $msg = "U bent nu uitgelogd.";
 } else {
-	$msg = "U bent niet uitgelogd.";
+    $msg = "U bent niet uitgelogd.";
 }
 
 require("cms_head.php");

@@ -5,7 +5,7 @@ include_once("../instellingen.php");
 require("cms_head.php");
 
 
-$handle = $pdo->prepare("SELECT inlogpogingen.*, users.firstname, 
+$handle = $pdo->prepare("SELECT inlogpogingen.*, users.firstname,
 		CASE WHEN users.firstname IS NULL
 		THEN false
     ELSE true
@@ -43,30 +43,30 @@ $activities = $handle->fetchAll(PDO::FETCH_OBJ);
 				</tr>
 				<?php
 
-				foreach ($activities as $activity) {
+                foreach ($activities as $activity) {
 
-					if ($activity->verwijderd != '1') {
-						echo "\n";
-						echo '<tr class="activiteiten';
+                    if ($activity->verwijderd != '1') {
+                        echo "\n";
+                        echo '<tr class="activiteiten';
 
-						if ($activity->isuser) {
-							// gebruikersnaam komt overeen
-							echo ' goed';
-						}
+                        if ($activity->isuser) {
+                            // gebruikersnaam komt overeen
+                            echo ' goed';
+                        }
 
-						echo '"><td class="gebruiker">' . $activity->gebruikersnaam . '</td><td class="wachtwoord">' . $activity->wachtwoord . '</td><td class="tijd">' . $activity->tijd . '</td><td class="ip">';
+                        echo '"><td class="gebruiker">' . $activity->gebruikersnaam . '</td><td class="wachtwoord">' . $activity->wachtwoord . '</td><td class="tijd">' . $activity->tijd . '</td><td class="ip">';
 
-						if ($activity->ip != "Onbekend") {
-							echo '<a target="_blank" title="ip adres" href="http://www.ip-tracker.org/locator/ip-lookup.php?ip=' . $activity->ip . '">' . $activity->ip . '</a>';
-						} else {
-							echo $activity->ip;
-						}
+                        if ($activity->ip != "Onbekend") {
+                            echo '<a target="_blank" title="ip adres" href="http://www.ip-tracker.org/locator/ip-lookup.php?ip=' . $activity->ip . '">' . $activity->ip . '</a>';
+                        } else {
+                            echo $activity->ip;
+                        }
 
-						echo '</td><td class="icoon"><a href="activiteiten_verwijderen.php?activiteitid=' . $activity->id . '" onclick="return confirm(\'Echt verwijderen?\')" title="Verwijderen"><i class="fa fa-times-circle"></i></a></td></tr>';
-					}
-				}
+                        echo '</td><td class="icoon"><a href="activiteiten_verwijderen.php?activiteitid=' . $activity->id . '" onclick="return confirm(\'Echt verwijderen?\')" title="Verwijderen"><i class="fa fa-times-circle"></i></a></td></tr>';
+                    }
+                }
 
-				?>
+?>
 			</table>
 		</div>
 	</div>

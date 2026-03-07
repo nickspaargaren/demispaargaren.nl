@@ -3,9 +3,9 @@
 
 <?php
 if ($currentPage->link == 'home') {
-	$canonicalUrl = $base;
+    $canonicalUrl = $base;
 } else {
-	$canonicalUrl = $base . $currentPage->link;
+    $canonicalUrl = $base . $currentPage->link;
 }
 ?>
 

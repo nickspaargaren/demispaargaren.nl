@@ -8,8 +8,8 @@
 <div class="vak subfooter">
     <div class="inhoud">
         <p>&copy; <?php echo $copyright;
-                    if ($settings->projectnaam != NULL) {
-                        echo ' | ' . $settings->projectnaam;
-                    } ?></p>
+        if ($settings->projectnaam != null) {
+            echo ' | ' . $settings->projectnaam;
+        } ?></p>
     </div>
 </div>
