@@ -15,3 +15,9 @@ start: ## Start local development
 
 shell:
 	docker compose exec -it app sh
+
+cs-check: ## Check code style
+	docker compose exec app ./vendor/bin/php-cs-fixer check
+
+cs-fix: ## Fix code style
+	docker compose exec app ./vendor/bin/php-cs-fixer fix
