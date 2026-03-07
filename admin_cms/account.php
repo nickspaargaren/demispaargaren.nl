@@ -37,14 +37,14 @@ require("cms_head.php");
 		</div>
 		<?php
 
-		// als je als Admin bent ingelogd.
-		if ($gebruikergegevens->admin == 1) {
-			echo '<div class="cms_container instellingen">';
-			include("account_alle.php");
-			echo '</div>';
-		}
+        // als je als Admin bent ingelogd.
+        if ($gebruikergegevens->admin == 1) {
+            echo '<div class="cms_container instellingen">';
+            include("account_alle.php");
+            echo '</div>';
+        }
 
-		?>
+?>
 	</div>
 	<div class="cleared"></div>
 	<?php include("cms_footer.php"); ?>

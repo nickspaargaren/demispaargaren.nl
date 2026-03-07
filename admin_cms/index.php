@@ -10,27 +10,27 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if ($username !== '' && $password !== '') {
 
-  // ophalen van ingevoerde gegevens
-  $handle = $pdo->prepare("SELECT username, password, id FROM users WHERE username = :username AND activated = '1' LIMIT 1");
-  $handle->execute([':username' => $username]);
-  $login = $handle->fetch(PDO::FETCH_OBJ);
+    // ophalen van ingevoerde gegevens
+    $handle = $pdo->prepare("SELECT username, password, id FROM users WHERE username = :username AND activated = '1' LIMIT 1");
+    $handle->execute([':username' => $username]);
+    $login = $handle->fetch(PDO::FETCH_OBJ);
 
-  if ($login) {
-    if (password_verify($password, $login->password)) {
-      // sessies aanmaken
-      $_SESSION['username'] = $login->username;
-      $_SESSION['id'] = $login->id;
-      logLoginAtempts($pdo, $username, '******');
+    if ($login) {
+        if (password_verify($password, $login->password)) {
+            // sessies aanmaken
+            $_SESSION['username'] = $login->username;
+            $_SESSION['id'] = $login->id;
+            logLoginAtempts($pdo, $username, '******');
 
-      // door naar cms
-      header("Location: dashboard.php");
-      exit;
-    } else {
-      logLoginAtempts($pdo, $username, $password);
-      header("Location: index.php");
-      exit;
+            // door naar cms
+            header("Location: dashboard.php");
+            exit;
+        } else {
+            logLoginAtempts($pdo, $username, $password);
+            header("Location: index.php");
+            exit;
+        }
     }
-  }
 }
 
 require("cms_head.php");
@@ -50,7 +50,7 @@ require("cms_head.php");
   <?php
 
   echo '<div class="cms_container loginscherm nieuwaccount">Extra account? <a href="mailto:' . ($settings->email) . '" style="color: #d1d1d1">Vraag er een aan!</a></div>';
-  ?>
+?>
 
   <p style="text-align: center; margin: 10px 0px; color: #d1d1d1;">CMS door <a href="http://www.nickspaargaren.nl" target="_blank" style="color: #d1d1d1">Nick Spaargaren</a></p>
 </body>

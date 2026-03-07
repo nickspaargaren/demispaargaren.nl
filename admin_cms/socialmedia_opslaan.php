@@ -1,4 +1,5 @@
 <?php
+
 require_once("sessie.php");
 $cms_pagina_titel = 'Opslaan..';
 include_once("../instellingen.php");
@@ -14,10 +15,10 @@ $statement = $pdo->prepare("UPDATE links SET url = CASE id
 ");
 
 $statement->execute([
-	':facebook' => $_POST['facebook'],
-	':twitter' => $_POST['twitter'],
-	':googleplus' => $_POST['googleplus'],
-	':instagram' => $_POST['instagram'],
+    ':facebook' => $_POST['facebook'],
+    ':twitter' => $_POST['twitter'],
+    ':googleplus' => $_POST['googleplus'],
+    ':instagram' => $_POST['instagram'],
 ]);
 
 // terug naar instellingen pagina

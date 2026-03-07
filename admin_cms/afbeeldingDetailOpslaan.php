@@ -1,4 +1,5 @@
 <?php
+
 require_once("sessie.php");
 
 $cms_pagina_titel = 'Opslaan..';
@@ -11,8 +12,8 @@ $statement = $pdo->prepare("UPDATE afbeeldingen SET
 ");
 
 $statement->execute([
-	':omschrijving' => $_POST['omschrijving'],
-	':id' => $_GET["id"],
+    ':omschrijving' => $_POST['omschrijving'],
+    ':id' => $_GET["id"],
 ]);
 
 // terug naar het overzicht

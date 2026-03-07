@@ -13,26 +13,26 @@ $all_accounts = $handle->fetchAll(PDO::FETCH_OBJ);
 echo '<div id="accounts">';
 
 foreach ($all_accounts as $account) {
-	if ($account->id != 1) {
+    if ($account->id != 1) {
 
-		$gebruiker = '<div class="gebruiker"><form action="accounts_opslaan.php?accountid=' . $account->id . '" method="post">';
+        $gebruiker = '<div class="gebruiker"><form action="accounts_opslaan.php?accountid=' . $account->id . '" method="post">';
 
-		// gebruikers
-		$gebruiker .= '<input type="text" name="gebruikersnaam_alle" value="' . $account->username . '" placeholder="Gebruikersnaam"/>';
+        // gebruikers
+        $gebruiker .= '<input type="text" name="gebruikersnaam_alle" value="' . $account->username . '" placeholder="Gebruikersnaam"/>';
 
-		// wachtwoorden
-		$gebruiker .= '<input type="text" name="wachtwoord_alle" placeholder="Maak een nieuw wachtwoord"/>';
+        // wachtwoorden
+        $gebruiker .= '<input type="text" name="wachtwoord_alle" placeholder="Maak een nieuw wachtwoord"/>';
 
-		// opslaan
-		$gebruiker .= '<button type="submit" title="Opslaan"><i class="fa fa-save"></i></button>';
+        // opslaan
+        $gebruiker .= '<button type="submit" title="Opslaan"><i class="fa fa-save"></i></button>';
 
-		// verwijderen
-		$gebruiker .= '<a href="accounts_verwijderen.php?accountid=' . $account->id . '" onclick="return confirm(\'Echt verwijderen?\')" title="Verwijderen"><i class="fa fa fa-times-circle"></i></a>';
+        // verwijderen
+        $gebruiker .= '<a href="accounts_verwijderen.php?accountid=' . $account->id . '" onclick="return confirm(\'Echt verwijderen?\')" title="Verwijderen"><i class="fa fa fa-times-circle"></i></a>';
 
-		$gebruiker .= '</form></div>';
-		echo "\n";
-		echo $gebruiker;
-	}
+        $gebruiker .= '</form></div>';
+        echo "\n";
+        echo $gebruiker;
+    }
 }
 
 echo '</div>';

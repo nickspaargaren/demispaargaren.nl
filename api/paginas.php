@@ -1,11 +1,12 @@
 <?php
+
 header("Content-Type: application/json; charset=UTF-8");
-require ("../connectdb.php");
+require("../connectdb.php");
 include_once("../instellingen.php");
 
 if ($settings->siteonline != 1) {
-  echo json_encode([]);
-  exit;
+    echo json_encode([]);
+    exit;
 }
 
 $handle = $pdo->prepare("SELECT id, titel, link, content FROM paginas ORDER BY volgorde");
