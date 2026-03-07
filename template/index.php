@@ -3,33 +3,33 @@ $actual_link = $_SERVER["REQUEST_URI"];
 
 // site is niet actief
 if ($settings->siteonline == 0) {
-	include_once("niet_actief.php");
-	exit;
+    include_once("niet_actief.php");
+    exit;
 }
 
 // neppe links naar home
 if ($actual_link != '/') {
-	$actual_link = ltrim($actual_link, '/');
+    $actual_link = ltrim($actual_link, '/');
 } else {
-	$actual_link = 'home';
+    $actual_link = 'home';
 }
 if ($actual_link == "index.php") {
-	$actual_link = 'home';
+    $actual_link = 'home';
 }
 
 // Fetch current page
 $handle = $pdo->prepare("SELECT * FROM paginas WHERE link= :actual_link");
 $handle->execute([
-	':actual_link' => $actual_link
+    ':actual_link' => $actual_link,
 ]);
 $currentPage = $handle->fetch(PDO::FETCH_OBJ);
 
 
 if (!$currentPage) {
-	// pagina niet gevonden
-	header("HTTP/1.0 404 Not Found");
-	include_once("404.php");
-	exit;
+    // pagina niet gevonden
+    header("HTTP/1.0 404 Not Found");
+    include_once("404.php");
+    exit;
 }
 
 require('head.php');
@@ -38,13 +38,13 @@ require('head.php');
 
 <body>
 	<?php
-	if ($settings->headertonen == 1) {
-		echo '<div class="vak header">
+    if ($settings->headertonen == 1) {
+        echo '<div class="vak header">
 		<div class="inhoud">' . $currentPage->header . '</div>
 	</div>';
-	}
+    }
 
-	?>
+?>
 
 	<div class="vak">
 		<div class="navigatie">
@@ -69,9 +69,9 @@ require('head.php');
 	</div>
 	<?php
 
-	// include_once ('footer.php');
-	include_once('scripts.php');
-	?>
+// include_once ('footer.php');
+include_once('scripts.php');
+?>
 
 	<div class="overlay"></div>
 </body>

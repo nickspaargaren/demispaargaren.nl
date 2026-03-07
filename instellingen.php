@@ -1,4 +1,5 @@
 <?php
+
 /*
  - - - Algemene instellingen - - -
 */
@@ -15,12 +16,12 @@ $settings = $handle->fetch(PDO::FETCH_OBJ);
 
 if (isset($_SESSION['id'])) {
 
-	// alle account gegevens ophalen
-	$handle = $pdo->prepare("SELECT * FROM users WHERE id= :id");
-	$handle->execute([
-		':id' => $_SESSION['id']
-	]);
-	$gebruikergegevens = $handle->fetch(PDO::FETCH_OBJ);
+    // alle account gegevens ophalen
+    $handle = $pdo->prepare("SELECT * FROM users WHERE id= :id");
+    $handle->execute([
+        ':id' => $_SESSION['id'],
+    ]);
+    $gebruikergegevens = $handle->fetch(PDO::FETCH_OBJ);
 }
 
 // datum en tijd
@@ -37,9 +38,9 @@ $year = date('Y');
 $startYear	=	2014;
 $thisYear	=	date('Y');
 if ($thisYear > $startYear) {
-	$copyright	=	"$startYear &ndash; $thisYear";
+    $copyright	=	"$startYear &ndash; $thisYear";
 } else {
-	$copyright	=	$startYear;
+    $copyright	=	$startYear;
 }
 
 // functies invoegen

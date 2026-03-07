@@ -1,7 +1,7 @@
 <html lang="nl">
 
 <head>
-    <title>404 | <? echo $settings->projectnaam ?></title>
+    <title>404 | <?php echo $settings->projectnaam ?></title>
     <style>
         body {
             margin: 0;

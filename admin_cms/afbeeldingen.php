@@ -32,18 +32,18 @@ require("cms_head.php");
 
 
 			<?php
-			echo "<div class=\"afbeeldingen_op_site\">";
+            echo "<div class=\"afbeeldingen_op_site\">";
 
-			// nieuwe uploaden
-			echo '<a class="afbeeldingHolder_op_site nieuw uploadToggle"><i class="fa fa-plus-circle"></i></a>';
+// nieuwe uploaden
+echo '<a class="afbeeldingHolder_op_site nieuw uploadToggle"><i class="fa fa-plus-circle"></i></a>';
 
-			// Afbeeldingen ophalen
-			$handle = $pdo->prepare("SELECT * FROM afbeeldingen ORDER BY uploaddatum DESC");
-			$handle->execute();
-			$images = $handle->fetchAll(PDO::FETCH_OBJ);
+// Afbeeldingen ophalen
+$handle = $pdo->prepare("SELECT * FROM afbeeldingen ORDER BY uploaddatum DESC");
+$handle->execute();
+$images = $handle->fetchAll(PDO::FETCH_OBJ);
 
-			foreach ($images as $image) {
-				echo '
+foreach ($images as $image) {
+    echo '
 			<div class="afbeeldingHolder_op_site" id="' . $image->id . '">
 				<div class="afbHoldersite">
 					<div class="knoppen">
@@ -56,17 +56,17 @@ require("cms_head.php");
 				<div class="beschrijving">' . $image->omschrijving . '</div>
 				<div class="bestandsgrootte">' . bestandsgrootteLeesbaar($image->bestandsgrootte) . '</div>
 			</div>';
-			}
+}
 
 
-			echo '</div><div class="cleared"></div>';
-			$end = microtime(true);
-			printf("Afbeeldingen geladen in %f seconden", $end - $start);
+echo '</div><div class="cleared"></div>';
+$end = microtime(true);
+printf("Afbeeldingen geladen in %f seconden", $end - $start);
 
-			if (isset($_GET["melding"])) {
-				echo '<div class="notificatie">' . $_GET["melding"] . '<a href="afbeeldingen.php" style="margin: 0px 0px 0px 15px;"><i class="fa fa-times"></i></a></div>';
-			}
-			?>
+if (isset($_GET["melding"])) {
+    echo '<div class="notificatie">' . $_GET["melding"] . '<a href="afbeeldingen.php" style="margin: 0px 0px 0px 15px;"><i class="fa fa-times"></i></a></div>';
+}
+?>
 		</div>
 	</div>
 	<div class="cleared"></div>

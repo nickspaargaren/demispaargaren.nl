@@ -18,34 +18,34 @@ require("cms_head.php");
 			<!-- Alle paginas -->
 			<?php
 
-			if (isset($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
 
-				$list = explode(',', $_POST['row_order']);
+                $list = explode(',', $_POST['row_order']);
 
-				for ($i = 0; $i < count($list); $i++) {
+                for ($i = 0; $i < count($list); $i++) {
 
-					$query = $pdo->prepare("UPDATE paginas SET volgorde = :volgorde WHERE id = :id");
-					$query->execute([
-						':volgorde' => $i,
-						':id' => $list[$i]
-					]);
-				}
-			}
+                    $query = $pdo->prepare("UPDATE paginas SET volgorde = :volgorde WHERE id = :id");
+                    $query->execute([
+                        ':volgorde' => $i,
+                        ':id' => $list[$i],
+                    ]);
+                }
+            }
 
-			$query = $pdo->prepare("SELECT * FROM paginas ORDER BY volgorde");
-			$query->execute();
-			$pages = $query->fetchAll(PDO::FETCH_OBJ);
+$query = $pdo->prepare("SELECT * FROM paginas ORDER BY volgorde");
+$query->execute();
+$pages = $query->fetchAll(PDO::FETCH_OBJ);
 
-			?>
+?>
 			<form name="frmQA" method="POST" />
 			<input type="hidden" name="row_order" id="row_order" />
 			<div id="sortable-row">
 				<?php
-				foreach ($pages as $page) {
+    foreach ($pages as $page) {
 
-					$hasGoodSeo = $page->titel !== "" && $page->meta_description !== "";
+        $hasGoodSeo = $page->titel !== "" && $page->meta_description !== "";
 
-					echo '
+        echo '
 					<div class="projectHolder" id="' . $page->id . '">
 						<a href="paginas_detail.php?pagina=' . $page->id . '" class="link"></a>
 						<div>
@@ -54,19 +54,19 @@ require("cms_head.php");
 							</div>
 							<div class="projectNaam">' . $page->titel;
 
-							// De datum is minder dan een dag / week aangemaakt, daarna gaat het label automatisch weg
-							if (strtotime($page->timestamp) > strtotime("-1 day")) {
-								echo '<span class="nieuw">Nieuw</span>';
-							}
+        // De datum is minder dan een dag / week aangemaakt, daarna gaat het label automatisch weg
+        if (strtotime($page->timestamp) > strtotime("-1 day")) {
+            echo '<span class="nieuw">Nieuw</span>';
+        }
 
-					echo '
+        echo '
 							</div>
 						</div>
 						<div>
 							<div class="projectStartDatum">' . $page->aanmaakdatum . '</div>
 							<a href="http://' . $_SERVER['HTTP_HOST'] . '/' . ($page->link) . '" class="projectBekijken" target="_blank">Bekijken</a>';
 
-							echo '<div
+        echo '<div
 									class="tag"
 									style="color:' . ($hasGoodSeo ? 'var(--cms-primary-color)' : 'indianred') . ';">
 									<i class="fa fa-check-circle"></i>
@@ -74,15 +74,15 @@ require("cms_head.php");
 								</div>';
 
 
-							echo '
-							
+        echo '
+
 							<a href="paginas_detail.php?pagina=' . $page->id . '" class="projectWijzigen">Wijzigen</a>
 						</div>
 					</div>';
-					echo "\n";
-				}
+        echo "\n";
+    }
 
-				?>
+?>
 			</div>
 			<a href="paginas_detail.php?pagina=nieuw" class="cms_button">Nieuwe pagina</a>
 			<button type="submit" onclick="saveOrder();" name="submit" class="cms_button grijs" style="border: none !important;"><i class="fa fa-bars"></i>Volgorde opslaan</button>

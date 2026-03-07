@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title><? echo $settings->projectnaam ?></title>
+	<title><?php echo $settings->projectnaam ?></title>
 	<meta name="author" content="<?php echo $settings->auteur; ?>">
 	<meta content="width=device-width" name="viewport">
 	<?php echo $settings->hotjar; ?>

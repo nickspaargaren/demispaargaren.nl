@@ -6,7 +6,7 @@
 		*  Website ontwikkeld door Nick Spaargaren  *
 		*      E-Mail:   info@nickspaargaren.nl     *
 		* * * * * * * * * * * * * * * * * * * * * * *	-->
-	<title><? echo $cms_pagina_titel ?> | <? echo $settings->projectnaam ?></title>
+	<title><?php echo $cms_pagina_titel ?> | <?php echo $settings->projectnaam ?></title>
 	<!-- <link href="../template/style.css" rel="stylesheet" type="text/css"/> -->
 	<link href="../admin_cms/style_admin.css" rel="stylesheet" type="text/css" />
 	<meta content="width=device-width, initial-scale=1" name="viewport">

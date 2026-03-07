@@ -12,18 +12,18 @@ echo "<ul>\n";
 
 foreach ($pages as $page) {
 
-	echo "<li class=\"";
+    echo "<li class=\"";
 
-	// kijken of het een speciale button is
-	if ($page->speciale_button == "1") {
-		echo "menuknop ";
-	}
-	// kijken of de pagina actief is
-	if ($page->link == $actual_link) {
-		echo "active";
-	}
+    // kijken of het een speciale button is
+    if ($page->speciale_button == "1") {
+        echo "menuknop ";
+    }
+    // kijken of de pagina actief is
+    if ($page->link == $actual_link) {
+        echo "active";
+    }
 
-	echo "\"><a href=\"" . $base . strtolower($page->link) . "\">" . ($page->titel) . "</a></li>\n";
+    echo "\"><a href=\"" . $base . strtolower($page->link) . "\">" . ($page->titel) . "</a></li>\n";
 }
 
 

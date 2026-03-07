@@ -1,4 +1,5 @@
 <?php
+
 include_once("../instellingen.php");
 require('head.php');
 
@@ -11,12 +12,12 @@ $statement = $pdo->prepare("INSERT INTO formulier SET
 	gelezen = :gelezen");
 
 $statement->execute([
-	':naam' => $_POST['naam'],
-	':email' => $_POST['email'],
-	':bericht' => $_POST['bericht'],
-	':tijd' => date('Y-m-d H:i:s'),
-	':ip' => $_SERVER["REMOTE_ADDR"],
-	':gelezen' => '0'
+    ':naam' => $_POST['naam'],
+    ':email' => $_POST['email'],
+    ':bericht' => $_POST['bericht'],
+    ':tijd' => date('Y-m-d H:i:s'),
+    ':ip' => $_SERVER["REMOTE_ADDR"],
+    ':gelezen' => '0',
 ]);
 
 // eventueel email sturen naar de accounts?

@@ -9,8 +9,8 @@
 		<div class="account">
 
 			<?php
-			// berichten ophalen / notificatie
-			$handle = $pdo->prepare("SELECT gelezen FROM formulier WHERE gelezen = 0");
+            // berichten ophalen / notificatie
+            $handle = $pdo->prepare("SELECT gelezen FROM formulier WHERE gelezen = 0");
 			$handle->execute();
 			$forms_unread = $handle->rowCount();
 
@@ -21,7 +21,7 @@
 				<li><a href="account.php">Mijn account</a></li>
 
 				<?php if ($forms_unread > 0) {
-					echo '<li><a href="formulier.php">Meldingen <span class="formAantal">' . $forms_unread . '</span></a></li>';
+				    echo '<li><a href="formulier.php">Meldingen <span class="formAantal">' . $forms_unread . '</span></a></li>';
 				} ?>
 
 				<li><a href="<?php echo $base; ?>" target="_blank">Naar de homepagina</a></li>
@@ -46,8 +46,8 @@
 				<div class="cleared"></div>
 			</a></li>
 		<li class="item <?php echo $cms_pagina_titel === 'Contactformulier' ? 'active' : '' ?>"><a href="formulier.php"><?php if ($forms_unread > 0) {
-																															echo '<div class="formAantal">' . $forms_unread . '</div>';
-																														} ?><i class="fa fa-file-text-o"></i><span class="titel">Contactformulier</span>
+		    echo '<div class="formAantal">' . $forms_unread . '</div>';
+		} ?><i class="fa fa-file-text-o"></i><span class="titel">Contactformulier</span>
 				<div class="cleared"></div>
 			</a></li>
 		<li class="item <?php echo $cms_pagina_titel === 'Account' ? 'active' : '' ?>"><a href="account.php"><i class="fa fa-user"></i><span class="titel">Account</span>
@@ -65,12 +65,12 @@
 		<?php
 
 
-		// extra opties wanneer je als 'Admin' bent ingelogd.
-		if ($gebruikergegevens->admin == 1) {
-			$activiteiten_active = $cms_pagina_titel === 'Activiteiten' ? 'active' : '';
-			echo '<li class="item ' . $activiteiten_active . '"><a style="color: orange !important;" href="activiteiten.php"><i style="color: orange !important;" class="fa fa-pie-chart"></i><span class="titel">Activiteiten</span><div class="cleared"></div></a></li>';
-		}
-		?>
+        // extra opties wanneer je als 'Admin' bent ingelogd.
+        if ($gebruikergegevens->admin == 1) {
+            $activiteiten_active = $cms_pagina_titel === 'Activiteiten' ? 'active' : '';
+            echo '<li class="item ' . $activiteiten_active . '"><a style="color: orange !important;" href="activiteiten.php"><i style="color: orange !important;" class="fa fa-pie-chart"></i><span class="titel">Activiteiten</span><div class="cleared"></div></a></li>';
+        }
+			?>
 		<div class="mobile_cleared"></div>
 
 	</ul>

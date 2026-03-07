@@ -1,4 +1,5 @@
 <?php
+
 require_once("sessie.php");
 $cms_pagina_titel = 'Uploaden..';
 include_once("../instellingen.php");
@@ -11,9 +12,9 @@ $timestamp = date("Y-m-d H:i:s");
 $bestandsgrootte = $_FILES["fileToUpload"]["size"];
 
 // Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
+if (isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
+    if ($check !== false) {
         // echo "Bestand is een plaatje - " . $check["mime"] . ". ";
         $uploadOk = 1;
     } else {
@@ -35,7 +36,7 @@ if ($_FILES["fileToUpload"]["size"] > 1000000) { // nu max 1mb
     exit;
 }
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
     echo 'Sorry, je moet echt een JPG of PNG uploaden.';
     $uploadOk = 0;
     exit;
@@ -62,10 +63,10 @@ if ($uploadOk == 0) {
             ':link' => $_FILES["fileToUpload"]["name"],
             ':uploaddatum' => $timestamp,
             ':bestandsgrootte' => $bestandsgrootte,
-            ':gebruiker' => $gebruikergegevens->username
+            ':gebruiker' => $gebruikergegevens->username,
         ]);
 
-        header("Location: afbeeldingen.php?melding=" . basename( $_FILES["fileToUpload"]["name"]) . " is toegevoegd.");
+        header("Location: afbeeldingen.php?melding=" . basename($_FILES["fileToUpload"]["name"]) . " is toegevoegd.");
         exit;
 
     } else {
