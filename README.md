@@ -22,8 +22,8 @@
 This project uses PHP CS Fixer to maintain consistent code style. To check and fix code style issues, run:
 
 ```bash
-./assets/bin/php-cs-fixer check
-./assets/bin/php-cs-fixer fix
+make cs-check  # Check for code style issues
+make cs-fix    # Automatically fix code style issues
 ```
 
 Configuration is defined in `.php-cs-fixer.dist.php`.
