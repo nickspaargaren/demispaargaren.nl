@@ -6,21 +6,11 @@
 
 ## Local Development
 
-1. Open .htaccess & disable the following rules:
+1. Run `make install`
 
-```
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://www.demispaargaren.nl/$1 [L,R=301]
+2. Run `make start`
 
-# RewriteCond %{HTTP_HOST} !www.demispaargaren.nl$ [NC]
-# RewriteRule ^(.*)$ https://www.demispaargaren.nl/$1 [L,R=301]
-```
-
-2. Run `make install`
-
-3. Run `make start`
-
-4. Go to phpMyAdmin http://localhost:8080 & import the [database](development/database.sql)
+3. Go to phpMyAdmin http://localhost:8080 & import the [database](development/database.sql)
 
 - User: root
 - Pass: root
