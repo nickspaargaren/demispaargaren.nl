@@ -24,3 +24,6 @@ cs-fix: ## Fix code style
 
 security-test: ## Run SQL injection security test on login page
 	sqlmap -u "http://localhost:8000/admin_cms/index.php" --data "username=test&password=test" --method POST --batch --risk 3 --level 5
+
+nikto-scan: ## Run Nikto web server security scan
+	docker run --rm --network host alpine/nikto:2.1.6 -h http://localhost:8000
