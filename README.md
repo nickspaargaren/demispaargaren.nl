@@ -28,6 +28,16 @@ make cs-fix    # Automatically fix code style issues
 
 Configuration is defined in `.php-cs-fixer.dist.php`.
 
+## Debugging
+
+Xdebug is installed in the Docker `dev` stage and configured in `xdebug.ini`.
+
+### VS Code setup
+
+1. Open **Run & Debug** (`Cmd+Shift+D`) and start **"Listen for Xdebug"**
+2. In the **Breakpoints** section at the bottom of the sidebar, check **"Everything"** to automatically break on all exceptions and fatal errors
+3. Open http://localhost:8000 in your browser — VS Code will pause on any error
+
 ## History
 
 This project started in late 2014 with tools like:
