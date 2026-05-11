@@ -7,6 +7,8 @@ Header always set Permissions-Policy "accelerometer=(), ambient-light-sensor=(),
 Header always set Referrer-Policy "no-referrer-when-downgrade"
 Header always set X-Content-Type-Options "nosniff"
 Header always set X-Frame-Options "SAMEORIGIN"
+Header unset X-Powered-By
+Header always unset X-Powered-By
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
