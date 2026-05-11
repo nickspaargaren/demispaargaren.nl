@@ -7,7 +7,7 @@ COPY ./patches ./patches
 
 RUN composer install
 
-FROM php:8.2-apache AS base
+FROM php:8.4-apache AS base
 
 WORKDIR /var/www/html
 COPY ./ /var/www/html
