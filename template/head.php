@@ -19,7 +19,7 @@ if ($currentPage->link == 'home') {
 	<link href="<?php echo $base ?>template/style.css?nieuw" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo $base ?>template/favicon.ico" />
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<script src="<?php echo $base ?>assets/components/jquery/jquery.min.js"></script>
+	<script src="<?php echo $base ?>assets/jquery/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.typekit.net/mup3tnf.css">
 	<?php echo $settings->hotjar; ?>
 
