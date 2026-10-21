@@ -36,10 +36,10 @@ foreach ($forms as $form) {
     }
 
     echo '
-		<div class="naam">' . ($form->naam) . '</div>
+		<div class="naam">' . htmlspecialchars($form->naam, ENT_QUOTES, 'UTF-8') . '</div>
 		<div class="tijd">' . ($form->tijd) . '</div>
-    <div class="email"><a href="mailto:' . ($form->email) . '?subject=Reactie website formulier">' . ($form->email) . '</a></div>
-    <div class="bericht">' . ($form->bericht) . '</div>';
+    <div class="email"><a href="mailto:' . htmlspecialchars($form->email, ENT_QUOTES, 'UTF-8') . '?subject=Reactie website formulier">' . htmlspecialchars($form->email, ENT_QUOTES, 'UTF-8') . '</a></div>
+    <div class="bericht">' . htmlspecialchars($form->bericht, ENT_QUOTES, 'UTF-8') . '</div>';
     echo '<div class="ipadres">';
     if ($form->ip != "Onbekend") {
         echo "<a target=\"_blank\" href=\"http://www.ip-tracker.org/locator/ip-lookup.php?ip=" . ($form->ip) . "\">" . ($form->ip) . "</a>";
