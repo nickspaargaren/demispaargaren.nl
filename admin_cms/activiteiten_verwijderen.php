@@ -4,6 +4,11 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Activiteit verwijderen..';
 include_once("../instellingen.php");
 
+if (!isset($_SESSION['id'])) {
+    header('Location: index.php');
+    exit;
+}
+
 $activiteitid = $_GET["activiteitid"];
 
 if ($activiteitid != 0) {

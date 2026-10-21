@@ -4,6 +4,11 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Account Opslaan..';
 include_once("../instellingen.php");
 
+if (!isset($_SESSION['id'])) {
+    header('Location: index.php');
+    exit;
+}
+
 if ($_POST['gebruikersnaam_alle'] == null || $_POST['wachtwoord_alle'] == null) {
     header('Location: account.php');
     exit;
