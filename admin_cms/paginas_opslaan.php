@@ -4,6 +4,11 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Opslaan..';
 include_once("../instellingen.php");
 
+if (!csrf_valid()) {
+    http_response_code(403);
+    exit;
+}
+
 // elementen ----------
 $paginalink_invoer = strtolower(str_replace(' ', '-', $_POST['paginalink']));
 

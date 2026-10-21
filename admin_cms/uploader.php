@@ -4,6 +4,11 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Uploaden..';
 include_once("../instellingen.php");
 
+if (!csrf_valid()) {
+    http_response_code(403);
+    exit;
+}
+
 if (!isset($_SESSION['id'])) {
     header('Location: index.php');
     exit;

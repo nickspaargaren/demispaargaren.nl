@@ -18,7 +18,7 @@ require("cms_head.php");
 			<!-- Alle paginas -->
 			<?php
 
-            if (isset($_POST["submit"])) {
+            if (isset($_POST["submit"]) && csrf_valid()) {
 
                 $list = explode(',', $_POST['row_order']);
 
@@ -38,6 +38,7 @@ $pages = $query->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 			<form name="frmQA" method="POST" />
+			<input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 			<input type="hidden" name="row_order" id="row_order" />
 			<div id="sortable-row">
 				<?php

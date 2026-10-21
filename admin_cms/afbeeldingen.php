@@ -18,6 +18,7 @@ require("cms_head.php");
 			<div class="uploadenHolder">
 				<h2>Nieuwe afbeelding uploaden</h2>
 				<form action="uploader.php" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 					<input type="text" name="omschrijving" placeholder="Omschrijving" />
 					<input type="file" name="fileToUpload" id="fileToUpload">
 					<button class="cms_button links" value="Opslaan" type="submit"><i class="fa fa-upload"></i>Uploaden</button>

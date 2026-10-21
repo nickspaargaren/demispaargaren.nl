@@ -4,6 +4,11 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Opslaan..';
 include_once("../instellingen.php");
 
+if (!csrf_valid()) {
+    http_response_code(403);
+    exit;
+}
+
 // element updaten ----------
 $query = $pdo->prepare(
     "UPDATE instellingen SET

@@ -17,6 +17,7 @@ require("cms_head.php");
 
 
 			<form action="account_opslaan.php" method="post">
+				<input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 				<div class="titelvraag">Gebruikersnaam</div>
 				<div><input type="text" name="gebruikersnaam" value="<?php echo $gebruikergegevens->username; ?>" placeholder="" required /></div>
 

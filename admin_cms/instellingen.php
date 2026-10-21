@@ -19,6 +19,7 @@ require("cms_head.php");
 
 			<!--   form    -->
 			<form action="instellingen_opslaan.php" method="post">
+				<input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 				<table class="instellingen">
 					<tr>
 						<td>
