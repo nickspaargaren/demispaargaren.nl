@@ -62,6 +62,7 @@ if ($pagina == 'nieuw') { // wanneer een nieuwe pagina wordt aangemaakt
 ?>
 			</div>
 			<form action="paginas_opslaan.php<?php echo $paginacheck; ?>" method="post">
+				<input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 				<table class="instellingen">
 					<tr>
 						<td>

@@ -4,6 +4,11 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Account Opslaan..';
 include_once("../instellingen.php");
 
+if (!csrf_valid()) {
+    http_response_code(403);
+    exit;
+}
+
 // element updaten ----------
 if ($_POST['gebruikersnaam'] == null || $_POST['wachtwoord'] == null) { // als de gebruikersnaam of het wachtwoord leeg is
     header('Location: account.php');

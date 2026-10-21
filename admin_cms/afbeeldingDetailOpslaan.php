@@ -6,6 +6,11 @@ $cms_pagina_titel = 'Opslaan..';
 
 include_once("../instellingen.php");
 
+if (!csrf_valid()) {
+    http_response_code(403);
+    exit;
+}
+
 $statement = $pdo->prepare("UPDATE afbeeldingen SET
 	omschrijving = :omschrijving
 	WHERE id = :id

@@ -26,6 +26,7 @@ $instagramlink = $links[3]->url;
 				<h2>Alle active social media.</h2>
 			</div>
 			<form action="socialmedia_opslaan.php" method="post">
+				<input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 				<h3 class="titelvraag">Facebook</h3>
 				<div class="inlineinput">
 					<div class="inputgroep"><span class="tekst">facebook.com/</span><input type="text" name="facebook" value="<?php echo $facebooklink; ?>" placeholder="gebruikersnaam" /></div>
