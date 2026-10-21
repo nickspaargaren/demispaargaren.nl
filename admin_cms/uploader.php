@@ -4,6 +4,11 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Uploaden..';
 include_once("../instellingen.php");
 
+if (!isset($_SESSION['id'])) {
+    header('Location: index.php');
+    exit;
+}
+
 $target_file = "../uploads/" . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
