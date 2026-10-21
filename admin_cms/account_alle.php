@@ -15,7 +15,7 @@ echo '<div id="accounts">';
 foreach ($all_accounts as $account) {
     if ($account->id != 1) {
 
-        $gebruiker = '<div class="gebruiker"><form action="accounts_opslaan.php?accountid=' . $account->id . '" method="post">';
+        $gebruiker = '<div class="gebruiker"><form action="accounts_opslaan.php?accountid=' . $account->id . '" method="post"><input type="hidden" name="csrf_token" value="' . csrf_token() . '">';
 
         // gebruikers
         $gebruiker .= '<input type="text" name="gebruikersnaam_alle" value="' . $account->username . '" placeholder="Gebruikersnaam"/>';
@@ -42,7 +42,7 @@ echo '<a id="nieuwveld" class="cms_button">Nieuw account</a>';
 ?>
 <script>
 	$('#nieuwveld').click(function() {
-		$('#accounts').append('<div class="gebruiker"><form action="accounts_opslaan.php?nieuw=1&accountid="0" method="post"><input type="text" name="gebruikersnaam_alle" value="" placeholder="Gebruikersnaam"/><input type="text" name="wachtwoord_alle" value="" placeholder="Wachtwoord" /><button type="submit"><i class="fa fa-save"></i></button></form></div>');
+		$('#accounts').append('<div class="gebruiker"><form action="accounts_opslaan.php?nieuw=1&accountid="0" method="post"><input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>"><input type="text" name="gebruikersnaam_alle" value="" placeholder="Gebruikersnaam"/><input type="text" name="wachtwoord_alle" value="" placeholder="Wachtwoord" /><button type="submit"><i class="fa fa-save"></i></button></form></div>');
 		$('#nieuwveld').addClass('uit');
 	});
 </script>
