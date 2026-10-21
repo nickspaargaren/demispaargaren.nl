@@ -17,6 +17,7 @@ require("cms_head.php");
 <bdoy>
     <div class="cms_container upload">
         <form action="uploader.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" value="Uploaden" name="submit">
         </form>

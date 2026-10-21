@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once("../instellingen.php");
 ?>
 
 <head>
@@ -39,6 +40,7 @@ session_start();
 	<h1>Send me a message</h1>
 
 	<form action="formversturen.php" method="post">
+		<input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 		<table style="border-spacing: 0px;">
 			<tr>
 				<td>

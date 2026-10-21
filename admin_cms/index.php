@@ -5,6 +5,11 @@ session_start();
 
 $cms_pagina_titel = 'Inloggen';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !csrf_valid()) {
+    http_response_code(403);
+    exit;
+}
+
 $username = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
@@ -42,6 +47,7 @@ require("cms_head.php");
   <div class="cms_container loginscherm bestaandaccount">
     <h1>Inloggen <span>als sitebeheerder</span></h1>
     <form id="form" action="index.php" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
       <div class="inputgroep"><span class="icoon"><i class="fa fa-user"></i></span><input type="text" placeholder="Gebruikersnaam" name="username"></div>
       <div class="inputgroep"><span class="icoon"><i class="fa fa-lock"></i></span><input type="password" placeholder="Wachtwoord" name="password"></div>
       <button type="submit" value="Log in" name="Submit" class="cms_button login"><span class="tekst">Verder</span></button>
