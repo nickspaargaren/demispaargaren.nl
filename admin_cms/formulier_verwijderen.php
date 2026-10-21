@@ -4,6 +4,11 @@ require_once("sessie.php");
 $cms_pagina_titel = 'Verwijderen..';
 include_once("../instellingen.php");
 
+if (!isset($_SESSION['id'])) {
+    header('Location: index.php');
+    exit;
+}
+
 $query = $pdo->prepare("DELETE FROM formulier WHERE id = :id");
 $query->execute([
     ':id' => $_GET["form"],
