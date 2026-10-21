@@ -9,6 +9,11 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
+if (!csrf_valid()) {
+    http_response_code(403);
+    exit;
+}
+
 if ($_POST['gebruikersnaam_alle'] == null || $_POST['wachtwoord_alle'] == null) {
     header('Location: account.php');
     exit;
